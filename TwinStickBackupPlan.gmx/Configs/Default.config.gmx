@@ -650,5 +650,12 @@
     <option_xbone_texture_page>1024</option_xbone_texture_page>
     <option_xbone_title_id></option_xbone_title_id>
   </Options>
-  <ConfigConstants/>
+  <ConfigConstants>
+    <constants number="4">
+      <constant name="head_1">0</constant>
+      <constant name="head_2">1</constant>
+      <constant name="weapon_1">0</constant>
+      <constant name="weapon_2">1</constant>
+    </constants>
+  </ConfigConstants>
 </Config>
