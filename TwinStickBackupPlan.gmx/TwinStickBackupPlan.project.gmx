@@ -23,6 +23,38 @@
           <sprite>sprites\spr_playerGun2Base</sprite>
           <sprite>sprites\spr_playerGun2Shoot</sprite>
         </sprites>
+        <sprites name="playerGun3">
+          <sprite>sprites\spr_playerGun3Base</sprite>
+          <sprite>sprites\spr_playerGun3Shoot</sprite>
+        </sprites>
+        <sprites name="playerGun4">
+          <sprite>sprites\spr_playerGun4Base</sprite>
+          <sprite>sprites\spr_playerGun4Shoot</sprite>
+        </sprites>
+        <sprites name="playerGun5">
+          <sprite>sprites\spr_playerGun5Base</sprite>
+          <sprite>sprites\spr_playerGun5Shoot</sprite>
+        </sprites>
+        <sprites name="playerGun6">
+          <sprite>sprites\spr_playerGun6Base</sprite>
+          <sprite>sprites\spr_playerGun6Shoot</sprite>
+        </sprites>
+        <sprites name="playerGun7">
+          <sprite>sprites\spr_playerGun7Base</sprite>
+          <sprite>sprites\spr_playerGun7Shoot</sprite>
+        </sprites>
+        <sprites name="playerGun8">
+          <sprite>sprites\spr_playerGun8Base</sprite>
+          <sprite>sprites\spr_playerGun8Shoot</sprite>
+        </sprites>
+        <sprites name="playerGun9">
+          <sprite>sprites\spr_playerGun9Base</sprite>
+          <sprite>sprites\spr_playerGun9Shoot</sprite>
+        </sprites>
+        <sprites name="playerGun10">
+          <sprite>sprites\spr_playerGun10Base</sprite>
+          <sprite>sprites\spr_playerGun10Shoot</sprite>
+        </sprites>
       </sprites>
       <sprites name="Heads">
         <sprite>sprites\spr_playerHead1</sprite>

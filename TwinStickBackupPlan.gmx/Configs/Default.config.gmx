@@ -651,11 +651,19 @@
     <option_xbone_title_id></option_xbone_title_id>
   </Options>
   <ConfigConstants>
-    <constants number="4">
+    <constants number="12">
       <constant name="head_1">0</constant>
       <constant name="head_2">1</constant>
       <constant name="weapon_1">0</constant>
       <constant name="weapon_2">1</constant>
+      <constant name="weapon_3">2</constant>
+      <constant name="weapon_4">3</constant>
+      <constant name="weapon_5">4</constant>
+      <constant name="weapon_6">5</constant>
+      <constant name="weapon_7">6</constant>
+      <constant name="weapon_8">7</constant>
+      <constant name="weapon_9">8</constant>
+      <constant name="weapon_10">9</constant>
     </constants>
   </ConfigConstants>
 </Config>

@@ -100,20 +100,20 @@ m_oldPosY = 0;
 switch (m_playerHead)
 {
     case head_1: 
-    m_headSprite = spr_playerHead1; 
-    break;
+        m_headSprite = spr_playerHead1; 
+        break;
 }
 
 switch (m_playerWeapon)
 {
     case weapon_1: 
-    m_weaponSprite = spr_playerGun1Base;
-    m_shootSprite = spr_playerGun1Shoot;
-    break;
+        m_weaponSprite = spr_playerGun1Base;
+        m_shootSprite = spr_playerGun1Shoot;
+        break;
     case weapon_2: 
-    m_weaponSprite = spr_playerGun2Base;
-    m_shootSprite = spr_playerGun2Shoot;
-    break;
+        m_weaponSprite = spr_playerGun2Base;
+        m_shootSprite = spr_playerGun2Shoot;
+        break;
 }
  
 </string>
@@ -402,7 +402,7 @@ sprite_index = m_weaponSprite;
           <argument>
             <kind>1</kind>
             <string>draw_set_color(c_red);
-draw_line(m_oldPosX, m_oldPosY, m_oldPosX + lengthdir_x(500, m_aimDirection), m_oldPosY + lengthdir_y(500, m_aimDirection))
+draw_line_width(m_oldPosX, m_oldPosY, m_oldPosX + lengthdir_x(500, m_aimDirection), m_oldPosY + lengthdir_y(500, m_aimDirection), 2)
 
 draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, m_aimDirection, image_blend, image_alpha);
 draw_sprite_ext(m_headSprite, image_index, m_oldPosX, m_oldPosY, image_xscale, image_yscale, m_aimDirection, image_blend, image_alpha);
