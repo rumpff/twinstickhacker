@@ -110,6 +110,10 @@ switch (m_playerWeapon)
     m_weaponSprite = spr_playerGun1Base;
     m_shootSprite = spr_playerGun1Shoot;
     break;
+    case weapon_2: 
+    m_weaponSprite = spr_playerGun2Base;
+    m_shootSprite = spr_playerGun2Shoot;
+    break;
 }
  
 </string>
@@ -324,16 +328,30 @@ else
 if (m_triggerRight &gt; 0.4 &amp;&amp; m_shootCooldown == 0)
 {
     sprite_index = m_shootSprite;
-    image_index = 0;
-    
-    var bulletAngle = m_aimDirection + random_range(-5, 5);
-    
-    bullet = instance_create(x, y, obj_bulletTemp);
-    bullet.m_Angle = bulletAngle
-    bullet.image_angle = bulletAngle
-
-    
-    m_shootCooldown = 6;
+    image_index = 0; 
+    switch(m_playerWeapon)
+    {
+        case weapon_1:       
+            var bulletAngle = m_aimDirection + random_range(-5, 5);        
+            bullet = instance_create(x, y, obj_bulletTemp);
+            bullet.m_Angle = bulletAngle
+            bullet.image_angle = bulletAngle        
+            m_shootCooldown = 6;
+            break;
+        case weapon_2:
+            var bulletAngle = m_aimDirection;
+            
+            for (i=0; i&lt;4; i++)
+            {
+                bullet = instance_create(x, y, obj_bulletTemp);
+                bullet.m_Angle = bulletAngle + (i * 20) - 30;
+                bullet.image_angle = bulletAngle     
+            };
+                         
+            m_shootCooldown = 15;
+            break;
+        
+    }
 }
 
 if (m_shootCooldown &gt; 0) { m_shootCooldown--; }

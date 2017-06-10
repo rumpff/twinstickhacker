@@ -19,6 +19,10 @@
           <sprite>sprites\spr_playerGun1Base</sprite>
           <sprite>sprites\spr_playerGun1Shoot</sprite>
         </sprites>
+        <sprites name="playerGun2">
+          <sprite>sprites\spr_playerGun2Base</sprite>
+          <sprite>sprites\spr_playerGun2Shoot</sprite>
+        </sprites>
       </sprites>
       <sprites name="Heads">
         <sprite>sprites\spr_playerHead1</sprite>
@@ -30,7 +34,6 @@
     <background>background\background2</background>
   </backgrounds>
   <paths name="paths"/>
-  <fonts name="fonts"/>
   <objects name="objects">
     <object>objects\obj_player</object>
     <object>objects\obj_collider</object>
