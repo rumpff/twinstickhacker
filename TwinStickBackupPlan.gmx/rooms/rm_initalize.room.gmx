@@ -12,7 +12,7 @@
   <showcolour>-1</showcolour>
   <code>/// Initalization of global variables
 global.playerHead = head_1;
-global.playerWeapon = weapon_2;
+global.playerWeapon = weapon_1;
 
 room_goto_next();</code>
   <enableViews>0</enableViews>

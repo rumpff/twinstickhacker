@@ -71,6 +71,7 @@
     <object>objects\obj_collider</object>
     <object>objects\obj_stickDebug</object>
     <object>objects\obj_bulletTemp</object>
+    <object>objects\debugChanger</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_initalize</room>

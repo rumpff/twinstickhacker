@@ -110,9 +110,50 @@ switch (m_playerWeapon)
         m_weaponSprite = spr_playerGun1Base;
         m_shootSprite = spr_playerGun1Shoot;
         break;
+        
     case weapon_2: 
         m_weaponSprite = spr_playerGun2Base;
         m_shootSprite = spr_playerGun2Shoot;
+        break;
+        
+    case weapon_3: 
+        m_weaponSprite = spr_playerGun3Base;
+        m_shootSprite = spr_playerGun3Shoot;
+        break;
+        
+    case weapon_4: 
+        m_weaponSprite = spr_playerGun4Base;
+        m_shootSprite = spr_playerGun4Shoot;
+        break;
+        
+    case weapon_5: 
+        m_weaponSprite = spr_playerGun5Base;
+        m_shootSprite = spr_playerGun5Shoot;
+        break;
+        
+    case weapon_6: 
+        m_weaponSprite = spr_playerGun6Base;
+        m_shootSprite = spr_playerGun6Shoot;
+        break;
+        
+    case weapon_7: 
+        m_weaponSprite = spr_playerGun7Base;
+        m_shootSprite = spr_playerGun7Shoot;
+        break;
+        
+    case weapon_8: 
+        m_weaponSprite = spr_playerGun8Base;
+        m_shootSprite = spr_playerGun8Shoot;
+        break;
+        
+    case weapon_9: 
+        m_weaponSprite = spr_playerGun9Base;
+        m_shootSprite = spr_playerGun9Shoot;
+        break;
+        
+    case weapon_10: 
+        m_weaponSprite = spr_playerGun10Base;
+        m_shootSprite = spr_playerGun10Shoot;
         break;
 }
  
@@ -350,6 +391,8 @@ if (m_triggerRight &gt; 0.4 &amp;&amp; m_shootCooldown == 0)
                          
             m_shootCooldown = 15;
             break;
+        default:
+            m_shootCooldown = 5;
         
     }
 }
