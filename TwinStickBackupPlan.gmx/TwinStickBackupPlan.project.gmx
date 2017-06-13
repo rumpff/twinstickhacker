@@ -57,10 +57,20 @@
         </sprites>
       </sprites>
       <sprites name="Heads">
+        <sprite>sprites\spr_playerHead10</sprite>
+        <sprite>sprites\spr_playerHead9</sprite>
+        <sprite>sprites\spr_playerHead8</sprite>
+        <sprite>sprites\spr_playerHead7</sprite>
+        <sprite>sprites\spr_playerHead6</sprite>
+        <sprite>sprites\spr_playerHead5</sprite>
+        <sprite>sprites\spr_playerHead4</sprite>
+        <sprite>sprites\spr_playerHead3</sprite>
+        <sprite>sprites\spr_playerHead2</sprite>
         <sprite>sprites\spr_playerHead1</sprite>
       </sprites>
     </sprites>
     <sprite>sprites\spr_player_hitbox</sprite>
+    <sprite>sprites\spr_cursor</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background2</background>
