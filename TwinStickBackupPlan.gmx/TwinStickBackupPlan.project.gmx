@@ -4,13 +4,12 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions>
-    <extension index="0">extensions\Free Shaders</extension>
+    <extension index="0">extensions\Eight-bit chillout Shader</extension>
   </NewExtensions>
   <sounds name="sound"/>
   <sprites name="sprites">
     <sprites name="_Temp">
       <sprite>sprites\spr_playerTemp</sprite>
-      <sprite>sprites\spr_bulletTemp</sprite>
       <sprite>sprites\spr_blockTemp</sprite>
     </sprites>
     <sprites name="player skins">
@@ -69,19 +68,46 @@
         <sprite>sprites\spr_playerHead1</sprite>
       </sprites>
     </sprites>
+    <sprites name="Bullets">
+      <sprite>sprites\spr_bulletNormal</sprite>
+      <sprite>sprites\spr_bulletSmall</sprite>
+    </sprites>
     <sprite>sprites\spr_player_hitbox</sprite>
     <sprite>sprites\spr_cursor</sprite>
+    <sprite>sprites\sprRoad</sprite>
+    <sprite>sprites\sprite36</sprite>
+    <sprites name="Menu">
+      <sprite>sprites\spr_window</sprite>
+      <sprite>sprites\spr_folder</sprite>
+    </sprites>
   </sprites>
   <backgrounds name="background">
     <background>background\background2</background>
+    <background>background\winxppro</background>
+    <background>background\bg_test</background>
   </backgrounds>
   <paths name="paths"/>
+  <shaders name="shaders">
+    <shader type="GLSLES">shaders\fx8bitChilloutColor.shader</shader>
+  </shaders>
+  <fonts name="fonts">
+    <font>fonts\font0</font>
+  </fonts>
   <objects name="objects">
-    <object>objects\obj_player</object>
+    <objects name="Player Related">
+      <object>objects\obj_player</object>
+      <objects name="Bullets">
+        <object>objects\obj_bulletNormal</object>
+      </objects>
+    </objects>
     <object>objects\obj_collider</object>
-    <object>objects\obj_stickDebug</object>
-    <object>objects\obj_bulletTemp</object>
     <object>objects\debugChanger</object>
+    <object>objects\obj_shader</object>
+    <object>objects\obj_cursor</object>
+    <objects name="Menu">
+      <object>objects\oeop</object>
+      <object>objects\obj_folder</object>
+    </objects>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_initalize</room>

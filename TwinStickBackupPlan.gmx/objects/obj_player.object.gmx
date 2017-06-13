@@ -401,7 +401,7 @@ if (m_triggerRight &gt; 0.4 &amp;&amp; m_shootCooldown == 0)
     {
         case weapon_1:       
             var bulletAngle = m_aimDirection + random_range(-5, 5);        
-            bullet = instance_create(x, y, obj_bulletTemp);
+            bullet = instance_create(x, y, obj_bulletNormal);
             bullet.m_Angle = bulletAngle
             bullet.image_angle = bulletAngle        
             m_shootCooldown = 6;
@@ -411,7 +411,7 @@ if (m_triggerRight &gt; 0.4 &amp;&amp; m_shootCooldown == 0)
             
             for (i=0; i&lt;4; i++)
             {
-                bullet = instance_create(x, y, obj_bulletTemp);
+                bullet = instance_create(x, y, obj_bulletNormal);
                 bullet.m_Angle = bulletAngle + (i * 20) - 30;
                 bullet.image_angle = bulletAngle     
             };
@@ -472,7 +472,7 @@ sprite_index = m_weaponSprite;
           <argument>
             <kind>1</kind>
             <string>draw_set_color(c_red);
-draw_line_width(m_oldPosX, m_oldPosY, m_oldPosX + lengthdir_x(500, m_aimDirection), m_oldPosY + lengthdir_y(500, m_aimDirection), 2)
+draw_line_width(m_oldPosX - 1, m_oldPosY - 1, (m_oldPosX - 1) + lengthdir_x(500, m_aimDirection), (m_oldPosY - 1) + lengthdir_y(500, m_aimDirection), 2)
 
 draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, m_aimDirection, image_blend, image_alpha);
 draw_sprite_ext(m_headSprite, image_index, m_oldPosX, m_oldPosY, image_xscale, image_yscale, m_aimDirection, image_blend, image_alpha);
