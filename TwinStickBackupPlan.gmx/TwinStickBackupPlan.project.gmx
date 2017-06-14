@@ -105,7 +105,7 @@
     <object>objects\obj_shader</object>
     <object>objects\obj_cursor</object>
     <objects name="Menu">
-      <object>objects\oeop</object>
+      <object>objects\obj_window</object>
       <object>objects\obj_folder</object>
     </objects>
   </objects>

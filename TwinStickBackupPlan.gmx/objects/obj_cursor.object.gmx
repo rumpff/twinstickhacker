@@ -52,7 +52,7 @@ y = mouse_y;
         <arguments>
           <argument>
             <kind>10</kind>
-            <object>oeop</object>
+            <object>obj_window</object>
           </argument>
           <argument>
             <kind>0</kind>
