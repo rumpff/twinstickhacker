@@ -6,10 +6,13 @@
   <NewExtensions>
     <extension index="0">extensions\Eight-bit chillout Shader</extension>
   </NewExtensions>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\snd_temp</sound>
+  </sounds>
   <sprites name="sprites">
     <sprites name="_Temp">
       <sprite>sprites\spr_playerTemp</sprite>
+      <sprite>sprites\spr_enemyTemp</sprite>
       <sprite>sprites\spr_blockTemp</sprite>
     </sprites>
     <sprites name="player skins">
@@ -80,6 +83,7 @@
       <sprite>sprites\spr_window</sprite>
       <sprite>sprites\spr_folder</sprite>
     </sprites>
+    <sprite>sprites\spr_lazerParticeTemp</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background2</background>
@@ -117,6 +121,8 @@
     </objects>
     <object>objects\obj_level</object>
     <object>objects\obj_DrawGUI</object>
+    <object>objects\obj_enemyTemp</object>
+    <object>objects\obj_lazerParticleTemp</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_initalize</room>

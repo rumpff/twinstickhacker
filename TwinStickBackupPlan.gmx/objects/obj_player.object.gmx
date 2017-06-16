@@ -27,6 +27,8 @@
             <kind>1</kind>
             <string>/// Variable Initalization
 
+m_Health = 100;
+
 m_playerHead = global.playerHead;
 m_playerWeapon = global.playerWeapon
 
@@ -346,6 +348,9 @@ m_vStickLMovement = lerp(m_vStickLMovement, m_vStickL, 0.2);
             <kind>1</kind>
             <string>/// Calculate next position and move
 
+scr_move((m_hStickLMovement * m_maxSpeed), (m_vStickLMovement * m_maxSpeed))
+
+/*
 if (place_meeting(x + (m_hStickLMovement * m_maxSpeed), y + (m_vStickLMovement * m_maxSpeed), obj_collider))
 {
     var horizontalSpeed = m_hStickL * m_maxSpeed;
@@ -371,6 +376,7 @@ else
     x += m_hStickLMovement * m_maxSpeed// * m_moveMultiplier;
     y += m_vStickLMovement * m_maxSpeed// * m_moveMultiplier;
 }
+*/
 </string>
           </argument>
         </arguments>

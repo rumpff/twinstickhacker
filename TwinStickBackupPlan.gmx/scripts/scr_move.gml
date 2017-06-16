@@ -1,4 +1,4 @@
-///Move(hspd, vspd)
+///scr_move(hspd, vspd)
 var hspd = argument[0];
 var vspd = argument[1];
 
