@@ -477,8 +477,10 @@ sprite_index = m_weaponSprite;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_color(c_red);
-draw_line_width(m_oldPosX - 1, m_oldPosY - 1, (m_oldPosX - 1) + lengthdir_x(500, m_aimDirection), (m_oldPosY - 1) + lengthdir_y(500, m_aimDirection), 2)
+            <string>
+draw_set_color(c_red);
+draw_line_width(m_oldPosX - 1, m_oldPosY - 1, (m_oldPosX - 1) + lengthdir_x(500, m_aimDirection), (m_oldPosY - 1) + lengthdir_y(500, m_aimDirection), 2)  
+
 
 draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, m_aimDirection, image_blend, image_alpha);
 draw_sprite_ext(m_headSprite, image_index, m_oldPosX, m_oldPosY, image_xscale, image_yscale, m_aimDirection, image_blend, image_alpha);

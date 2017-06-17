@@ -26,6 +26,7 @@
           <argument>
             <kind>1</kind>
             <string>draw_text(0,0,string(room_width) + " , " + string(room_height));
+draw_text(0,16,string(obj_player.x) + " , " + string(obj_player.y));
 </string>
           </argument>
         </arguments>

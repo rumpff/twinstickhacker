@@ -651,10 +651,12 @@
     <option_xbone_title_id></option_xbone_title_id>
   </Options>
   <ConfigConstants>
-    <constants number="25">
+    <constants number="27">
       <constant name="CELL_HEIGHT">128</constant>
       <constant name="CELL_WIDTH">128</constant>
       <constant name="FLOOR">-5</constant>
+      <constant name="GAME_HEIGHT">960</constant>
+      <constant name="GAME_WIDTH">1280</constant>
       <constant name="head_1">0</constant>
       <constant name="head_10">9</constant>
       <constant name="head_2">1</constant>
