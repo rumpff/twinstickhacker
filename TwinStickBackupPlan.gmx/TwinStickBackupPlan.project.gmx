@@ -20,6 +20,10 @@
         <sprites name="playerGun 1">
           <sprite>sprites\spr_playerGun1Base</sprite>
           <sprite>sprites\spr_playerGun1Shoot</sprite>
+          <sprites name="Glow">
+            <sprite>sprites\spr_Glow1Base</sprite>
+            <sprite>sprites\spr_Glow1Shoot</sprite>
+          </sprites>
         </sprites>
         <sprites name="playerGun2">
           <sprite>sprites\spr_playerGun2Base</sprite>
@@ -91,12 +95,15 @@
     <background>background\bg_test</background>
     <background>background\ts_walls</background>
     <background>background\bg_floor</background>
+    <background>background\bg_grid_small</background>
+    <background>background\bg_grid_large</background>
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
     <script>scripts\scr_gridPlaceMeeting.gml</script>
     <script>scripts\scr_move.gml</script>
     <script>scripts\scr_pathToPlayer.gml</script>
+    <script>scripts\draw_rectangle_width.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\fx8bitChilloutColor.shader</shader>
@@ -123,10 +130,14 @@
     <object>objects\obj_DrawGUI</object>
     <object>objects\obj_enemyTemp</object>
     <object>objects\obj_lazerParticleTemp</object>
+    <object>objects\obj_camera</object>
+    <object>objects\obj_drawCubeTest</object>
+    <object>objects\obj_backgroundController</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_initalize</room>
     <room>rooms\room2</room>
+    <room>rooms\rm_drawtest</room>
     <room>rooms\room3</room>
   </rooms>
   <help>

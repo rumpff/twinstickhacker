@@ -73,8 +73,14 @@ m_buttonYPressed = 0;
 m_maxSpeed = 12;
 
 m_headSprite = noone;
-m_weaponSprite = noone;
-m_shootSprite = noone;
+
+m_weaponSprite[] = noone;
+m_glowSprite[] = noone;
+
+m_imageShootTimer = 0;
+m_imageShootMax = 0;
+
+m_weaponState = 0;
 
 m_oldPosX = 0;
 m_oldPosY = 0;
@@ -136,56 +142,60 @@ switch (m_playerHead)
 switch (m_playerWeapon)
 {
     case weapon_1: 
-        m_weaponSprite = spr_playerGun1Base;
-        m_shootSprite = spr_playerGun1Shoot;
+        m_weaponSprite[0] = spr_playerGun1Base;
+        m_weaponSprite[1] = spr_playerGun1Shoot;
+        
+        m_glowSprite[0] = spr_Glow1Base;
+        m_glowSprite[1] = spr_Glow1Shoot;
+        
+        m_imageShootMax = sprite_get_number(spr_playerGun1Shoot);
         break;
         
     case weapon_2: 
-        m_weaponSprite = spr_playerGun2Base;
-        m_shootSprite = spr_playerGun2Shoot;
+        m_weaponSprite[0] = spr_playerGun2Base;
+        m_weaponSprite[1] = spr_playerGun2Shoot;
         break;
         
     case weapon_3: 
-        m_weaponSprite = spr_playerGun3Base;
-        m_shootSprite = spr_playerGun3Shoot;
+        m_weaponSprite[0] = spr_playerGun3Base;
+        m_weaponSprite[1] = spr_playerGun3Shoot;
         break;
         
     case weapon_4: 
-        m_weaponSprite = spr_playerGun4Base;
-        m_shootSprite = spr_playerGun4Shoot;
+        m_weaponSprite[0] = spr_playerGun4Base;
+        m_weaponSprite[1] = spr_playerGun4Shoot;
         break;
         
     case weapon_5: 
-        m_weaponSprite = spr_playerGun5Base;
-        m_shootSprite = spr_playerGun5Shoot;
+        m_weaponSprite[0] = spr_playerGun5Base;
+        m_weaponSprite[1] = spr_playerGun5Shoot;
         break;
         
     case weapon_6: 
-        m_weaponSprite = spr_playerGun6Base;
-        m_shootSprite = spr_playerGun6Shoot;
+        m_weaponSprite[0] = spr_playerGun6Base;
+        m_weaponSprite[1] = spr_playerGun6Shoot;
         break;
         
     case weapon_7: 
-        m_weaponSprite = spr_playerGun7Base;
-        m_shootSprite = spr_playerGun7Shoot;
+        m_weaponSprite[0] = spr_playerGun7Base;
+        m_weaponSprite[1] = spr_playerGun7Shoot;
         break;
         
     case weapon_8: 
-        m_weaponSprite = spr_playerGun8Base;
-        m_shootSprite = spr_playerGun8Shoot;
+        m_weaponSprite[0] = spr_playerGun8Base;
+        m_weaponSprite[1] = spr_playerGun8Shoot;
         break;
         
     case weapon_9: 
-        m_weaponSprite = spr_playerGun9Base;
-        m_shootSprite = spr_playerGun9Shoot;
+        m_weaponSprite[0] = spr_playerGun9Base;
+        m_weaponSprite[1] = spr_playerGun9Shoot;
         break;
         
     case weapon_10: 
-        m_weaponSprite = spr_playerGun10Base;
-        m_shootSprite = spr_playerGun10Shoot;
+        m_weaponSprite[0] = spr_playerGun10Base;
+        m_weaponSprite[1] = spr_playerGun10Shoot;
         break;
 }
- 
 </string>
           </argument>
         </arguments>
@@ -401,8 +411,8 @@ else
 
 if (m_triggerRight &gt; 0.4 &amp;&amp; m_shootCooldown == 0)
 {
-    sprite_index = m_shootSprite;
-    image_index = 0; 
+    m_weaponState = 1;
+    m_imageShootTimer = 0; 
     switch(m_playerWeapon)
     {
         case weapon_1:       
@@ -435,6 +445,34 @@ if (m_shootCooldown &gt; 0) { m_shootCooldown--; }
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// animate the FUCKING SHOOT ANIMATION BECAUSE GAMEMAKER IS FUCKING BABY WHO CAN'T DO IT ITSELF
+
+m_imageShootTimer++;
+
+if (m_imageShootTimer &gt; m_imageShootMax)
+{
+    m_weaponState = 0;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="7" enumb="7">
       <action>
@@ -454,7 +492,10 @@ if (m_shootCooldown &gt; 0) { m_shootCooldown--; }
           <argument>
             <kind>1</kind>
             <string>/// Return to base sprite if shoot animation has ended
-sprite_index = m_weaponSprite;
+if (sprite_index != m_weaponSprite[0]) 
+{
+    //m_weaponState = 0;
+}
 </string>
           </argument>
         </arguments>
@@ -477,11 +518,15 @@ sprite_index = m_weaponSprite;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_color(c_red);
-draw_line_width(m_oldPosX - 1, m_oldPosY - 1, (m_oldPosX - 1) + lengthdir_x(500, m_aimDirection), (m_oldPosY - 1) + lengthdir_y(500, m_aimDirection), 2)
+            <string>
+draw_set_color(c_red);
+draw_line_width(m_oldPosX - 1, m_oldPosY - 1, (m_oldPosX - 1) + lengthdir_x(500, m_aimDirection), (m_oldPosY - 1) + lengthdir_y(500, m_aimDirection), 2)  
 
-draw_sprite_ext(sprite_index, image_index, x, y, image_xscale, image_yscale, m_aimDirection, image_blend, image_alpha);
-draw_sprite_ext(m_headSprite, image_index, m_oldPosX, m_oldPosY, image_xscale, image_yscale, m_aimDirection, image_blend, image_alpha);
+
+draw_sprite_ext(m_weaponSprite[m_weaponState], m_imageShootTimer, x, y, image_xscale, image_yscale, m_aimDirection, image_blend, image_alpha);
+draw_sprite_ext(m_glowSprite[m_weaponState], m_imageShootTimer, x, y, image_xscale, image_yscale, m_aimDirection, image_blend, image_alpha);
+
+draw_sprite_ext(m_headSprite, 0, m_oldPosX, m_oldPosY, image_xscale, image_yscale, m_aimDirection, image_blend, image_alpha);
 </string>
           </argument>
         </arguments>

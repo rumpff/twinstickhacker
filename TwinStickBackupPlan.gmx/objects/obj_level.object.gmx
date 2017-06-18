@@ -200,8 +200,6 @@ for (var yy = 0; yy &lt; height*2; yy++) {
         }
     }
 }
-
-
 </string>
           </argument>
         </arguments>
