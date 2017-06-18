@@ -34,6 +34,7 @@ background_index[1] = bg_grid_large;
 
 background_visible[0] = true;
 background_visible[1] = true;
+background_visible[2] = true;
 
 background_htiled[0] = true;
 background_htiled[1] = true;

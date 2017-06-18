@@ -651,7 +651,7 @@
     <option_xbone_title_id></option_xbone_title_id>
   </Options>
   <ConfigConstants>
-    <constants number="27">
+    <constants number="29">
       <constant name="CELL_HEIGHT">128</constant>
       <constant name="CELL_WIDTH">128</constant>
       <constant name="FLOOR">-5</constant>
@@ -667,6 +667,7 @@
       <constant name="head_7">6</constant>
       <constant name="head_8">7</constant>
       <constant name="head_9">8</constant>
+      <constant name="head_max">9</constant>
       <constant name="VOID">-7</constant>
       <constant name="WALL">-6</constant>
       <constant name="weapon_1">0</constant>
@@ -679,6 +680,7 @@
       <constant name="weapon_7">6</constant>
       <constant name="weapon_8">7</constant>
       <constant name="weapon_9">8</constant>
+      <constant name="weapon_max">9</constant>
     </constants>
   </ConfigConstants>
 </Config>

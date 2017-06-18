@@ -76,7 +76,10 @@
       </sprites>
     </sprites>
     <sprites name="Bullets">
-      <sprite>sprites\spr_bulletNormal</sprite>
+      <sprites name="Normal">
+        <sprite>sprites\spr_bulletNormal</sprite>
+        <sprite>sprites\spr_bulletNormalGlow</sprite>
+      </sprites>
       <sprite>sprites\spr_bulletSmall</sprite>
     </sprites>
     <sprite>sprites\spr_player_hitbox</sprite>
@@ -89,6 +92,7 @@
     </sprites>
     <sprite>sprites\spr_lazerParticeTemp</sprite>
     <sprite>sprites\WAIFUUUUUUU</sprite>
+    <sprite>sprites\spr_damageOverlay</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background2</background>
@@ -105,6 +109,7 @@
     <script>scripts\scr_move.gml</script>
     <script>scripts\scr_pathToPlayer.gml</script>
     <script>scripts\draw_rectangle_width.gml</script>
+    <script>scripts\scr_damagePlayer.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\fx8bitChilloutColor.shader</shader>
@@ -134,9 +139,11 @@
     <object>objects\obj_camera</object>
     <object>objects\obj_drawCubeTest</object>
     <object>objects\obj_backgroundController</object>
+    <object>objects\obj_playerModifier</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_initalize</room>
+    <room>rooms\room4</room>
     <room>rooms\room2</room>
     <room>rooms\rm_drawtest</room>
     <room>rooms\room3</room>

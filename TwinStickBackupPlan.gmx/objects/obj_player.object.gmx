@@ -29,9 +29,6 @@
 
 m_Health = 100;
 
-m_playerHead = global.playerHead;
-m_playerWeapon = global.playerWeapon
-
 m_gpId = 0;
 
 m_moveSpeed = 0;
@@ -82,8 +79,35 @@ m_imageShootMax = 0;
 
 m_weaponState = 0;
 
+m_glowCollor = noone;
+
 m_oldPosX = 0;
 m_oldPosY = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Recieve modifications
+
+m_playerHead = global.playerHead;
+m_playerWeapon = global.playerWeapon
+m_glowColor = global.playerColor
 </string>
           </argument>
         </arguments>
@@ -147,8 +171,6 @@ switch (m_playerWeapon)
         
         m_glowSprite[0] = spr_Glow1Base;
         m_glowSprite[1] = spr_Glow1Shoot;
-        
-        m_imageShootMax = sprite_get_number(spr_playerGun1Shoot);
         break;
         
     case weapon_2: 
@@ -196,6 +218,9 @@ switch (m_playerWeapon)
         m_weaponSprite[1] = spr_playerGun10Shoot;
         break;
 }
+
+// Get animation length        
+m_imageShootMax = sprite_get_number(m_weaponSprite[1]);
 </string>
           </argument>
         </arguments>
@@ -419,7 +444,8 @@ if (m_triggerRight &gt; 0.4 &amp;&amp; m_shootCooldown == 0)
             var bulletAngle = m_aimDirection + random_range(-5, 5);        
             bullet = instance_create(x, y, obj_bulletNormal);
             bullet.m_Angle = bulletAngle
-            bullet.image_angle = bulletAngle        
+            bullet.image_angle = bulletAngle   
+            bullet.m_glowCollor = m_glowCollor;     
             m_shootCooldown = 6;
             break;
         case weapon_2:
@@ -524,7 +550,7 @@ draw_line_width(m_oldPosX - 1, m_oldPosY - 1, (m_oldPosX - 1) + lengthdir_x(500,
 
 
 draw_sprite_ext(m_weaponSprite[m_weaponState], m_imageShootTimer, x, y, image_xscale, image_yscale, m_aimDirection, image_blend, image_alpha);
-draw_sprite_ext(m_glowSprite[m_weaponState], m_imageShootTimer, x, y, image_xscale, image_yscale, m_aimDirection, obj_backgroundController.colGrid, image_alpha);
+//draw_sprite_ext(m_glowSprite[m_weaponState], m_imageShootTimer, x, y, image_xscale, image_yscale, m_aimDirection, m_glowCollor, image_alpha);
 
 draw_sprite_ext(m_headSprite, 0, m_oldPosX, m_oldPosY, image_xscale, image_yscale, m_aimDirection, image_blend, image_alpha);
 </string>
