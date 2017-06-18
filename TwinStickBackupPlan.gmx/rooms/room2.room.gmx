@@ -53,12 +53,9 @@
   <instances>
     <instance objName="obj_level" x="0" y="0" name="inst_FA0593C9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_DrawGUI" x="32" y="0" name="inst_A1468E06" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-<<<<<<< HEAD
     <instance objName="debugChanger" x="64" y="0" name="inst_782E1CB0" locked="0" code="" scaleX="1" scaleY="1" colour="4294901760" rotation="0"/>
-=======
     <instance objName="obj_camera" x="64" y="0" name="inst_292411B5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_backgroundController" x="96" y="0" name="inst_A586194F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
->>>>>>> e39ebd527f314157794f96b806b3ee7264a1e40c
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
