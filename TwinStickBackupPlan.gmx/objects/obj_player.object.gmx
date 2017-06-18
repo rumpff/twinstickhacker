@@ -465,7 +465,7 @@ if (m_shootCooldown &gt; 0) { m_shootCooldown--; }
 
 m_imageShootTimer++;
 
-if (m_imageShootTimer &gt; m_imageShootMax)
+if (m_imageShootTimer == m_imageShootMax)
 {
     m_weaponState = 0;
 }
@@ -524,7 +524,7 @@ draw_line_width(m_oldPosX - 1, m_oldPosY - 1, (m_oldPosX - 1) + lengthdir_x(500,
 
 
 draw_sprite_ext(m_weaponSprite[m_weaponState], m_imageShootTimer, x, y, image_xscale, image_yscale, m_aimDirection, image_blend, image_alpha);
-draw_sprite_ext(m_glowSprite[m_weaponState], m_imageShootTimer, x, y, image_xscale, image_yscale, m_aimDirection, image_blend, image_alpha);
+draw_sprite_ext(m_glowSprite[m_weaponState], m_imageShootTimer, x, y, image_xscale, image_yscale, m_aimDirection, obj_backgroundController.colGrid, image_alpha);
 
 draw_sprite_ext(m_headSprite, 0, m_oldPosX, m_oldPosY, image_xscale, image_yscale, m_aimDirection, image_blend, image_alpha);
 </string>
