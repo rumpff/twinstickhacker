@@ -447,6 +447,7 @@ if (m_triggerRight &gt; 0.4 &amp;&amp; m_shootCooldown == 0)
             bullet.image_angle = bulletAngle   
             bullet.m_glowCollor = m_glowCollor;     
             m_shootCooldown = 6;
+            scr_cameraKnockback(m_aimDirection, 10);
             break;
         case weapon_2:
             var bulletAngle = m_aimDirection;
@@ -459,13 +460,15 @@ if (m_triggerRight &gt; 0.4 &amp;&amp; m_shootCooldown == 0)
             };
                          
             m_shootCooldown = 15;
+            scr_cameraKnockback(m_aimDirection, 25);
             break;
         case weapon_3:
             var bulletAngle = m_aimDirection + random_range(-1,1);
             bullet = instance_create(x, y, obj_bulletSmall);
             bullet.m_Angle = bulletAngle;
             bullet.image_angle = bulletAngle
-            m_shootCooldown = 2;  
+            m_shootCooldown = 2; 
+            scr_cameraKnockback(m_aimDirection, 6); 
         default:
             m_shootCooldown = 5;
         

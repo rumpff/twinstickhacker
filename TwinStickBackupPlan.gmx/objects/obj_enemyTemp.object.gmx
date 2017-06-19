@@ -66,6 +66,7 @@ m_attackTimer = 10;
    particle.direction = random_range(0,359);
 }
 
+scr_screenshake(10, 8);
 </string>
           </argument>
         </arguments>

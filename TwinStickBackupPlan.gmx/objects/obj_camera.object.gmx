@@ -57,7 +57,7 @@ yDest = 0;
 xPos = 0;
 yPos = 0;
 
-lerpAmount = 0.4;
+lerpAmount = 0.15;
 </string>
           </argument>
         </arguments>

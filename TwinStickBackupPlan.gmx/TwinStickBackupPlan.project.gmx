@@ -110,6 +110,8 @@
     <script>scripts\scr_pathToPlayer.gml</script>
     <script>scripts\draw_rectangle_width.gml</script>
     <script>scripts\scr_damagePlayer.gml</script>
+    <script>scripts\scr_cameraKnockback.gml</script>
+    <script>scripts\scr_screenshake.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\fx8bitChilloutColor.shader</shader>
@@ -142,6 +144,7 @@
     <object>objects\obj_backgroundController</object>
     <object>objects\obj_playerModifier</object>
     <object>objects\obj_backToSelect</object>
+    <object>objects\obj_screenshake</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_initalize</room>
