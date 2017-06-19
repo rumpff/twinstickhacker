@@ -122,6 +122,7 @@
       <object>objects\obj_player</object>
       <objects name="Bullets">
         <object>objects\obj_bulletNormal</object>
+        <object>objects\obj_bulletSmall</object>
       </objects>
     </objects>
     <object>objects\obj_collider</object>
@@ -140,6 +141,7 @@
     <object>objects\obj_drawCubeTest</object>
     <object>objects\obj_backgroundController</object>
     <object>objects\obj_playerModifier</object>
+    <object>objects\obj_backToSelect</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_initalize</room>
