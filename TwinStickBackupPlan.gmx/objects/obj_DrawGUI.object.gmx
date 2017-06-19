@@ -28,6 +28,7 @@
             <string>display_set_gui_size(GAME_WIDTH, GAME_HEIGHT);
 
 dmgAlpha = 0;
+m_playerHealth = 0;
 </string>
           </argument>
         </arguments>
@@ -51,6 +52,10 @@ dmgAlpha = 0;
           <argument>
             <kind>1</kind>
             <string>dmgAlpha = lerp(dmgAlpha, 0, 0.1);
+if (instance_exists(obj_player))
+{
+    m_playerHealth = obj_player.m_Health
+}
 </string>
           </argument>
         </arguments>
@@ -74,9 +79,9 @@ dmgAlpha = 0;
           <argument>
             <kind>1</kind>
             <string>draw_text(0,0,string(room_width) + " , " + string(room_height));
-draw_text(0,16,string(obj_player.x) + " , " + string(obj_player.y));
+if (instance_exists(obj_player)) { draw_text(0,16,string(obj_player.x) + " , " + string(obj_player.y)); }
 
-draw_healthbar(4, 200, 20, 400, obj_player.m_Health, c_black, c_red, c_red, 3, true, true)
+draw_healthbar(4, 200, 20, 400, m_playerHealth, c_black, c_red, c_red, 3, true, true)
 
 draw_sprite_ext(spr_damageOverlay, 0, 0, 0, 1, 1, 0, image_blend, dmgAlpha);
 </string>

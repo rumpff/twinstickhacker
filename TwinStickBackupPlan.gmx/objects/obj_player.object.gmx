@@ -27,7 +27,7 @@
             <kind>1</kind>
             <string>/// Variable Initalization
 
-m_Health = 100;
+m_Health = 100; // moet naam nog goed doen, nu geen zin in
 
 m_gpId = 0;
 
@@ -243,6 +243,34 @@ m_imageShootMax = sprite_get_number(m_weaponSprite[1]);
             <kind>1</kind>
             <string>/// Gamepad Setup
 gamepad_set_axis_deadzone(m_gpId, 0.3);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="1" enumb="0">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>for (i=0; i&lt;90; i+=1)
+{
+    instance_create(x, y, obj_playerParticle);
+};
+
+scr_screenshake(42, 21);
 </string>
           </argument>
         </arguments>
@@ -503,6 +531,32 @@ m_imageShootTimer++;
 if (m_imageShootTimer == m_imageShootMax)
 {
     m_weaponState = 0;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// dei
+
+if (m_Health &lt;= 0)
+{
+    instance_destroy();
 }
 </string>
           </argument>

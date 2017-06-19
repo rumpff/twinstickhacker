@@ -74,6 +74,7 @@
         <sprite>sprites\spr_playerHead2</sprite>
         <sprite>sprites\spr_playerHead1</sprite>
       </sprites>
+      <sprite>sprites\spr_playerParticles</sprite>
     </sprites>
     <sprites name="Bullets">
       <sprites name="Normal">
@@ -121,11 +122,12 @@
   </fonts>
   <objects name="objects">
     <objects name="Player Related">
-      <object>objects\obj_player</object>
       <objects name="Bullets">
         <object>objects\obj_bulletNormal</object>
         <object>objects\obj_bulletSmall</object>
       </objects>
+      <object>objects\obj_player</object>
+      <object>objects\obj_playerParticle</object>
     </objects>
     <object>objects\obj_collider</object>
     <object>objects\debugChanger</object>

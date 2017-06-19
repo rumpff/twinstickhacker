@@ -185,21 +185,24 @@ if (hp &lt;= 0)
           <argument>
             <kind>1</kind>
             <string>/// Melee attack
-if (point_distance(x, y, obj_player.x, obj_player.y) &lt; 32)
-{
-    if (m_attackTimer &lt;= 0)
+if (instance_exists(obj_player))
     {
-        scr_damagePlayer(1);
-        m_attackTimer = 5;
+    if (point_distance(x, y, obj_player.x, obj_player.y) &lt; 32)
+    {
+        if (m_attackTimer &lt;= 0)
+        {
+            scr_damagePlayer(1);
+            m_attackTimer = 5;
+        }
+        else
+        {
+            m_attackTimer--;
+        }
     }
     else
     {
-        m_attackTimer--;
+        m_attackTimer = 10;
     }
-}
-else
-{
-    m_attackTimer = 10;
 }
 </string>
           </argument>
