@@ -34,6 +34,8 @@ m_gpId = 0;
 m_moveSpeed = 0;
 m_moveDirection = 0;
 
+m_fireDecrease = 1;
+
 m_aimDirection = 0;
 
 angle_prev = 0;
@@ -41,6 +43,8 @@ angle_next = 0;
 angle_diff = 0;
 
 m_shootCooldown = 0;
+m_abilityCooldown = 0;
+m_abilityAcitve = false;
 
 m_hStickL = 0;
 m_vStickL = 0;
@@ -83,6 +87,8 @@ m_glowCollor = noone;
 
 m_oldPosX = 0;
 m_oldPosY = 0;
+
+m_dashMultiplier = 1;
 </string>
           </argument>
         </arguments>
@@ -411,7 +417,7 @@ m_vStickLMovement = lerp(m_vStickLMovement, m_vStickL, 0.2);
             <kind>1</kind>
             <string>/// Calculate next position and move
 
-scr_move((m_hStickLMovement * m_maxSpeed), (m_vStickLMovement * m_maxSpeed))
+scr_move((m_hStickLMovement * m_maxSpeed * m_fireDecrease * m_dashMultiplier), (m_vStickLMovement * m_maxSpeed * m_fireDecrease * m_dashMultiplier))
 
 /*
 if (place_meeting(x + (m_hStickLMovement * m_maxSpeed), y + (m_vStickLMovement * m_maxSpeed), obj_collider))
@@ -477,6 +483,7 @@ if (m_triggerRight &gt; 0.4 &amp;&amp; m_shootCooldown == 0)
             m_shootCooldown = 6;
             scr_cameraKnockback(m_aimDirection, 10);
             break;
+            
         case weapon_2:
             var bulletAngle = m_aimDirection;
             
@@ -488,15 +495,27 @@ if (m_triggerRight &gt; 0.4 &amp;&amp; m_shootCooldown == 0)
             };
                          
             m_shootCooldown = 15;
-            scr_cameraKnockback(m_aimDirection, 25);
+            scr_cameraKnockback(m_aimDirection, 18);
             break;
+            
         case weapon_3:
             var bulletAngle = m_aimDirection + random_range(-1,1);
             bullet = instance_create(x, y, obj_bulletSmall);
             bullet.m_Angle = bulletAngle;
             bullet.image_angle = bulletAngle
             m_shootCooldown = 2; 
-            scr_cameraKnockback(m_aimDirection, 6); 
+            scr_cameraKnockback(m_aimDirection, 6);
+            break;
+            
+        case weapon_4:
+            var bulletAngle = m_aimDirection;
+            bullet = instance_create(x, y, obj_bulletShell);
+            bullet.m_Angle = bulletAngle;
+            bullet.image_angle = bulletAngle
+            m_shootCooldown = 50; 
+            scr_cameraKnockback(m_aimDirection, 35);
+            break;
+            
         default:
             m_shootCooldown = 5;
         
@@ -504,6 +523,94 @@ if (m_triggerRight &gt; 0.4 &amp;&amp; m_shootCooldown == 0)
 }
 
 if (m_shootCooldown &gt; 0) { m_shootCooldown--; }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Acitvate abbilities
+
+if (m_triggerLeft &gt; 0.4 &amp;&amp; m_abilityCooldown == 0)
+{
+    m_abilityAcitve = true;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Do the abilities
+
+if (m_abilityAcitve)
+{
+    switch (global.playerHead)
+    {
+        case head_2: 
+            m_dashMultiplier = 1.5;
+            m_abilityActive = false;
+            break;
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Slow the player down
+
+if (m_triggerRight &gt; 0.4)
+{
+    m_fireDecrease = lerp(m_fireDecrease, 0.55, 0.1);
+}
+else
+{
+    m_fireDecrease = lerp(m_fireDecrease, 1, 0.1);
+}
 </string>
           </argument>
         </arguments>
@@ -532,6 +639,30 @@ if (m_imageShootTimer == m_imageShootMax)
 {
     m_weaponState = 0;
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Controll abilities
+
+// Dash
+m_dashMultiplier = lerp(m_dashMultiplier, 1, 0.1);
 </string>
           </argument>
         </arguments>

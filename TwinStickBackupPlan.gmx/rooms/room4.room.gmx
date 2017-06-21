@@ -52,6 +52,7 @@
   </views>
   <instances>
     <instance objName="obj_playerModifier" x="256" y="224" name="inst_1F77FC4A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_drawCubeTest" x="64" y="32" name="inst_425C99F7" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

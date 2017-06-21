@@ -260,9 +260,9 @@ if (global.playerHead &gt; head_max)
 
 if (global.playerWeapon &lt; 0)
 {
-    global.playerWeapon = weapon_max;
+    global.playerWeapon = 3;
 }
-if (global.playerWeapon &gt; weapon_max)
+if (global.playerWeapon &gt; 3)
 {
     global.playerWeapon = 0;
 }

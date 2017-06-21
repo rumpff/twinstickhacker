@@ -5,6 +5,7 @@
   </Configs>
   <NewExtensions>
     <extension index="0">extensions\Eight-bit chillout Shader</extension>
+    <extension index="1">extensions\Draw Text Outlined</extension>
   </NewExtensions>
   <sounds name="sound">
     <sound>sound\snd_temp</sound>
@@ -81,7 +82,12 @@
         <sprite>sprites\spr_bulletNormal</sprite>
         <sprite>sprites\spr_bulletNormalGlow</sprite>
       </sprites>
-      <sprite>sprites\spr_bulletSmall</sprite>
+      <sprites name="Small">
+        <sprite>sprites\spr_bulletSmall</sprite>
+      </sprites>
+      <sprites name="Shell">
+        <sprite>sprites\spr_bulletShell</sprite>
+      </sprites>
     </sprites>
     <sprite>sprites\spr_player_hitbox</sprite>
     <sprite>sprites\spr_cursor</sprite>
@@ -94,6 +100,7 @@
     <sprite>sprites\spr_lazerParticeTemp</sprite>
     <sprite>sprites\WAIFUUUUUUU</sprite>
     <sprite>sprites\spr_damageOverlay</sprite>
+    <sprite>sprites\spr_uiOverlay</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background2</background>
@@ -113,18 +120,23 @@
     <script>scripts\scr_damagePlayer.gml</script>
     <script>scripts\scr_cameraKnockback.gml</script>
     <script>scripts\scr_screenshake.gml</script>
+    <script>scripts\scr_addScore.gml</script>
+    <script>scripts\draw_text_outline.gml</script>
+    <script>scripts\draw_text_outline_transformed.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\fx8bitChilloutColor.shader</shader>
   </shaders>
   <fonts name="fonts">
     <font>fonts\font0</font>
+    <font>fonts\fnt_scoreUI</font>
   </fonts>
   <objects name="objects">
     <objects name="Player Related">
       <objects name="Bullets">
         <object>objects\obj_bulletNormal</object>
         <object>objects\obj_bulletSmall</object>
+        <object>objects\obj_bulletShell</object>
       </objects>
       <object>objects\obj_player</object>
       <object>objects\obj_playerParticle</object>
@@ -147,6 +159,7 @@
     <object>objects\obj_playerModifier</object>
     <object>objects\obj_backToSelect</object>
     <object>objects\obj_screenshake</object>
+    <object>objects\obj_gameManager</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_initalize</room>
