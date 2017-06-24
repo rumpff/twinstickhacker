@@ -54,8 +54,8 @@
             <kind>1</kind>
             <string>if (m_duration &gt; 0)
 {
-    obj_camera.xPos += random_range(-m_amount, m_amount);
-    obj_camera.yPos += random_range(-m_amount, m_amount);
+    obj_camera.m_xPos += random_range(-m_amount, m_amount);
+    obj_camera.m_yPos += random_range(-m_amount, m_amount);
     
     m_duration--;
     m_amount -= m_subtractor

@@ -51,13 +51,21 @@ view_hview = GAME_HEIGHT;
           <argument>
             <kind>1</kind>
             <string>/// Initalize Variables
-xDest = 0;
-yDest = 0;
+m_xDest = 0;
+m_yDest = 0;
 
-xPos = 0;
-yPos = 0;
+m_xPos = obj_player.x;
+m_yPos = obj_player.y;
 
-lerpAmount = 0.15;
+m_rot = -10;
+
+m_sinRot = 0;
+
+m_lerpAmount = 0.15;
+
+m_zoomMultiplier = 0.1;
+m_hZoom = 0;
+m_vZoom = 0;
 </string>
           </argument>
         </arguments>
@@ -80,13 +88,64 @@ lerpAmount = 0.15;
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>/// Apply view stuff
+
+view_wview = GAME_WIDTH * m_zoomMultiplier;
+view_hview = GAME_HEIGHT * m_zoomMultiplier;
+
+view_xview = m_xPos
+view_yview = m_yPos
+view_angle = m_rot;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Calculate zoom
+
+m_zoomMultiplier = lerp(m_zoomMultiplier, 1, m_lerpAmount / 2);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>/// Calculate followpoint
 
 // For 1 Player
 if (instance_exists(obj_player))
 {
-    xDest = obj_player.x
-    yDest = obj_player.y
+    m_xDest = obj_player.x
+    m_yDest = obj_player.y
 }
 </string>
           </argument>
@@ -110,8 +169,11 @@ if (instance_exists(obj_player))
             <kind>1</kind>
             <string>/// Calculate current position
 
-xPos = lerp(xPos, xDest - (GAME_WIDTH/2), lerpAmount)
-yPos = lerp(yPos, yDest - (GAME_HEIGHT/2), lerpAmount)
+m_xPos = lerp(m_xPos, m_xDest - (view_wview / 2), m_lerpAmount)
+m_yPos = lerp(m_yPos, m_yDest - (view_hview / 2), m_lerpAmount)
+
+//m_xPos = m_xDest - (view_wview / 2);
+//m_yPos = m_yDest - (view_hview / 2);
 </string>
           </argument>
         </arguments>
@@ -132,10 +194,11 @@ yPos = lerp(yPos, yDest - (GAME_HEIGHT/2), lerpAmount)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Apply view
+            <string>/// Calculate rotation
 
-view_xview = xPos;
-view_yview = yPos;
+m_sinRot += 0.004;
+
+m_rot = cos(m_sinRot) * 10
 </string>
           </argument>
         </arguments>

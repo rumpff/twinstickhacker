@@ -160,6 +160,8 @@
     <object>objects\obj_backToSelect</object>
     <object>objects\obj_screenshake</object>
     <object>objects\obj_gameManager</object>
+    <object>objects\obj_trippySurface</object>
+    <object>objects\par_trippy</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_initalize</room>

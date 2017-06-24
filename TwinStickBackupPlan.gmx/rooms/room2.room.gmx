@@ -54,8 +54,8 @@
     <instance objName="obj_level" x="0" y="0" name="inst_FA0593C9" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_DrawGUI" x="32" y="0" name="inst_A1468E06" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="debugChanger" x="64" y="0" name="inst_782E1CB0" locked="0" code="" scaleX="1" scaleY="1" colour="4294901760" rotation="0"/>
-    <instance objName="obj_camera" x="64" y="0" name="inst_292411B5" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_backgroundController" x="96" y="0" name="inst_A586194F" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_trippySurface" x="128" y="0" name="inst_535658DA" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>

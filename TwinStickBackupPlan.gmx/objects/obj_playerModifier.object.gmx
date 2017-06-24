@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>par_trippy</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -313,6 +313,7 @@ characterAngle -= 1;
             <kind>1</kind>
             <string>draw_set_halign(fa_center);
 draw_set_valign(fa_center);
+draw_set_color(c_white);
 
 switch (m_currentSelected)
 {

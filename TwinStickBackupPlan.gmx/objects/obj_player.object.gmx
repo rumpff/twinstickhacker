@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-10</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>par_trippy</parentName>
   <maskName>spr_player_hitbox</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -26,8 +26,6 @@
           <argument>
             <kind>1</kind>
             <string>/// Variable Initalization
-
-m_Health = 100; // moet naam nog goed doen, nu geen zin in
 
 m_gpId = 0;
 
@@ -601,6 +599,28 @@ if (m_abilityAcitve)
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>/// Control ability timer
+
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>/// Slow the player down
 
 if (m_triggerRight &gt; 0.4)
@@ -631,7 +651,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// animate the FUCKING SHOOT ANIMATION BECAUSE GAMEMAKER IS FUCKING BABY WHO CAN'T DO IT ITSELF
+            <string>/// animate
 
 m_imageShootTimer++;
 
@@ -685,36 +705,9 @@ m_dashMultiplier = lerp(m_dashMultiplier, 1, 0.1);
             <kind>1</kind>
             <string>/// dei
 
-if (m_Health &lt;= 0)
+if (global.playerHealth &lt; 1)
 {
     instance_destroy();
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="7" enumb="7">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Return to base sprite if shoot animation has ended
-if (sprite_index != m_weaponSprite[0]) 
-{
-    //m_weaponState = 0;
 }
 </string>
           </argument>
@@ -739,7 +732,7 @@ if (sprite_index != m_weaponSprite[0])
           <argument>
             <kind>1</kind>
             <string>
-draw_set_color(c_red);
+draw_set_color(c_white);
 draw_line_width(m_oldPosX - 1, m_oldPosY - 1, (m_oldPosX - 1) + lengthdir_x(500, m_aimDirection), (m_oldPosY - 1) + lengthdir_y(500, m_aimDirection), 2)  
 
 
