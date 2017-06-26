@@ -32,6 +32,7 @@ m_playerHealth = 0;
 
 m_score = global.playerScore;
 m_scoreScale = 1;
+m_scoreScale2 = 1;
 m_scoreAngle = 0;
 m_scoreColor = c_red;
 m_scoreHue = 0;
@@ -87,6 +88,7 @@ m_sinNumb = 0;
             <kind>1</kind>
             <string>dmgAlpha = lerp(dmgAlpha, 0, 0.1);
 m_playerHealth = lerp(m_playerHealth ,global.playerHealth, 0.33);
+m_scoreScale2 = lerp(m_scoreScale2, 1, 0.3);
 </string>
           </argument>
         </arguments>
@@ -181,7 +183,7 @@ draw_set_alpha(m_scoreAlpha);
 //draw_text_transformed(GAME_WIDTH/2, GAME_HEIGHT/6, floor(m_score), m_scoreScale, m_scoreScale, m_scoreAngle);
 draw_set_color(m_scoreColor);
 //draw_text_transformed(GAME_WIDTH/2, GAME_HEIGHT/6, floor(m_score), m_scoreScale, m_scoreScale, m_scoreAngle);
-draw_text_outline_transformed(GAME_WIDTH/2, GAME_HEIGHT/6, floor(m_score), m_scoreScale, m_scoreScale, m_scoreAngle, 5, c_black, 0);
+draw_text_outline_transformed(GAME_WIDTH/2, GAME_HEIGHT/6, floor(m_score), m_scoreScale * m_scoreScale2, m_scoreScale * m_scoreScale2, m_scoreAngle, 5, c_black, 0);
 draw_set_alpha(1);
 draw_set_font(font0);
 

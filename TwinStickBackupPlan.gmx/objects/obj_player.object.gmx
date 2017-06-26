@@ -276,6 +276,7 @@ gamepad_set_axis_deadzone(m_gpId, 0.3);
 
 scr_screenshake(42, 21);
 audio_play_sound(snd_playerDie, 1, 0);
+sleep(35);
 </string>
           </argument>
         </arguments>
