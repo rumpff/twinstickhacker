@@ -275,6 +275,7 @@ gamepad_set_axis_deadzone(m_gpId, 0.3);
 };
 
 scr_screenshake(42, 21);
+audio_play_sound(snd_playerDie, 1, 0);
 </string>
           </argument>
         </arguments>
@@ -479,6 +480,7 @@ if (m_triggerRight &gt; 0.4 &amp;&amp; m_shootCooldown == 0)
             bullet.image_angle = bulletAngle   
             bullet.m_glowCollor = m_glowCollor;     
             m_shootCooldown = 6;
+            audio_play_sound(snd_shootNormal, 1, 0);
             scr_cameraKnockback(m_aimDirection, 10);
             break;
             
@@ -493,6 +495,7 @@ if (m_triggerRight &gt; 0.4 &amp;&amp; m_shootCooldown == 0)
             };
                          
             m_shootCooldown = 15;
+            audio_play_sound(snd_shootQuintipple, 1, 0);
             scr_cameraKnockback(m_aimDirection, 18);
             break;
             
@@ -501,7 +504,8 @@ if (m_triggerRight &gt; 0.4 &amp;&amp; m_shootCooldown == 0)
             bullet = instance_create(x, y, obj_bulletSmall);
             bullet.m_Angle = bulletAngle;
             bullet.image_angle = bulletAngle
-            m_shootCooldown = 2; 
+            m_shootCooldown = 4; 
+            audio_play_sound(snd_shootSmall, 1, 0);
             scr_cameraKnockback(m_aimDirection, 6);
             break;
             
@@ -511,6 +515,7 @@ if (m_triggerRight &gt; 0.4 &amp;&amp; m_shootCooldown == 0)
             bullet.m_Angle = bulletAngle;
             bullet.image_angle = bulletAngle
             m_shootCooldown = 50; 
+            audio_play_sound(snd_shootShell, 1, 0);
             scr_cameraKnockback(m_aimDirection, 35);
             break;
             

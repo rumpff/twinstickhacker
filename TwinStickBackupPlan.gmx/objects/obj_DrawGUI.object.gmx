@@ -161,7 +161,12 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_text(0,0,string(room_width) + " , " + string(room_height));
+            <string>draw_set_font(font0);
+draw_set_halign(fa_left);
+draw_set_valign(fa_left);
+
+draw_text(0,0,string(room_width) + " , " + string(room_height));
+draw_text(0,32,string(instance_number(obj_enemyTemp)));
 if (instance_exists(obj_player)) { draw_text(0,16,string(obj_player.x) + " , " + string(obj_player.y)); }
 
 draw_healthbar(8, 106, 33, 867, m_playerHealth, c_maroon, c_red, c_red, 3, true, true)

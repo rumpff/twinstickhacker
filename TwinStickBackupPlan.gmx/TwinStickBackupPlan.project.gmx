@@ -9,6 +9,15 @@
   </NewExtensions>
   <sounds name="sound">
     <sound>sound\snd_temp</sound>
+    <sound>sound\snd_shootSmall</sound>
+    <sound>sound\snd_shootNormal</sound>
+    <sound>sound\snd_shootShell</sound>
+    <sound>sound\snd_enemyHit</sound>
+    <sound>sound\snd_shootQuintipple</sound>
+    <sound>sound\snd_playerHit</sound>
+    <sound>sound\snd_playerDie</sound>
+    <sound>sound\snd_enemyDie</sound>
+    <sound>sound\bgm_narwhals</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="_Temp">
@@ -101,6 +110,7 @@
     <sprite>sprites\WAIFUUUUUUU</sprite>
     <sprite>sprites\spr_damageOverlay</sprite>
     <sprite>sprites\spr_uiOverlay</sprite>
+    <sprite>sprites\sprite50</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background2</background>

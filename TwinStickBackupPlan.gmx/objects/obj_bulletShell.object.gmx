@@ -84,6 +84,7 @@ else { instance_destroy(); }
           <argument>
             <kind>1</kind>
             <string>other.hp -= 0.8;
+audio_play_sound(snd_enemyHit, 1, 0);
 </string>
           </argument>
         </arguments>
