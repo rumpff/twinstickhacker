@@ -35,7 +35,7 @@ if (scr_gridPlaceMeeting(x, y))
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_enemyTemp">
+    <event eventtype="4" ename="par_enemy">
       <action>
         <libid>1</libid>
         <id>603</id>

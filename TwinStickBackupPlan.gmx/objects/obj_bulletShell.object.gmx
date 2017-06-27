@@ -55,8 +55,6 @@ motion_set(m_Angle, m_Speed);
 if (scr_gridPlaceMeeting(x, y)) 
 { 
     instance_destroy();
-    x_dir = dsin(m_Angle);
-    x_dir = dsin(m_Angle);
 }
 
 if (m_Speed &gt; 0) { m_Speed -= 0.5; }
@@ -66,7 +64,7 @@ else { instance_destroy(); }
         </arguments>
       </action>
     </event>
-    <event eventtype="4" ename="obj_enemyTemp">
+    <event eventtype="4" ename="par_enemy">
       <action>
         <libid>1</libid>
         <id>603</id>

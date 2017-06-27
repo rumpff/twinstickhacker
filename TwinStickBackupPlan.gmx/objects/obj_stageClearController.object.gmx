@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>&lt;undefined&gt;</parentName>
+  <parentName>par_trippy</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -25,57 +25,27 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Configure the view
-view_enabled[0] = true;
-view_visible[0] = true;
-view_wview = GAME_WIDTH;
-view_hview = GAME_HEIGHT;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Initalize Variables
-m_xDest = 0;
-m_yDest = 0;
+            <string>m_acitve = false;
+m_timer = 0;
 
-m_xPos = obj_player.x;
-m_yPos = obj_player.y;
+m_showText = false;
+m_transitionActivated = false;
 
-m_rot = random_range(-7,7);
+m_clearString = "Stage Cleared!"
+m_letterCount = 0;
+m_letterTimer = 3;
+m_currentText = "";
 
-m_sinRot = 0;
+m_viewScale = 1;
+m_sinScale = 0.3;
 
-m_lerpAmount = 0.15;
-
-m_zoomMultiplier = 0.1;
-m_zoomTransition = 1;
-m_hZoom = 0;
-m_vZoom = 0;
-
-m_hStickR = 0;
-m_vStickR = 0;
+m_fadeAlpha = 0;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="1">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -92,88 +62,10 @@ m_vStickR = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Apply view stuff
-
-view_wview = GAME_WIDTH * m_zoomMultiplier * m_zoomTransition;
-view_hview = GAME_HEIGHT * m_zoomMultiplier * m_zoomTransition;
-
-view_xview = m_xPos
-view_yview = m_yPos
-view_angle = m_rot;
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Obtain controller input
-
-m_hStickR = gamepad_axis_value(0, gp_axisrh);
-m_vStickR = gamepad_axis_value(0, gp_axisrv);
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Calculate zoom
-
-m_zoomMultiplier = lerp(m_zoomMultiplier, 1, m_lerpAmount / 2);
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Calculate followpoint
-
-// For 1 Player
-if (instance_exists(obj_player))
+            <string>/// Check if all the enemy's are killed
+if (instance_number(par_enemy) == 0)
 {
-    m_xDest = obj_player.x
-    m_yDest = obj_player.y
+    m_acitve = true;
 }
 </string>
           </argument>
@@ -195,13 +87,130 @@ if (instance_exists(obj_player))
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Calculate current position
+            <string>/// Time the timers
+if (m_acitve)
+{
+    if (m_timer &gt; 60)
+    {
+        m_showText = true;
+    }
+    
+    m_timer++;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Animate the text
+m_currentText = string_copy(m_clearString,1,m_letterCount);
 
-m_xPos = lerp(m_xPos, m_xDest - (view_wview / 2) + (m_hStickR * 192), m_lerpAmount)
-m_yPos = lerp(m_yPos, m_yDest - (view_hview / 2) + (m_vStickR * 192), m_lerpAmount)
+if (m_showText)
+{
+    if (m_letterTimer &gt; 0)
+    {
+        m_letterTimer--;
+    }
+    else
+    {
+        if (m_letterCount &lt; string_length(m_clearString))
+        {
+            m_letterCount++;
+            m_letterTimer = 3;
+            scr_screenshake(4, 6);
+            audio_play_sound(snd_enemyHit, 1, 0);
+        } 
+    }    
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Room Transition
+if (m_timer &gt; 180)
+{
+    m_sinScale++;
+    //m_viewScale = sin(m_sinScale) * 0.5 + 0.6; 
+    if (m_viewScale &gt; 0.1)
+    {
+        m_viewScale = ease_in_back(m_sinScale, 1, -0.9, 75);
+    }
+    obj_camera.m_zoomTransition = m_viewScale;
+    
+    if (m_sinScale &gt; 40)
+    {
+        m_fadeAlpha += 0.03;
+    }
+    
+    if (m_fadeAlpha &gt; 1)
+    {
+        room_restart();
+    }
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="75">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>draw_set_color(c_white);
+draw_set_halign(fa_center);
+draw_set_valign(fa_center);
+draw_set_font(fnt_cleared);
 
-//m_xPos = m_xDest - (view_wview / 2);
-//m_yPos = m_yDest - (view_hview / 2);
+draw_text_outline(GAME_WIDTH/2, GAME_HEIGHT/2, m_currentText, 10, c_black, 0);
+
+draw_set_alpha(m_fadeAlpha);
+draw_set_color(c_white);
+draw_rectangle(0, 0, GAME_WIDTH, GAME_HEIGHT, false);
+draw_set_alpha(1);
 </string>
           </argument>
         </arguments>

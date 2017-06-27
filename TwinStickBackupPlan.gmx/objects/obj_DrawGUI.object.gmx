@@ -31,12 +31,16 @@ dmgAlpha = 0;
 m_playerHealth = 0;
 
 m_score = global.playerScore;
+m_scoreOld = global.playerScore;
 m_scoreScale = 1;
 m_scoreScale2 = 1;
 m_scoreAngle = 0;
 m_scoreColor = c_red;
 m_scoreHue = 0;
 m_scoreAlpha = 0.15;
+
+m_counterPitch = 1;
+m_counterPitchTimer = 0;
 
 m_newScore = false;
 
@@ -63,7 +67,8 @@ m_sinNumb = 0;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>m_score = lerp(m_score, global.playerScore + 1, 0.1);
+            <string>m_scoreOld = m_score;
+m_score = lerp(m_score, global.playerScore + 1, 0.1);
 </string>
           </argument>
         </arguments>
@@ -88,7 +93,23 @@ m_sinNumb = 0;
             <kind>1</kind>
             <string>dmgAlpha = lerp(dmgAlpha, 0, 0.1);
 m_playerHealth = lerp(m_playerHealth ,global.playerHealth, 0.33);
-m_scoreScale2 = lerp(m_scoreScale2, 1, 0.3);
+m_scoreScale2 = lerp(m_scoreScale2, 1, 0.17);
+
+if (audio_is_playing(snd_scoreCounter))
+{
+    m_counterPitch += 0.03 
+    m_counterPitchTimer = 17;  
+}
+else if (m_counterPitchTimer &gt; 0)
+{
+    m_counterPitchTimer--;
+}
+else
+{
+    m_counterPitch = 1;
+}
+
+audio_sound_pitch(snd_scoreCounter, m_counterPitch);
 </string>
           </argument>
         </arguments>
@@ -140,6 +161,11 @@ if (m_score != (global.playerScore + 1))
 else
 {
     m_newScore = false;
+}
+
+if (floor(m_score) != floor(m_scoreOld))
+{
+    audio_play_sound(snd_scoreCounter, 1, 0);
 }
 </string>
           </argument>
