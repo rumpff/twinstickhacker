@@ -55,7 +55,9 @@ m_multiplier = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>surface_set_target(m_surfRed);
+            <string>/// Temporary disabled (NOT)
+
+surface_set_target(m_surfRed);
 draw_clear_alpha(c_black, 0);
 with(par_trippy){
     x = x - view_xview[0]; y = y - view_yview[0];
@@ -77,6 +79,7 @@ surface_reset_target();
 m_surfBlue = m_surfRed;
 m_surfGreen = m_surfBlue;
 m_surfNormal = m_surfGreen;
+
 </string>
           </argument>
         </arguments>

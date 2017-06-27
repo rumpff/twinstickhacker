@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>self</parentName>
+  <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -142,6 +142,11 @@ if (m_scoreHue &gt; 255)
     m_scoreHue = 0;
 }
 
+if (!instance_exists(obj_player))
+{
+    m_scoreScale = lerp(m_scoreScale , 1.2, 0.2);
+    m_scoreAlpha = lerp(m_scoreAlpha , 1, 0.2);
+}
 if (m_newScore)
 {
     m_scoreScale = lerp(m_scoreScale , 1.2, 0.2);
@@ -194,7 +199,7 @@ draw_set_halign(fa_left);
 draw_set_valign(fa_left);
 
 draw_text(0,0,string(room_width) + " , " + string(room_height));
-draw_text(0,32,string(instance_number(obj_enemyTemp)));
+draw_text(0,32,string(instance_number(par_enemy)));
 if (instance_exists(obj_player)) { draw_text(0,16,string(obj_player.x) + " , " + string(obj_player.y)); }
 
 draw_healthbar(8, 106, 33, 867, m_playerHealth, c_maroon, c_red, c_red, 3, true, true)

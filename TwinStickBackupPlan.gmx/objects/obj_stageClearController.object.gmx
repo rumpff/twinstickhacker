@@ -31,7 +31,7 @@ m_timer = 0;
 m_showText = false;
 m_transitionActivated = false;
 
-m_clearString = "Stage Cleared!"
+m_clearString = "Stage " + string(global.currentStage) + " cleared!"
 m_letterCount = 0;
 m_letterTimer = 3;
 m_currentText = "";
@@ -171,10 +171,16 @@ if (m_timer &gt; 180)
     if (m_sinScale &gt; 40)
     {
         m_fadeAlpha += 0.03;
+        
+        if (!audio_is_playing(snd_roomTransition))
+        {
+            audio_play_sound(snd_roomTransition, 1, 0);   
+        }
     }
     
     if (m_fadeAlpha &gt; 1)
     {
+        global.currentStage++;
         room_restart();
     }
 }

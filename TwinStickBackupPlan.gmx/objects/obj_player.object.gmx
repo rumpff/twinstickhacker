@@ -491,7 +491,7 @@ if (m_triggerRight &gt; 0.4 &amp;&amp; m_shootCooldown == 0)
             for (i=0; i&lt;5; i++)
             {
                 bullet = instance_create(x, y, obj_bulletNormal);
-                bullet.m_Angle = bulletAngle + (i * 20) - 40;
+                bullet.m_Angle = bulletAngle + (i * 15) - 30;
                 bullet.image_angle = bulletAngle     
             };
                          
@@ -657,7 +657,7 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// animate
+            <string>/// Animate
 
 m_imageShootTimer++;
 
@@ -709,7 +709,7 @@ m_dashMultiplier = lerp(m_dashMultiplier, 1, 0.1);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// dei
+            <string>/// Dei
 
 if (global.playerHealth &lt; 1)
 {

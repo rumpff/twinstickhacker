@@ -18,6 +18,10 @@ global.playerColor = c_black;
 global.playerScore = 0;
 global.playerHealth = 100;
 
+global.currentStage = 1;
+
+global.currentCombo = 0;
+
 room_goto_next();</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>

@@ -20,11 +20,13 @@
     <sound>sound\snd_enemyDie</sound>
     <sound>sound\snd_scoreCounter</sound>
     <sound>sound\bgm_narwhals</sound>
+    <sound>sound\snd_roomTransition</sound>
+    <sound>sound\snd_roomEnter</sound>
+    <sound>sound\snd_shootEnemy</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="_Temp">
       <sprite>sprites\spr_playerTemp</sprite>
-      <sprite>sprites\spr_enemyTemp</sprite>
       <sprite>sprites\spr_blockTemp</sprite>
     </sprites>
     <sprites name="player skins">
@@ -99,6 +101,11 @@
       <sprites name="Shell">
         <sprite>sprites\spr_bulletShell</sprite>
       </sprites>
+    </sprites>
+    <sprites name="Enemy's">
+      <sprite>sprites\spr_enemyMelee</sprite>
+      <sprite>sprites\spr_enemyRanged</sprite>
+      <sprite>sprites\spr_enemyBullet</sprite>
     </sprites>
     <sprite>sprites\spr_player_hitbox</sprite>
     <sprite>sprites\spr_cursor</sprite>
@@ -188,6 +195,12 @@
       <object>objects\obj_player</object>
       <object>objects\obj_playerParticle</object>
     </objects>
+    <objects name="Enemy Related">
+      <object>objects\obj_enemyTemp</object>
+      <object>objects\obj_enemyRanged</object>
+      <object>objects\obj_enemyBullet</object>
+      <object>objects\par_enemy</object>
+    </objects>
     <object>objects\obj_collider</object>
     <object>objects\debugChanger</object>
     <object>objects\obj_shader</object>
@@ -198,7 +211,6 @@
     </objects>
     <object>objects\obj_level</object>
     <object>objects\obj_DrawGUI</object>
-    <object>objects\obj_enemyTemp</object>
     <object>objects\obj_lazerParticleTemp</object>
     <object>objects\obj_camera</object>
     <object>objects\obj_drawCubeTest</object>
@@ -210,7 +222,8 @@
     <object>objects\obj_trippySurface</object>
     <object>objects\par_trippy</object>
     <object>objects\obj_stageClearController</object>
-    <object>objects\par_enemy</object>
+    <object>objects\obj_enemySpawner</object>
+    <object>objects\obj_comboCount</object>
   </objects>
   <timelines name="timelines"/>
   <rooms name="rooms">

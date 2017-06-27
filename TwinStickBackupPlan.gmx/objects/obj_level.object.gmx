@@ -113,11 +113,11 @@ for (var yy = 0; yy &lt; height; yy++) {
             tile_add(bg_floor, 0, 0, CELL_WIDTH, CELL_HEIGHT, xx*CELL_WIDTH, yy*CELL_HEIGHT, 0);
 
 //Spawn Enemies
-var odds = 25;
+var odds = 100;
 var ex = xx*CELL_WIDTH+CELL_WIDTH/2;
 var ey = yy*CELL_HEIGHT+CELL_HEIGHT/2;
 if (point_distance(ex, ey, obj_player.x, obj_player.y) &gt; 80 &amp;&amp; irandom(odds) == odds){
-instance_create(ex, ey, obj_enemyTemp);
+instance_create(ex, ey, obj_enemySpawner);
 }
         } else {
         mp_grid_add_cell(grid_path, xx, yy);
@@ -249,6 +249,30 @@ for (var yy = 0; yy &lt; height*2; yy++) {
             <string>//Destroy the grid
 ds_grid_destroy(grid);
 mp_grid_destroy(grid_path);
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="7" enumb="4">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Play sound
+audio_play_sound(snd_roomEnter, 1, 0);
 </string>
           </argument>
         </arguments>
