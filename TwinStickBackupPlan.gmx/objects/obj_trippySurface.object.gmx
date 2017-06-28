@@ -55,23 +55,27 @@ m_multiplier = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Temporary disabled (NOT)
+            <string>/// Create the surfaces
+
 
 surface_set_target(m_surfRed);
 draw_clear_alpha(c_black, 0);
-with(par_trippy){
-    x = x - view_xview[0]; y = y - view_yview[0];
-    if(object_index == obj_player){
-        m_oldPosX -= view_xview[0];
-        m_oldPosY -= view_yview[0];
-    }
+if (fps &gt; 50)
+{
+    with(par_trippy){
+        x = x - view_xview[0]; y = y - view_yview[0];
+        if(object_index == obj_player){
+            m_oldPosX -= view_xview[0];
+            m_oldPosY -= view_yview[0];
+        }
+        
+        event_perform(ev_draw, 0);
     
-    event_perform(ev_draw, 0);
-
-     x = x + view_xview[0]; y = y + view_yview[0];
-    if(object_index == obj_player){
-        m_oldPosX += view_xview[0];
-        m_oldPosY += view_yview[0];
+         x = x + view_xview[0]; y = y + view_yview[0];
+        if(object_index == obj_player){
+            m_oldPosX += view_xview[0];
+            m_oldPosY += view_yview[0];
+        }
     }
 }
 surface_reset_target();

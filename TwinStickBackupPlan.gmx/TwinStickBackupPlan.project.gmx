@@ -238,12 +238,13 @@
     <object>objects\obj_UpgradeButtonSpeed</object>
     <object>objects\obj_UpgradeButtonBulletDamage</object>
     <object>objects\obj_UpgradeButtonComboTime</object>
+    <object>objects\obj_circleBackground</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_initalize</room>
-    <room>rooms\rm_upgrade</room>
     <room>rooms\rm_characterSelect</room>
     <room>rooms\rm_level</room>
+    <room>rooms\rm_upgrade</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

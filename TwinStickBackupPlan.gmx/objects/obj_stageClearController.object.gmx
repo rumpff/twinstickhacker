@@ -180,7 +180,7 @@ if (m_timer &gt; 180)
     
     if (m_fadeAlpha &gt; 1)
     {
-        if ((global.currentStage mod 5) == 0) // Go to upgrate room
+        if ((global.currentStage mod 3) == 0) // Go to upgrate room
         {
            global.currentStage++;
            room_goto(rm_upgrade)

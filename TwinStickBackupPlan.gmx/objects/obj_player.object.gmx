@@ -417,7 +417,7 @@ m_vStickLMovement = lerp(m_vStickLMovement, m_vStickL, 0.2);
             <kind>1</kind>
             <string>/// Calculate next position and move
 
-scr_move((m_hStickLMovement * m_maxSpeed * m_fireDecrease * m_dashMultiplier), (m_vStickLMovement * m_maxSpeed * m_fireDecrease * m_dashMultiplier))
+scr_move((m_hStickLMovement * m_maxSpeed * m_fireDecrease * m_dashMultiplier * global.upgradeSpeed), (m_vStickLMovement * m_maxSpeed * m_fireDecrease * m_dashMultiplier * global.upgradeSpeed))
 
 /*
 if (place_meeting(x + (m_hStickLMovement * m_maxSpeed), y + (m_vStickLMovement * m_maxSpeed), obj_collider))
@@ -468,7 +468,7 @@ else
             <kind>1</kind>
             <string>/// Shoot
 
-if (m_triggerRight &gt; 0.4 &amp;&amp; m_shootCooldown == 0)
+if (m_triggerRight &gt; 0.4 &amp;&amp; m_shootCooldown &lt;= 0)
 {
     m_weaponState = 1;
     m_imageShootTimer = 0; 
@@ -526,7 +526,7 @@ if (m_triggerRight &gt; 0.4 &amp;&amp; m_shootCooldown == 0)
     }
 }
 
-if (m_shootCooldown &gt; 0) { m_shootCooldown--; }
+if (m_shootCooldown &gt; 0) { m_shootCooldown -= 1 * global.upgradeFireRate; }
 </string>
           </argument>
         </arguments>
