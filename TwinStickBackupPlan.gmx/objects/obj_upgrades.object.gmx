@@ -3,7 +3,7 @@
   <spriteName>&lt;undefined&gt;</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-15</depth>
+  <depth>0</depth>
   <persistent>0</persistent>
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
@@ -25,51 +25,10 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>m_timer = 0;
-m_comboCount = global.currentCombo;
-
-m_alpha = 1;
-m_angle = 0;
-m_scale = 0.4;
-
-m_sinNumb = 0;
-
-m_explode = false;
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="1" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>if (m_explode)
-{
-    for (i = 0; i &lt; 30; i++)
-    {
-        instance_create(x, y, obj_comboParticle);
-    }
-    
-    scr_screenshake(7, 6);
-    audio_play_sound(snd_comboBreaker, 1, 0);
-}
-
-
-
+            <string>m_clearString = "Choose an upgrade!"
+m_letterCount = 0;
+m_letterTimer = 3;
+m_currentText = "";
 </string>
           </argument>
         </arguments>
@@ -92,37 +51,21 @@ m_explode = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>m_timer++;
-m_sinNumb += 0.042
+            <string>/// Animate top text
+m_currentText = string_copy(m_clearString,1,m_letterCount);
 
-m_angle = sin(m_sinNumb) * 10;
-m_scale = lerp(m_scale, 1.2, 0.1);
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Check for broken combo
-
-if (global.currentCombo == 0)
+if (m_letterTimer &gt; 0)
 {
-    m_explode = true;
-    instance_destroy();
+    m_letterTimer--;
+}
+else
+{
+    if (m_letterCount &lt; string_length(m_clearString))
+    {
+        m_letterCount++;
+        m_letterTimer = 3;
+        audio_play_sound(snd_enemyHit, 1, 0);
+    } 
 }
 </string>
           </argument>
@@ -146,14 +89,12 @@ if (global.currentCombo == 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>draw_set_font(fnt_combo)
-draw_set_color(c_white);
+            <string>draw_set_color(c_white);
 draw_set_halign(fa_center);
 draw_set_valign(fa_center);
-draw_set_alpha(m_alpha)
+draw_set_font(fnt_cleared);
 
-draw_text_outline_transformed(x, y, string(m_comboCount), m_scale, m_scale, m_angle, 10, c_black, 0);
-draw_set_alpha(1);
+draw_text_outline(GAME_WIDTH/2, GAME_HEIGHT/8, m_currentText, 10, c_black, 0);
 </string>
           </argument>
         </arguments>

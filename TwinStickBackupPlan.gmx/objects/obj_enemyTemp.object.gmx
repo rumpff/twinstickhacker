@@ -66,7 +66,7 @@ m_attackTimer = 10;
    particle.direction = random_range(0,359);
 }
 
-global.currentCombo++;
+add_combo();
 scr_addScore(90);
 scr_screenshake(10, 8);
 audio_play_sound(snd_enemyDie, 1, 0);

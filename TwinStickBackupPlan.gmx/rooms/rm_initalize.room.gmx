@@ -18,6 +18,13 @@ global.playerColor = c_black;
 global.playerScore = 0;
 global.playerHealth = 100;
 
+global.upgradeFireRate = 1;
+global.upgradeSpeed = 1;
+global.upgradeBulletDamage = 1;
+global.upgradeComboTime = 1;
+
+global.enemyKilled = false;
+
 global.currentStage = 1;
 
 global.currentCombo = 0;

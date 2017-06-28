@@ -70,6 +70,7 @@ global.currentCombo++;
 scr_addScore(90);
 scr_screenshake(10, 8);
 audio_play_sound(snd_enemyDie, 1, 0);
+instance_create(x, y, obj_comboCount);
 sleep(20);
 
 if (instance_number(obj_enemyTemp) == 1)
