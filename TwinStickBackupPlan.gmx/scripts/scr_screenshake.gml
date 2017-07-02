@@ -9,5 +9,5 @@ obj_trippySurface.m_multiplier += (argument0 * 0.3);
 
 if (obj_camera.m_zoomMultiplier > 0.2)
 {
-    obj_camera.m_zoomMultiplier -= (argument0 * 0.01);
+    obj_camera.m_zoomMultiplier -= (argument0 * 0.004);
 }

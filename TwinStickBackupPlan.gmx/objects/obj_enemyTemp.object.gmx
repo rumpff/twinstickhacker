@@ -66,9 +66,9 @@ m_attackTimer = 10;
    particle.direction = random_range(0,359);
 }
 
-add_combo();
 scr_addScore(90);
 scr_screenshake(10, 8);
+add_combo();
 audio_play_sound(snd_enemyDie, 1, 0);
 sleep(20);
 </string>

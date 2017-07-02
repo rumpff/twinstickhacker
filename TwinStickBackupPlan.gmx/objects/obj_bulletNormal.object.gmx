@@ -29,7 +29,12 @@
 motion_set(m_Angle, 38);
 
 if (scr_gridPlaceMeeting(x, y)) 
-{ instance_destroy(); }
+{ 
+    impact = instance_create(x, y, obj_bulletImpact);
+    impact.sprite_index = spr_bulletNormal_impact;
+    impact.image_angle = m_Angle;
+    instance_destroy(); 
+}
 </string>
           </argument>
         </arguments>

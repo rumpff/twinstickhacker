@@ -95,6 +95,7 @@
     <sprites name="Bullets">
       <sprites name="Normal">
         <sprite>sprites\spr_bulletNormal</sprite>
+        <sprite>sprites\spr_bulletNormal_impact</sprite>
         <sprite>sprites\spr_bulletNormalGlow</sprite>
       </sprites>
       <sprites name="Small">
@@ -130,6 +131,7 @@
     <background>background\winxppro</background>
     <background>background\bg_test</background>
     <background>background\ts_walls</background>
+    <background>background\ts_wallsOLD</background>
     <background>background\bg_floor</background>
     <background>background\bg_grid_small</background>
     <background>background\bg_grid_large</background>
@@ -181,6 +183,7 @@
     <script>scripts\draw_text_outline_transformed.gml</script>
     <script>scripts\sleep.gml</script>
     <script>scripts\add_combo.gml</script>
+    <script>scripts\spawn_enemys.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\fx8bitChilloutColor.shader</shader>
@@ -197,6 +200,7 @@
         <object>objects\obj_bulletNormal</object>
         <object>objects\obj_bulletSmall</object>
         <object>objects\obj_bulletShell</object>
+        <object>objects\obj_bulletImpact</object>
       </objects>
       <object>objects\obj_player</object>
       <object>objects\obj_playerParticle</object>
@@ -239,6 +243,8 @@
     <object>objects\obj_UpgradeButtonBulletDamage</object>
     <object>objects\obj_UpgradeButtonComboTime</object>
     <object>objects\obj_circleBackground</object>
+    <object>objects\obj_circleBackground2</object>
+    <object>objects\gotoupgradelel</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_initalize</room>

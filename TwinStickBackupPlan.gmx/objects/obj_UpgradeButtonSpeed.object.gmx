@@ -161,15 +161,10 @@ draw_text_transformed(x, y, "Speed" ,scale - 0.2, scale - 0.2, 180);
 
 if selected == 1
 {
-    draw_set_color(c_black);
-    draw_set_halign(fa_center);
-    draw_set_font(fnt_combo);
-    draw_text(obj_TextLocation.x + 5, obj_TextLocation.y + 5, stringA);
-    
     draw_set_color(c_white);
     draw_set_halign(fa_center);
     draw_set_font(fnt_combo);
-    draw_text(obj_TextLocation.x, obj_TextLocation.y, stringA);
+    draw_text_outline(obj_TextLocation.x, obj_TextLocation.y, stringA, 5, c_black, 5);
 }
 </string>
           </argument>

@@ -171,9 +171,6 @@ if (instance_exists(obj_player))
 
 m_xPos = lerp(m_xPos, m_xDest - (view_wview / 2) + (m_hStickR * 192), m_lerpAmount)
 m_yPos = lerp(m_yPos, m_yDest - (view_hview / 2) + (m_vStickR * 192), m_lerpAmount)
-
-//m_xPos = m_xDest - (view_wview / 2);
-//m_yPos = m_yDest - (view_hview / 2);
 </string>
           </argument>
         </arguments>

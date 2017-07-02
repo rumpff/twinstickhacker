@@ -35,7 +35,7 @@ else
     m_comboTimer = 0;
 }
 
-if (m_comboTimer &gt;= m_comboMaxTime &amp;&amp; instance_number(par_enemy) &gt; 0 )
+if (m_comboTimer &gt;= m_comboMaxTime &amp;&amp; (instance_number(par_enemy) &gt; 0 || instance_number(obj_enemySpawner) &gt; 0))
 {
     global.currentCombo = 0;
 }
