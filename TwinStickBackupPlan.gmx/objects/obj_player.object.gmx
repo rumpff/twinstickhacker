@@ -3,7 +3,7 @@
   <spriteName>spr_playerHead1</spriteName>
   <solid>0</solid>
   <visible>-1</visible>
-  <depth>-10</depth>
+  <depth>-11</depth>
   <persistent>0</persistent>
   <parentName>par_trippy</parentName>
   <maskName>spr_player_hitbox</maskName>
@@ -85,6 +85,12 @@ m_glowCollor = noone;
 
 m_oldPosX = 0;
 m_oldPosY = 0;
+
+m_trailPosX = 0;
+m_trailPosY = 0;
+
+m_trailOffsetX = 0;
+m_trailOffsetY = 0;
 
 m_dashMultiplier = 1;
 </string>
@@ -251,6 +257,28 @@ gamepad_set_axis_deadzone(m_gpId, 0.3);
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Initalize trail
+trail_init();
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="1" enumb="0">
       <action>
@@ -277,6 +305,74 @@ gamepad_set_axis_deadzone(m_gpId, 0.3);
 scr_screenshake(42, 21);
 audio_play_sound(snd_playerDie, 1, 0);
 sleep(35);
+trail_destroy();
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="3" enumb="2">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Obtain trail offset
+switch (m_playerHead)
+{
+    case head_3:
+        m_trailOffsetX = -10;
+        break;
+    case head_4:
+        m_trailOffsetX = 2;
+        break;
+    case head_6:
+        m_trailOffsetX = 4;
+        break;
+    case head_7:
+        m_trailOffsetX = -9;
+        break;
+    case head_8:
+        m_trailOffsetX = 11;
+        break;
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Calculate trail
+
+m_trailPosX = m_oldPosX + lengthdir_x(m_trailOffsetX, m_aimDirection);
+m_trailPosY = m_oldPosY + lengthdir_y(m_trailOffsetX, m_aimDirection);
+
+trail_calculate_ext(20, m_trailPosX, m_trailPosY);
 </string>
           </argument>
         </arguments>
@@ -737,9 +833,10 @@ if (global.playerHealth &lt; 1)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>
+            <string>/// Draw
 draw_set_color(c_white);
-draw_line_width(m_oldPosX - 1, m_oldPosY - 1, (m_oldPosX - 1) + lengthdir_x(500, m_aimDirection), (m_oldPosY - 1) + lengthdir_y(500, m_aimDirection), 2)  
+draw_line_width(m_oldPosX - 1, m_oldPosY - 1, (m_oldPosX - 1) + lengthdir_x(500, m_aimDirection), (m_oldPosY - 1) + lengthdir_y(500, m_aimDirection), 2) 
+draw_trail_ext(20,c_white,-1,1,1); 
 
 
 draw_sprite_ext(m_weaponSprite[m_weaponState], m_imageShootTimer, x, y, image_xscale, image_yscale, m_aimDirection, image_blend, image_alpha);

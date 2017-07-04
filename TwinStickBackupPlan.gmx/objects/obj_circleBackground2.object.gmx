@@ -28,6 +28,7 @@
             <string>sinNumb = 0;
 hueNumb = 0;
 zoom = 20;
+zoomIntro = 20;
 </string>
           </argument>
         </arguments>
@@ -54,6 +55,7 @@ zoom = 20;
 sinNumb += 0.04;
 //hueNumb++;
 zoom -= 0.5;
+zoomIntro = lerp(zoomIntro, 1, 0.1);
 
 if (zoom &lt; 0)
 {
@@ -89,9 +91,9 @@ for (i = 0; i &lt; 16; i++)
 {
     draw_set_color(make_colour_hsv(hueNumb + (i * 16) mod 255, 255, 255));
     offset = sin(sinNumb - (i * 0.1)) * 0.5 + 1;
-    draw_circle(GAME_WIDTH/2, GAME_HEIGHT/2, i * 100 + (zoom * 5)+ 1, true);
-    draw_circle(GAME_WIDTH/2, GAME_HEIGHT/2, i * 100 + (zoom * 5) , true);  
-    draw_circle(GAME_WIDTH/2, GAME_HEIGHT/2, i * 100 + (zoom * 5) - 1, true);  
+    draw_circle(GAME_WIDTH/2, GAME_HEIGHT/2, (i * 100 + (zoom * 5)+ 1) * zoomIntro, true);
+    draw_circle(GAME_WIDTH/2, GAME_HEIGHT/2, (i * 100 + (zoom * 5)) * zoomIntro, true);  
+    draw_circle(GAME_WIDTH/2, GAME_HEIGHT/2, (i * 100 + (zoom * 5) - 1) * zoomIntro, true);  
 }
 </string>
           </argument>

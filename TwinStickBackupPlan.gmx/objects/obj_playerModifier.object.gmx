@@ -144,6 +144,7 @@ else { key_left = false; }
 if (key_accept &amp;&amp; m_currentSelected &lt; 1)
 {
     m_currentSelected++;
+    audio_play_sound(snd_select, 1, 0);
 }
 else if (key_accept)
 {
@@ -153,6 +154,7 @@ else if (key_accept)
 if (key_back &amp;&amp; m_currentSelected &gt; 0)
 {
     m_currentSelected--;
+    audio_play_sound(snd_back, 1, 0);
 }
 </string>
           </argument>
@@ -208,10 +210,12 @@ switch (m_currentSelected)
         if (key_left)
         {
             global.playerHead--;
+            audio_play_sound(snd_choose, 1, 0);
         }
         if (key_right)
         {
             global.playerHead++;
+            audio_play_sound(snd_choose, 1, 0);
         }
         break;
         
@@ -219,10 +223,12 @@ switch (m_currentSelected)
         if (key_left)
         {
             global.playerWeapon--;
+            audio_play_sound(snd_choose, 1, 0);
         }
         if (key_right)
         {
             global.playerWeapon++;
+            audio_play_sound(snd_choose, 1, 0);
         }
         break;
 }

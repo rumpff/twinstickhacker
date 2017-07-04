@@ -70,6 +70,9 @@ m_vZoom = 0;
 
 m_hStickR = 0;
 m_vStickR = 0;
+
+m_hAim = 0;
+m_vAim = 0;
 </string>
           </argument>
         </arguments>
@@ -167,10 +170,34 @@ if (instance_exists(obj_player))
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>/// Calculate offset for aim
+
+m_hAim = lerp(m_hAim, (m_hStickR * 192), 0.2);
+m_vAim = lerp(m_vAim, (m_vStickR * 192), 0.2);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>/// Calculate current position
 
-m_xPos = lerp(m_xPos, m_xDest - (view_wview / 2) + (m_hStickR * 192), m_lerpAmount)
-m_yPos = lerp(m_yPos, m_yDest - (view_hview / 2) + (m_vStickR * 192), m_lerpAmount)
+m_xPos = lerp(m_xPos, m_xDest - (view_wview / 2) + m_hAim, m_lerpAmount)
+m_yPos = lerp(m_yPos, m_yDest - (view_hview / 2) + m_vAim, m_lerpAmount)
 </string>
           </argument>
         </arguments>

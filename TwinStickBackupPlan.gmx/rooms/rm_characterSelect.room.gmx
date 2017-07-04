@@ -19,9 +19,7 @@ global.playerHealth = 100;
 global.upgradeFireRate = 1;
 global.upgradeSpeed = 1;
 global.upgradeBulletDamage = 1;
-global.upgradeComboTime = 1;
-
-audio_stop_sound(bgm_narwhals);</code>
+global.upgradeComboTime = 1;</code>
   <enableViews>0</enableViews>
   <clearViewBackground>-1</clearViewBackground>
   <clearDisplayBuffer>-1</clearDisplayBuffer>

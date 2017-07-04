@@ -31,7 +31,10 @@ m_surfRed = surface_create(GAME_WIDTH, GAME_HEIGHT);
 m_surfBlue = surface_create(GAME_WIDTH, GAME_HEIGHT);
 m_surfGreen = surface_create(GAME_WIDTH, GAME_HEIGHT);
 m_surfNormal = surface_create(GAME_WIDTH, GAME_HEIGHT);
+m_surfBlur = surface_create(GAME_WIDTH, GAME_HEIGHT);
 
+m_perfectBlur = true;
+shutterspeed = 2;
 m_multiplier = 1;
 </string>
           </argument>
@@ -55,8 +58,29 @@ m_multiplier = 1;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Create the surfaces
-
+            <string>/// Lerp multiplier
+m_multiplier = lerp(m_multiplier, 1, 0.1);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Create the surfaces for color effect
 
 surface_set_target(m_surfRed);
 draw_clear_alpha(c_black, 0);
@@ -84,27 +108,6 @@ m_surfBlue = m_surfRed;
 m_surfGreen = m_surfBlue;
 m_surfNormal = m_surfGreen;
 
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>m_multiplier = lerp(m_multiplier, 1, 0.1);
 </string>
           </argument>
         </arguments>
@@ -152,7 +155,8 @@ surface_free(m_surfGreen);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>if (surface_exists(m_surfRed))
+            <string>/// Draw color surfaces
+if (surface_exists(m_surfRed))
 {
     draw_surface_ext(m_surfRed, view_xview[0] + 3 * m_multiplier, view_yview[0], 1, 1, 0, c_red, 0.3);
 }

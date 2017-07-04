@@ -43,6 +43,48 @@ if (m_comboTimer &gt;= m_comboMaxTime &amp;&amp; (instance_number(par_enemy) &gt
           </argument>
         </arguments>
       </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Check for dead player
+
+if (global.playerHealth &lt;= 0)
+{
+    m_deathTimer++;
+    
+    if (m_deathTimer &gt; 180)
+    {
+        m_deathAlpha += 0.005;
+        m_deathVolume -= 0.005;
+        
+        if (m_deathAlpha == 1)
+        {
+            audio_stop_sound(bgm_narwhalsIntro);
+            audio_stop_sound(bgm_narwhalsLoop);
+            room_goto(rm_characterSelect);
+        }
+    }
+    
+    audio_sound_gain(bgm_narwhalsIntro, m_deathVolume, 0);
+    audio_sound_gain(bgm_narwhalsLoop, m_deathVolume, 0);
+}
+</string>
+          </argument>
+        </arguments>
+      </action>
     </event>
     <event eventtype="7" enumb="4">
       <action>
@@ -65,7 +107,42 @@ if (m_comboTimer &gt;= m_comboMaxTime &amp;&amp; (instance_number(par_enemy) &gt
 m_comboTimer = 0;
 m_comboMaxTime = 15;
 
+m_deathTimer = 0;
+m_deathAlpha = 0;
+m_deathVolume = 1;
+
 global.enemyKilled = false;
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="8" enumb="75">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw death fade thing
+
+if (global.playerHealth &lt;= 0)
+{
+    draw_set_color(c_black);
+    draw_set_alpha(m_deathAlpha);
+    draw_rectangle(0, 0, GAME_WIDTH, GAME_HEIGHT, false);
+    draw_set_alpha(1);
+}
 </string>
           </argument>
         </arguments>

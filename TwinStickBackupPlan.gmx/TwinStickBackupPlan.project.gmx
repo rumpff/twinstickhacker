@@ -7,6 +7,7 @@
     <extension index="0">extensions\Eight-bit chillout Shader</extension>
     <extension index="1">extensions\Draw Text Outlined</extension>
     <extension index="2">extensions\Easing and Tweening</extension>
+    <extension index="3">extensions\Draw Trail</extension>
   </NewExtensions>
   <sounds name="sound">
     <sound>sound\snd_temp</sound>
@@ -19,12 +20,16 @@
     <sound>sound\snd_playerDie</sound>
     <sound>sound\snd_enemyDie</sound>
     <sound>sound\snd_scoreCounter</sound>
-    <sound>sound\bgm_narwhals</sound>
     <sound>sound\snd_roomTransition</sound>
     <sound>sound\snd_roomEnter</sound>
     <sound>sound\snd_shootEnemy</sound>
     <sound>sound\snd_comboBreaker</sound>
     <sound>sound\snd_selectUpgrade</sound>
+    <sound>sound\bgm_narwhalsIntro</sound>
+    <sound>sound\bgm_narwhalsLoop</sound>
+    <sound>sound\snd_choose</sound>
+    <sound>sound\snd_select</sound>
+    <sound>sound\snd_back</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="_Temp">
@@ -107,8 +112,17 @@
     </sprites>
     <sprites name="Enemy's">
       <sprite>sprites\spr_enemyMelee</sprite>
+      <sprite>sprites\spr_enemyKamikaze</sprite>
+      <sprite>sprites\spr_enemyChild</sprite>
+      <sprite>sprites\spr_enemyMother</sprite>
       <sprite>sprites\spr_enemyRanged</sprite>
       <sprite>sprites\spr_enemyBullet</sprite>
+      <sprites name="EnemyParticles">
+        <sprite>sprites\spr_lazerParticleMelee</sprite>
+        <sprite>sprites\spr_lazerParticleRanged</sprite>
+        <sprite>sprites\spr_lazerParticleChild</sprite>
+        <sprite>sprites\spr_lazerParticleMother</sprite>
+      </sprites>
     </sprites>
     <sprite>sprites\spr_player_hitbox</sprite>
     <sprite>sprites\spr_cursor</sprite>
@@ -118,13 +132,18 @@
       <sprite>sprites\spr_window</sprite>
       <sprite>sprites\spr_folder</sprite>
     </sprites>
-    <sprite>sprites\spr_lazerParticeTemp</sprite>
     <sprite>sprites\WAIFUUUUUUU</sprite>
     <sprite>sprites\spr_damageOverlay</sprite>
     <sprite>sprites\spr_uiOverlay</sprite>
     <sprite>sprites\sprite50</sprite>
     <sprite>sprites\spr_comboParticles</sprite>
     <sprite>sprites\spr_button</sprite>
+    <sprite>sprites\spr_zigzag</sprite>
+    <sprite>sprites\spr_bloodHit1</sprite>
+    <sprite>sprites\spr_bloodHit2</sprite>
+    <sprite>sprites\spr_bloodHit3</sprite>
+    <sprite>sprites\spr_bloodHit4</sprite>
+    <sprite>sprites\spr_shockwave</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background2</background>
@@ -171,6 +190,14 @@
       <script>scripts\ease_out_quint.gml</script>
       <script>scripts\ease_out_sine.gml</script>
     </scripts>
+    <scripts name="Trails">
+      <script>scripts\draw_trail.gml</script>
+      <script>scripts\trail_init.gml</script>
+      <script>scripts\draw_trail_ext.gml</script>
+      <script>scripts\trail_calculate.gml</script>
+      <script>scripts\trail_calculate_ext.gml</script>
+      <script>scripts\trail_destroy.gml</script>
+    </scripts>
     <script>scripts\scr_gridPlaceMeeting.gml</script>
     <script>scripts\scr_move.gml</script>
     <script>scripts\scr_pathToPlayer.gml</script>
@@ -184,6 +211,7 @@
     <script>scripts\sleep.gml</script>
     <script>scripts\add_combo.gml</script>
     <script>scripts\spawn_enemys.gml</script>
+    <script>scripts\draw_wave_off.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\fx8bitChilloutColor.shader</shader>
@@ -193,6 +221,7 @@
     <font>fonts\fnt_scoreUI</font>
     <font>fonts\fnt_cleared</font>
     <font>fonts\fnt_combo</font>
+    <font>fonts\fnt_newScore</font>
   </fonts>
   <objects name="objects">
     <objects name="Player Related">
@@ -207,6 +236,10 @@
     </objects>
     <objects name="Enemy Related">
       <object>objects\obj_enemyTemp</object>
+      <object>objects\obj_enemyKamikaze</object>
+      <object>objects\obj_shockwave</object>
+      <object>objects\obj_enemyChild</object>
+      <object>objects\obj_enemyMother</object>
       <object>objects\obj_enemyRanged</object>
       <object>objects\obj_enemyBullet</object>
       <object>objects\par_enemy</object>
@@ -245,6 +278,11 @@
     <object>objects\obj_circleBackground</object>
     <object>objects\obj_circleBackground2</object>
     <object>objects\gotoupgradelel</object>
+    <object>objects\obj_trail1</object>
+    <object>objects\obj_blood</object>
+    <object>objects\obj_newScoreVisual</object>
+    <object>objects\obj_bgmController</object>
+    <object>objects\wuhrfew</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_initalize</room>

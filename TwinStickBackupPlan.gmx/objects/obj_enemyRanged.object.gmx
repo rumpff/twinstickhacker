@@ -59,11 +59,16 @@ m_attackTimer = 10;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for (i = 0; i &lt; 20; i++)
+            <string>blood = instance_create(x, y, obj_blood)
+blood.sprite_index = spr_bloodHit1;
+blood.image_blend = c_yellow;
+
+for (i = 0; i &lt; 20; i++)
 {
    particle = instance_create(x, y, obj_lazerParticleTemp);
    particle.speed = random_range(5,12);
    particle.direction = random_range(0,359);
+   particle.owner = object_get_name(object_index);
 }
 
 scr_addScore(90);
@@ -102,7 +107,7 @@ if (instance_number(obj_enemyTemp) == 1)
 if (instance_exists(obj_player)){
     if (point_distance(x, y, obj_player.x, obj_player.y) &gt; 256)
     {
-        scr_pathToPlayer();
+        scr_pathToPlayer(6);
     }
     else
     {

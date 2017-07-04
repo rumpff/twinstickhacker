@@ -59,14 +59,19 @@ m_attackTimer = 10;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>for (i = 0; i &lt; 20; i++)
+            <string>blood = instance_create(x, y, obj_blood)
+blood.sprite_index = spr_bloodHit1;
+blood.image_blend = c_blue;
+
+for (i = 0; i &lt; 20; i++)
 {
    particle = instance_create(x, y, obj_lazerParticleTemp);
    particle.speed = random_range(5,12);
    particle.direction = random_range(0,359);
+   particle.owner = object_get_name(object_index);
 }
 
-scr_addScore(90);
+scr_addScore(65);
 scr_screenshake(10, 8);
 add_combo();
 audio_play_sound(snd_enemyDie, 1, 0);
@@ -94,7 +99,7 @@ sleep(20);
           <argument>
             <kind>1</kind>
             <string>///move towards the player
-scr_pathToPlayer();
+scr_pathToPlayer(6);
 alarm[0] = 10;
 </string>
           </argument>
