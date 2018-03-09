@@ -73,8 +73,8 @@ m_maxSpeed = 12;
 
 m_headSprite = noone;
 
-m_weaponSprite[] = noone;
-m_glowSprite[] = noone;
+m_weaponSprite[0] = noone;
+m_glowSprite[0] = noone;
 
 m_imageShootTimer = 0;
 m_imageShootMax = 0;
