@@ -93,6 +93,13 @@ m_trailOffsetX = 0;
 m_trailOffsetY = 0;
 
 m_dashMultiplier = 1;
+
+
+m_pointerActive = false;
+m_pointerX = 0;
+m_pointerY = 0;
+m_pointerRotation = 0;
+m_pointerAlpha = 0;
 </string>
           </argument>
         </arguments>
@@ -426,9 +433,15 @@ m_oldPosY = y;
 m_hStickL = gamepad_axis_value(m_gpId, gp_axislh);
 m_vStickL = gamepad_axis_value(m_gpId, gp_axislv);
 
+//m_hStickL = vstick_get_xaxis(0);
+//m_vStickL = vstick_get_yaxis(0);
+
 // Right stick
 m_hStickR = gamepad_axis_value(m_gpId, gp_axisrh);
 m_vStickR = gamepad_axis_value(m_gpId, gp_axisrv);
+
+//m_hStickR = vstick_get_xaxis(1);
+//m_vStickR = vstick_get_yaxis(1);
 
 // Triggers
 m_triggerRight = gamepad_button_value(m_gpId, gp_shoulderrb)
@@ -564,7 +577,9 @@ else
             <kind>1</kind>
             <string>/// Shoot
 
-if (m_triggerRight &gt; 0.4 &amp;&amp; m_shootCooldown &lt;= 0)
+//if (m_triggerRight &gt; 0.4 &amp;&amp; m_shootCooldown &lt;= 0)
+if (max(abs(m_hStickR), abs(m_vStickR) &gt;= 0.6)
+&amp;&amp; m_shootCooldown &lt;= 0)
 {
     m_weaponState = 1;
     m_imageShootTimer = 0; 
@@ -577,7 +592,8 @@ if (m_triggerRight &gt; 0.4 &amp;&amp; m_shootCooldown &lt;= 0)
             bullet.image_angle = bulletAngle   
             bullet.m_glowCollor = m_glowCollor;     
             m_shootCooldown = 6;
-            audio_play_sound(snd_shootNormal, 1, 0);
+            var snd = audio_play_sound(snd_shootNormal, 1, 0);
+            audio_sound_pitch(snd, random_range(0.7, 1.3));
             scr_cameraKnockback(m_aimDirection, 10);
             break;
             
@@ -681,6 +697,45 @@ if (m_abilityAcitve)
             break;
     }
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Update the pointer
+
+if(instance_number(par_enemy) == 0 &amp;&amp; instance_number(obj_enemySpawner) &gt; 0)
+{
+    var target = instance_nearest(x, y, obj_enemySpawner);
+    
+    m_pointerActive = true;
+    
+    m_pointerRotation = lerp_angle(m_pointerRotation, point_direction(x, y, target.x, target.y), 0.4);
+    
+    m_pointerX = x + lengthdir_x(64, m_pointerRotation);
+    m_pointerY = y + lengthdir_y(64, m_pointerRotation);
+}
+else
+{
+    m_pointerActive = false;
+}
+
+m_pointerAlpha = lerp(m_pointerAlpha, m_pointerActive, 0.3);
 </string>
           </argument>
         </arguments>
@@ -843,6 +898,8 @@ draw_sprite_ext(m_weaponSprite[m_weaponState], m_imageShootTimer, x, y, image_xs
 //draw_sprite_ext(m_glowSprite[m_weaponState], m_imageShootTimer, x, y, image_xscale, image_yscale, m_aimDirection, m_glowCollor, image_alpha);
 
 draw_sprite_ext(m_headSprite, 0, m_oldPosX, m_oldPosY, image_xscale, image_yscale, m_aimDirection, image_blend, image_alpha);
+draw_sprite_ext(spr_pointer, 0, m_pointerX, m_pointerY, 1, 1, m_pointerRotation, image_blend, m_pointerAlpha);
+
 </string>
           </argument>
         </arguments>

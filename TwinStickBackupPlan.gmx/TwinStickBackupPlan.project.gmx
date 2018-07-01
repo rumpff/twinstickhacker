@@ -8,6 +8,7 @@
     <extension index="1">extensions\Draw Text Outlined</extension>
     <extension index="2">extensions\Easing and Tweening</extension>
     <extension index="3">extensions\Draw Trail</extension>
+    <extension index="4">extensions\Virtual Joysticks</extension>
   </NewExtensions>
   <sounds name="sound">
     <sound>sound\snd_temp</sound>
@@ -144,6 +145,8 @@
     <sprite>sprites\spr_bloodHit3</sprite>
     <sprite>sprites\spr_bloodHit4</sprite>
     <sprite>sprites\spr_shockwave</sprite>
+    <sprite>sprites\spr_dot</sprite>
+    <sprite>sprites\spr_pointer</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background2</background>
@@ -198,6 +201,30 @@
       <script>scripts\trail_calculate_ext.gml</script>
       <script>scripts\trail_destroy.gml</script>
     </scripts>
+    <scripts name="Virtual Joystick">
+      <script>scripts\vstick_set_frontsprite.gml</script>
+      <script>scripts\vstick_get_frontsprite.gml</script>
+      <script>scripts\vstick_set_backsprite.gml</script>
+      <script>scripts\vstick_get_backsprite.gml</script>
+      <script>scripts\vstick_get_active.gml</script>
+      <script>scripts\vstick_set_active.gml</script>
+      <script>scripts\vstick_set_radius.gml</script>
+      <script>scripts\vstick_get_radius.gml</script>
+      <script>scripts\vstick_set_y.gml</script>
+      <script>scripts\vstick_get_y.gml</script>
+      <script>scripts\vstick_set_x.gml</script>
+      <script>scripts\vstick_get_x.gml</script>
+      <script>scripts\vstick_get_yaxis.gml</script>
+      <script>scripts\vstick_get_xaxis.gml</script>
+      <script>scripts\vstick_get_direction.gml</script>
+      <script>scripts\vstick_get_deviation.gml</script>
+      <script>scripts\vstick_check.gml</script>
+      <script>scripts\vstick_check_pressed.gml</script>
+      <script>scripts\vstick_check_released.gml</script>
+      <script>scripts\vstick_draw.gml</script>
+      <script>scripts\vstick_step.gml</script>
+      <script>scripts\vstick_init.gml</script>
+    </scripts>
     <script>scripts\scr_gridPlaceMeeting.gml</script>
     <script>scripts\scr_move.gml</script>
     <script>scripts\scr_pathToPlayer.gml</script>
@@ -212,6 +239,8 @@
     <script>scripts\add_combo.gml</script>
     <script>scripts\spawn_enemys.gml</script>
     <script>scripts\draw_wave_off.gml</script>
+    <script>scripts\initalize_virtual_sticks.gml</script>
+    <script>scripts\lerp_angle.gml</script>
   </scripts>
   <shaders name="shaders">
     <shader type="GLSLES">shaders\fx8bitChilloutColor.shader</shader>
@@ -235,6 +264,7 @@
       <object>objects\obj_playerParticle</object>
     </objects>
     <objects name="Enemy Related">
+      <object>objects\obj_enemySpawner</object>
       <object>objects\obj_enemyTemp</object>
       <object>objects\obj_enemyKamikaze</object>
       <object>objects\obj_shockwave</object>
@@ -265,7 +295,6 @@
     <object>objects\obj_trippySurface</object>
     <object>objects\par_trippy</object>
     <object>objects\obj_stageClearController</object>
-    <object>objects\obj_enemySpawner</object>
     <object>objects\obj_comboCount</object>
     <object>objects\obj_comboParticle</object>
     <object>objects\obj_upgrades</object>
@@ -286,8 +315,8 @@
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_initalize</room>
-    <room>rooms\rm_characterSelect</room>
     <room>rooms\rm_level</room>
+    <room>rooms\rm_characterSelect</room>
     <room>rooms\rm_upgrade</room>
   </rooms>
   <help>

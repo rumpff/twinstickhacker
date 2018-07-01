@@ -60,8 +60,8 @@ CursorX = gamepad_axis_value(CId, gp_axislh) * 1.7777777777777777777777777777777
 CursorY = gamepad_axis_value(CId, gp_axislv);
 
 // Putting the object on the right position
-x = (GAME_WIDTH / 2) + (CursorX * Multiplier);
-y = (GAME_HEIGHT / 2) + (CursorY * Multiplier);
+x = lerp(x, (GAME_WIDTH / 2) + (CursorX * Multiplier), 0.4);
+y = lerp(y, (GAME_HEIGHT / 2) + (CursorY * Multiplier), 0.4);
 
 gamepad_button_check(CId, gp_face1)
 {

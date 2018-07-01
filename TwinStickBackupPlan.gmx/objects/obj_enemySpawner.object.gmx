@@ -29,7 +29,7 @@
 
 if (instance_exists(obj_player))
 {   
-    if (point_distance(x, y, obj_player.x, obj_player.y) &lt; 2000)
+    if (point_distance(x, y, obj_player.x, obj_player.y) &lt; 2048)
     {
         spawn_enemys();
         instance_destroy();
