@@ -83,7 +83,17 @@ room_goto(rm_level);
 
 stringA = string_copy(string1,1,letters);
 
-if place_meeting(x,y,obj_controllerCursor)
+// new shit
+if(device_mouse_check_button_released(0,mb_left))
+{
+    if selected == 1
+    {
+        alarm[0] = 1;
+    }
+}
+
+//if place_meeting(x,y,obj_controllerCursor)
+if(device_mouse_check_button(0,mb_left))
 {
     selected = 1;
 }
@@ -111,13 +121,15 @@ if selected == 0
     letters = 0;
 }
 
-if (key_A)
+/*
+if(key_A))
 {
     if selected == 1
     {
         alarm[0] = 1;
     }
 }
+*/
 
 if (selected == 1)
 {

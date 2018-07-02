@@ -316,8 +316,8 @@
   <rooms name="rooms">
     <room>rooms\rm_initalize</room>
     <room>rooms\rm_level</room>
-    <room>rooms\rm_characterSelect</room>
     <room>rooms\rm_upgrade</room>
+    <room>rooms\rm_characterSelect</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>
