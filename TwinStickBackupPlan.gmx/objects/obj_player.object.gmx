@@ -603,7 +603,7 @@ if (max(abs(m_hStickR), abs(m_vStickR) &gt;= 0.6)
             for (i=0; i&lt;5; i++)
             {
                 bullet = instance_create(x, y, obj_bulletNormal);
-                bullet.m_Angle = bulletAngle + (i * 15) - 30;
+                bullet.m_Angle = bulletAngle + (i * 15) - 30 +  + random_range(-5, 5);;
                 bullet.image_angle = bulletAngle     
             };
                          
