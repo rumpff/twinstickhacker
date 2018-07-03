@@ -101,7 +101,7 @@ m_pointerRotation = 0;
 m_pointerAlpha = 0;
 
 m_drawHealth = 100;
-m_healthbarTimer = 0;
+m_healthbarTimer = 300;
 m_healthbarAlpha = 1;
 m_gettingDamage = false;
 </string>
@@ -778,7 +778,7 @@ m_pointerAlpha = lerp(m_pointerAlpha, m_pointerActive, 0.3);
             <kind>1</kind>
             <string>/// Slow the player down
 
-if (m_triggerRight &gt; 0.4)
+if (max(abs(m_hStickR), abs(m_vStickR) &gt;= 0.6))
 {
     m_fireDecrease = lerp(m_fireDecrease, 0.55, 0.1);
 }
