@@ -25,7 +25,7 @@ global.upgradeComboTime = 1;
 
 global.enemyKilled = false;
 
-global.currentStage = 1;
+global.currentStage = 5;
 
 global.currentCombo = 0;
 

@@ -3,10 +3,11 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
+  <datafiles number="1" name="datafiles"/>
   <NewExtensions>
-    <extension index="1">extensions\Draw Text Outlined</extension>
-    <extension index="2">extensions\Easing and Tweening</extension>
-    <extension index="3">extensions\Draw Trail</extension>
+    <extension index="0">extensions\Draw Text Outlined</extension>
+    <extension index="1">extensions\Easing and Tweening</extension>
+    <extension index="2">extensions\Draw Trail</extension>
   </NewExtensions>
   <sounds name="sound">
     <sound>sound\bgm_narwhalsIntro</sound>
@@ -29,6 +30,7 @@
     <sound>sound\snd_shootShell</sound>
     <sound>sound\snd_shootSmall</sound>
     <sound>sound\snd_temp</sound>
+    <sound>sound\snd_kamikaze</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="_Temp">
@@ -144,6 +146,7 @@
     <sprite>sprites\spr_shockwave</sprite>
     <sprite>sprites\spr_dot</sprite>
     <sprite>sprites\spr_pointer</sprite>
+    <sprite>sprites\spr_explosion</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background2</background>
@@ -317,13 +320,12 @@
     <object>objects\obj_blood</object>
     <object>objects\obj_newScoreVisual</object>
     <object>objects\obj_bgmController</object>
-    <object>objects\wuhrfew</object>
     <object>objects\obj_glitchShader</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_initalize</room>
-    <room>rooms\rm_characterSelect</room>
     <room>rooms\rm_level</room>
+    <room>rooms\rm_characterSelect</room>
     <room>rooms\rm_upgrade</room>
   </rooms>
   <help>
