@@ -8,7 +8,7 @@
   <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="3" enumb="2">
+    <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,68 +25,17 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Check for combo breaker
-if (!audio_is_playing(snd_scoreCounter) &amp;&amp; global.enemyKilled == true)
-{
-    m_comboTimer += (1 * global.upgradeComboTime);
-}
-else
-{
-    m_comboTimer = 0;
-}
+            <string>/// initalize shader
+application_surface_draw_enable(false); //disabling automatic redrawing of the application surface
+display_set_gui_size(GAME_WIDTH, GAME_HEIGHT); //making sure the GUI layer stays always the same size
 
-if (m_comboTimer &gt;= m_comboMaxTime &amp;&amp; (instance_number(par_enemy) &gt; 0 || instance_number(obj_enemySpawner) &gt; 0))
-{
-    global.currentCombo = 0;
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Check for dead player
-
-if (global.playerHealth &lt;= 0)
-{
-    m_deathTimer++;
-    
-    if (m_deathTimer &gt; 180)
-    {
-        m_deathAlpha += 0.005;
-        m_deathVolume -= 0.005;
-        
-        if (m_deathAlpha == 1)
-        {
-            audio_stop_sound(bgm_narwhalsIntro);
-            audio_stop_sound(bgm_narwhalsLoop);
-            room_goto(rm_characterSelect);
-        }
-    }
-    
-    audio_sound_gain(bgm_narwhalsIntro, m_deathVolume, 0);
-    audio_sound_gain(bgm_narwhalsLoop, m_deathVolume, 0);
-}
+m_channelShift = 0;
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="7" enumb="4">
+    <event eventtype="3" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -103,21 +52,15 @@ if (global.playerHealth &lt;= 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Initalization
-m_comboTimer = 0;
-m_comboMaxTime = 15;
+            <string>/// Lerp values
 
-m_deathTimer = 0;
-m_deathAlpha = 0;
-m_deathVolume = 1;
-
-global.enemyKilled = false;
+m_channelShift = lerp(m_channelShift, 0, 0.3);
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="8" enumb="75">
+    <event eventtype="7" enumb="5">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -134,21 +77,14 @@ global.enemyKilled = false;
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Draw death fade thing
-
-if (global.playerHealth &lt;= 0)
-{
-    draw_set_color(c_black);
-    draw_set_alpha(m_deathAlpha);
-    draw_rectangle(0, 0, GAME_WIDTH, GAME_HEIGHT, false);
-    draw_set_alpha(1);
-}
+            <string>/// Enable automatic redrawing of the application surface
+application_surface_draw_enable(true);
 </string>
           </argument>
         </arguments>
       </action>
     </event>
-    <event eventtype="9" enumb="18">
+    <event eventtype="8" enumb="74">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -165,7 +101,54 @@ if (global.playerHealth &lt;= 0)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>room_goto(rm_upgrade);
+            <string>/// Draw the shader
+
+//if (os_device == os_macosx){
+//shader_set(shdBktGlitchMac);
+//}else{
+shader_set(shdBktGlitch);
+//}
+
+
+//setting the resolution
+BktGlitch_set_resolution_of_application_surface();
+
+//passing time to the shader (making sure nothing stays static)
+BktGlitch_set_time(current_time * 0.06);
+
+//quickly setting all parameters at once using a preset
+//BktGlitch_config_preset(BktGlitchPreset.C);
+
+//additional tweaking
+/*
+BktGlitch_set_intensity(0.300000);
+BktGlitch_set_line_shift(0.004000);
+BktGlitch_set_line_speed(0.010000);
+BktGlitch_set_line_resolution(1.000000);
+BktGlitch_set_line_drift(0.100000);
+BktGlitch_set_line_vertical_shift(0.000000);
+BktGlitch_set_noise_level(0.500000);
+BktGlitch_set_jumbleness(0.000000);
+BktGlitch_set_jumble_speed(0.000000);
+BktGlitch_set_jumble_resolution(0.000000);
+BktGlitch_set_jumble_shift(0.000000);
+BktGlitch_set_channel_shift(0.004000);
+BktGlitch_set_channel_dispersion(0.000000);
+BktGlitch_set_shakiness(0.500000);
+BktGlitch_set_rng_seed(0.000000);
+*/
+BktGlitch_config(0.001667, 
+0.476667, 3.000000, 0.000000, 
+0.000000, 0.146667, 0.000000, 
+0.000000, 0.000000, 0.746667, 
+m_channelShift, 0.013333, 1.266667, 
+0.366667, 36.000000, current_time * 0.06);
+
+//drawing the application surface
+draw_surface(application_surface, 0, 0);
+
+//done using the shader
+shader_reset();
 </string>
           </argument>
         </arguments>

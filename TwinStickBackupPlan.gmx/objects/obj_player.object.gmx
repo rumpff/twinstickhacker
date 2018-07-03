@@ -433,17 +433,9 @@ m_oldPosY = y;
 m_hStickL = gamepad_axis_value(m_gpId, gp_axislh);
 m_vStickL = gamepad_axis_value(m_gpId, gp_axislv);
 
-//vstick
-m_hStickL = vstick_get_xaxis(0);
-m_vStickL = vstick_get_yaxis(0);
-
 // Right stick
 m_hStickR = gamepad_axis_value(m_gpId, gp_axisrh);
 m_vStickR = gamepad_axis_value(m_gpId, gp_axisrv);
-
-//vstick
-m_hStickR = vstick_get_xaxis(1);
-m_vStickR = vstick_get_yaxis(1);
 
 // Triggers
 m_triggerRight = gamepad_button_value(m_gpId, gp_shoulderrb)

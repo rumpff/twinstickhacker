@@ -4,33 +4,31 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions>
-    <extension index="0">extensions\Eight-bit chillout Shader</extension>
     <extension index="1">extensions\Draw Text Outlined</extension>
     <extension index="2">extensions\Easing and Tweening</extension>
     <extension index="3">extensions\Draw Trail</extension>
-    <extension index="4">extensions\Virtual Joysticks</extension>
   </NewExtensions>
   <sounds name="sound">
-    <sound>sound\snd_temp</sound>
-    <sound>sound\snd_shootSmall</sound>
-    <sound>sound\snd_shootNormal</sound>
-    <sound>sound\snd_shootShell</sound>
-    <sound>sound\snd_enemyHit</sound>
-    <sound>sound\snd_shootQuintipple</sound>
-    <sound>sound\snd_playerHit</sound>
-    <sound>sound\snd_playerDie</sound>
-    <sound>sound\snd_enemyDie</sound>
-    <sound>sound\snd_scoreCounter</sound>
-    <sound>sound\snd_roomTransition</sound>
-    <sound>sound\snd_roomEnter</sound>
-    <sound>sound\snd_shootEnemy</sound>
-    <sound>sound\snd_comboBreaker</sound>
-    <sound>sound\snd_selectUpgrade</sound>
     <sound>sound\bgm_narwhalsIntro</sound>
     <sound>sound\bgm_narwhalsLoop</sound>
-    <sound>sound\snd_choose</sound>
-    <sound>sound\snd_select</sound>
     <sound>sound\snd_back</sound>
+    <sound>sound\snd_choose</sound>
+    <sound>sound\snd_comboBreaker</sound>
+    <sound>sound\snd_enemyDie</sound>
+    <sound>sound\snd_enemyHit</sound>
+    <sound>sound\snd_playerDie</sound>
+    <sound>sound\snd_playerHit</sound>
+    <sound>sound\snd_roomEnter</sound>
+    <sound>sound\snd_roomTransition</sound>
+    <sound>sound\snd_scoreCounter</sound>
+    <sound>sound\snd_select</sound>
+    <sound>sound\snd_selectUpgrade</sound>
+    <sound>sound\snd_shootEnemy</sound>
+    <sound>sound\snd_shootNormal</sound>
+    <sound>sound\snd_shootQuintipple</sound>
+    <sound>sound\snd_shootShell</sound>
+    <sound>sound\snd_shootSmall</sound>
+    <sound>sound\snd_temp</sound>
   </sounds>
   <sprites name="sprites">
     <sprites name="_Temp">
@@ -133,7 +131,6 @@
       <sprite>sprites\spr_window</sprite>
       <sprite>sprites\spr_folder</sprite>
     </sprites>
-    <sprite>sprites\WAIFUUUUUUU</sprite>
     <sprite>sprites\spr_damageOverlay</sprite>
     <sprite>sprites\spr_uiOverlay</sprite>
     <sprite>sprites\sprite50</sprite>
@@ -160,6 +157,37 @@
   </backgrounds>
   <paths name="paths"/>
   <scripts name="scripts">
+    <scripts name="BktGlitch">
+      <script>scripts\BktGlitch_config.gml</script>
+      <script>scripts\BktGlitch_config_preset.gml</script>
+      <script>scripts\BktGlitch_config_zero.gml</script>
+      <script>scripts\BktGlitch_init.gml</script>
+      <script>scripts\BktGlitch_set_resolution_of_application_surface.gml</script>
+      <script>scripts\BktGlitch_set_resolution_of_gui.gml</script>
+      <scripts name="parameters">
+        <script>scripts\BktGlitch_set_channel_dispersion.gml</script>
+        <script>scripts\BktGlitch_set_channel_shift.gml</script>
+        <script>scripts\BktGlitch_set_intensity.gml</script>
+        <script>scripts\BktGlitch_set_jumble_resolution.gml</script>
+        <script>scripts\BktGlitch_set_jumble_shift.gml</script>
+        <script>scripts\BktGlitch_set_jumble_speed.gml</script>
+        <script>scripts\BktGlitch_set_jumbleness.gml</script>
+        <script>scripts\BktGlitch_set_line_drift.gml</script>
+        <script>scripts\BktGlitch_set_line_resolution.gml</script>
+        <script>scripts\BktGlitch_set_line_shift.gml</script>
+        <script>scripts\BktGlitch_set_line_speed.gml</script>
+        <script>scripts\BktGlitch_set_line_vertical_shift.gml</script>
+        <script>scripts\BktGlitch_set_noise_level.gml</script>
+        <script>scripts\BktGlitch_set_resolution.gml</script>
+        <script>scripts\BktGlitch_set_rng_seed.gml</script>
+        <script>scripts\BktGlitch_set_shakiness.gml</script>
+        <script>scripts\BktGlitch_set_time.gml</script>
+      </scripts>
+    </scripts>
+    <scripts name="Camera">
+      <script>scripts\scr_screenshake.gml</script>
+      <script>scripts\scr_cameraKnockback.gml</script>
+    </scripts>
     <scripts name="Easing">
       <script>scripts\ease_in_back.gml</script>
       <script>scripts\ease_in_bounce.gml</script>
@@ -193,6 +221,17 @@
       <script>scripts\ease_out_quint.gml</script>
       <script>scripts\ease_out_sine.gml</script>
     </scripts>
+    <scripts name="Game">
+      <script>scripts\scr_addScore.gml</script>
+      <script>scripts\spawn_enemys.gml</script>
+      <script>scripts\add_combo.gml</script>
+      <script>scripts\scr_damagePlayer.gml</script>
+    </scripts>
+    <scripts name="Grid">
+      <script>scripts\scr_gridPlaceMeeting.gml</script>
+      <script>scripts\scr_move.gml</script>
+      <script>scripts\scr_pathToPlayer.gml</script>
+    </scripts>
     <scripts name="Trails">
       <script>scripts\draw_trail.gml</script>
       <script>scripts\trail_init.gml</script>
@@ -201,49 +240,18 @@
       <script>scripts\trail_calculate_ext.gml</script>
       <script>scripts\trail_destroy.gml</script>
     </scripts>
-    <scripts name="Virtual Joystick">
-      <script>scripts\vstick_set_frontsprite.gml</script>
-      <script>scripts\vstick_get_frontsprite.gml</script>
-      <script>scripts\vstick_set_backsprite.gml</script>
-      <script>scripts\vstick_get_backsprite.gml</script>
-      <script>scripts\vstick_get_active.gml</script>
-      <script>scripts\vstick_set_active.gml</script>
-      <script>scripts\vstick_set_radius.gml</script>
-      <script>scripts\vstick_get_radius.gml</script>
-      <script>scripts\vstick_set_y.gml</script>
-      <script>scripts\vstick_get_y.gml</script>
-      <script>scripts\vstick_set_x.gml</script>
-      <script>scripts\vstick_get_x.gml</script>
-      <script>scripts\vstick_get_yaxis.gml</script>
-      <script>scripts\vstick_get_xaxis.gml</script>
-      <script>scripts\vstick_get_direction.gml</script>
-      <script>scripts\vstick_get_deviation.gml</script>
-      <script>scripts\vstick_check.gml</script>
-      <script>scripts\vstick_check_pressed.gml</script>
-      <script>scripts\vstick_check_released.gml</script>
-      <script>scripts\vstick_draw.gml</script>
-      <script>scripts\vstick_step.gml</script>
-      <script>scripts\vstick_init.gml</script>
+    <scripts name="Utility">
+      <script>scripts\lerp_angle.gml</script>
+      <script>scripts\draw_text_outline_transformed.gml</script>
+      <script>scripts\draw_wave_off.gml</script>
+      <script>scripts\draw_text_outline.gml</script>
+      <script>scripts\sleep.gml</script>
+      <script>scripts\draw_rectangle_width.gml</script>
     </scripts>
-    <script>scripts\scr_gridPlaceMeeting.gml</script>
-    <script>scripts\scr_move.gml</script>
-    <script>scripts\scr_pathToPlayer.gml</script>
-    <script>scripts\draw_rectangle_width.gml</script>
-    <script>scripts\scr_damagePlayer.gml</script>
-    <script>scripts\scr_cameraKnockback.gml</script>
-    <script>scripts\scr_screenshake.gml</script>
-    <script>scripts\scr_addScore.gml</script>
-    <script>scripts\draw_text_outline.gml</script>
-    <script>scripts\draw_text_outline_transformed.gml</script>
-    <script>scripts\sleep.gml</script>
-    <script>scripts\add_combo.gml</script>
-    <script>scripts\spawn_enemys.gml</script>
-    <script>scripts\draw_wave_off.gml</script>
-    <script>scripts\initalize_virtual_sticks.gml</script>
-    <script>scripts\lerp_angle.gml</script>
   </scripts>
   <shaders name="shaders">
-    <shader type="GLSLES">shaders\fx8bitChilloutColor.shader</shader>
+    <shader type="GLSLES">shaders\shdBktGlitch.shader</shader>
+    <shader type="GLSLES">shaders\shdBktGlitchMac.shader</shader>
   </shaders>
   <fonts name="fonts">
     <font>fonts\font0</font>
@@ -276,7 +284,6 @@
     </objects>
     <object>objects\obj_collider</object>
     <object>objects\debugChanger</object>
-    <object>objects\obj_shader</object>
     <object>objects\obj_cursor</object>
     <objects name="Menu">
       <object>objects\obj_window</object>
@@ -292,7 +299,6 @@
     <object>objects\obj_backToSelect</object>
     <object>objects\obj_screenshake</object>
     <object>objects\obj_gameManager</object>
-    <object>objects\obj_trippySurface</object>
     <object>objects\par_trippy</object>
     <object>objects\obj_stageClearController</object>
     <object>objects\obj_comboCount</object>
@@ -312,12 +318,13 @@
     <object>objects\obj_newScoreVisual</object>
     <object>objects\obj_bgmController</object>
     <object>objects\wuhrfew</object>
+    <object>objects\obj_glitchShader</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_initalize</room>
+    <room>rooms\rm_characterSelect</room>
     <room>rooms\rm_level</room>
     <room>rooms\rm_upgrade</room>
-    <room>rooms\rm_characterSelect</room>
   </rooms>
   <help>
     <rtf>help.rtf</rtf>

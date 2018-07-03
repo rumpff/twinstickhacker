@@ -25,8 +25,8 @@ global.upgradeComboTime = 1;</code>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
   <makerSettings>
     <isSet>-1</isSet>
-    <w>1012</w>
-    <h>606</h>
+    <w>1020</w>
+    <h>602</h>
     <showGrid>-1</showGrid>
     <showObjects>-1</showObjects>
     <showTiles>-1</showTiles>
@@ -35,7 +35,7 @@ global.upgradeComboTime = 1;</code>
     <showViews>0</showViews>
     <deleteUnderlyingObj>0</deleteUnderlyingObj>
     <deleteUnderlyingTiles>-1</deleteUnderlyingTiles>
-    <page>1</page>
+    <page>3</page>
     <xoffset>-233</xoffset>
     <yoffset>-94</yoffset>
   </makerSettings>
@@ -61,8 +61,8 @@ global.upgradeComboTime = 1;</code>
   </views>
   <instances>
     <instance objName="obj_playerModifier" x="64" y="32" name="inst_1F77FC4A" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
-    <instance objName="obj_trippySurface" x="32" y="32" name="inst_AECD6D8C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
     <instance objName="obj_circleBackground2" x="96" y="32" name="inst_3231FF1C" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
+    <instance objName="obj_glitchShader" x="128" y="32" name="inst_A25FCEC6" locked="0" code="" scaleX="1" scaleY="1" colour="4294967295" rotation="0"/>
   </instances>
   <tiles/>
   <PhysicsWorld>0</PhysicsWorld>
