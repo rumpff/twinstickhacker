@@ -187,6 +187,9 @@
         <script>scripts\BktGlitch_set_time.gml</script>
       </scripts>
     </scripts>
+    <scripts name="Bullets">
+      <script>scripts\initalize_bullet.gml</script>
+    </scripts>
     <scripts name="Camera">
       <script>scripts\scr_screenshake.gml</script>
       <script>scripts\scr_cameraKnockback.gml</script>
@@ -250,6 +253,7 @@
       <script>scripts\draw_text_outline.gml</script>
       <script>scripts\sleep.gml</script>
       <script>scripts\draw_rectangle_width.gml</script>
+      <script>scripts\to_deltatime.gml</script>
     </scripts>
   </scripts>
   <shaders name="shaders">
@@ -270,6 +274,7 @@
         <object>objects\obj_bulletSmall</object>
         <object>objects\obj_bulletShell</object>
         <object>objects\obj_bulletImpact</object>
+        <object>objects\par_bullet</object>
       </objects>
       <object>objects\obj_player</object>
       <object>objects\obj_playerParticle</object>
@@ -302,7 +307,6 @@
     <object>objects\obj_backToSelect</object>
     <object>objects\obj_screenshake</object>
     <object>objects\obj_gameManager</object>
-    <object>objects\par_trippy</object>
     <object>objects\obj_stageClearController</object>
     <object>objects\obj_comboCount</object>
     <object>objects\obj_comboParticle</object>

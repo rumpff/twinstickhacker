@@ -116,7 +116,7 @@ for (var yy = 0; yy &lt; height; yy++) {
 var odds = 60;
 var ex = xx*CELL_WIDTH+CELL_WIDTH/2;
 var ey = yy*CELL_HEIGHT+CELL_HEIGHT/2;
-if (point_distance(ex, ey, obj_player.x, obj_player.y) &gt; 80 &amp;&amp; irandom(odds) == odds){
+if (point_distance(ex, ey, obj_player.x, obj_player.y) &gt; 512 &amp;&amp; irandom(odds) == odds){
 instance_create(ex, ey, obj_enemySpawner);
 }
         } else {
@@ -246,7 +246,7 @@ for (var yy = 0; yy &lt; height*2; yy++) {
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>//Destroy the grid
+            <string>/// Destroy the grid
 ds_grid_destroy(grid);
 mp_grid_destroy(grid_path);
 </string>

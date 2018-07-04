@@ -30,6 +30,7 @@ application_surface_draw_enable(false); //disabling automatic redrawing of the a
 display_set_gui_size(GAME_WIDTH, GAME_HEIGHT); //making sure the GUI layer stays always the same size
 
 m_channelShift = 0;
+m_lineShift = 0.001667;
 </string>
           </argument>
         </arguments>
@@ -55,6 +56,7 @@ m_channelShift = 0;
             <string>/// Lerp values
 
 m_channelShift = lerp(m_channelShift, 0, 0.3);
+m_lineShift = lerp(m_lineShift, 0.001667, 0.3);
 </string>
           </argument>
         </arguments>
@@ -137,7 +139,7 @@ BktGlitch_set_channel_dispersion(0.000000);
 BktGlitch_set_shakiness(0.500000);
 BktGlitch_set_rng_seed(0.000000);
 */
-BktGlitch_config(0.001667, 
+BktGlitch_config(m_lineShift, 
 0.476667, 3.000000, 0.000000, 
 0.000000, 0.146667, 0.000000, 
 0.000000, 0.000000, 0.746667, 

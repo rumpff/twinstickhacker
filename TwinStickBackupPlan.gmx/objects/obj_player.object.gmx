@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-11</depth>
   <persistent>0</persistent>
-  <parentName>par_trippy</parentName>
+  <parentName>&lt;undefined&gt;</parentName>
   <maskName>spr_player_hitbox</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -586,8 +586,8 @@ if (max(abs(m_hStickR), abs(m_vStickR) &gt;= 0.6)
         case weapon_1:       
             var bulletAngle = m_aimDirection + random_range(-5, 5);        
             bullet = instance_create(x, y, obj_bulletNormal);
-            bullet.m_Angle = bulletAngle
-            bullet.image_angle = bulletAngle   
+            bullet.m_angle = bulletAngle;
+            bullet.image_angle = bulletAngle;
             bullet.m_glowCollor = m_glowCollor;     
             m_shootCooldown = 6;
             var snd = audio_play_sound(snd_shootNormal, 1, 0);
@@ -601,8 +601,8 @@ if (max(abs(m_hStickR), abs(m_vStickR) &gt;= 0.6)
             for (i=0; i&lt;5; i++)
             {
                 bullet = instance_create(x, y, obj_bulletNormal);
-                bullet.m_Angle = bulletAngle + (i * 15) - 30 +  + random_range(-5, 5);;
-                bullet.image_angle = bulletAngle     
+                bullet.m_angle = bulletAngle + (i * 15) - 30 +  + random_range(-5, 5);;
+                bullet.image_angle = bulletAngle;
             };
                          
             m_shootCooldown = 15;
@@ -613,8 +613,8 @@ if (max(abs(m_hStickR), abs(m_vStickR) &gt;= 0.6)
         case weapon_3:
             var bulletAngle = m_aimDirection + random_range(-1,1);
             bullet = instance_create(x, y, obj_bulletSmall);
-            bullet.m_Angle = bulletAngle;
-            bullet.image_angle = bulletAngle
+            bullet.m_angle = bulletAngle;
+            bullet.image_angle = bulletAngle;
             m_shootCooldown = 4; 
             audio_play_sound(snd_shootSmall, 1, 0);
             scr_cameraKnockback(m_aimDirection, 6);
@@ -623,8 +623,8 @@ if (max(abs(m_hStickR), abs(m_vStickR) &gt;= 0.6)
         case weapon_4:
             var bulletAngle = m_aimDirection;
             bullet = instance_create(x, y, obj_bulletShell);
-            bullet.m_Angle = bulletAngle;
-            bullet.image_angle = bulletAngle
+            bullet.m_angle = bulletAngle;
+            bullet.image_angle = bulletAngle;
             m_shootCooldown = 50; 
             audio_play_sound(snd_shootShell, 1, 0);
             scr_cameraKnockback(m_aimDirection, 35);
