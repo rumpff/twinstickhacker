@@ -93,10 +93,10 @@ m_explode = false;
           <argument>
             <kind>1</kind>
             <string>m_timer++;
-m_sinNumb += 0.042
+m_sinNumb += to_deltatime(0.042);
 
 m_angle = sin(m_sinNumb) * 10;
-m_scale = lerp(m_scale, 1.2, 0.1);
+m_scale = lerp(m_scale, 1.2, to_deltatime(0.1));
 </string>
           </argument>
         </arguments>

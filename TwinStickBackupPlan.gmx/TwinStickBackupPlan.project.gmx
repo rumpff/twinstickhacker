@@ -147,6 +147,7 @@
     <sprite>sprites\spr_dot</sprite>
     <sprite>sprites\spr_pointer</sprite>
     <sprite>sprites\spr_explosion</sprite>
+    <sprite>sprites\spr_lasersightEnd</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background2</background>

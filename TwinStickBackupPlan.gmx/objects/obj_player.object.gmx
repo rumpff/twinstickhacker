@@ -94,6 +94,10 @@ m_trailOffsetY = 0;
 
 m_dashMultiplier = 1;
 
+m_lasersightX = x;
+m_lasersightY = y;
+m_lasersightLength = 0;
+
 m_pointerActive = false;
 m_pointerX = 0;
 m_pointerY = 0;
@@ -497,11 +501,11 @@ angle_diff = angle_difference(angle_prev,angle_next); // get the difference betw
 
 angle_next = angle_prev-angle_diff; // convert the angle to a number outside of 0-360 if needed
 
-m_aimDirection = lerp(m_aimDirection, angle_next, 0.4);
+m_aimDirection = lerp(m_aimDirection, angle_next, to_deltatime(0.4));
 
 // Movement lerp
-m_hStickLMovement = lerp(m_hStickLMovement, m_hStickL, 0.2);
-m_vStickLMovement = lerp(m_vStickLMovement, m_vStickL, 0.2);
+m_hStickLMovement = lerp(m_hStickLMovement, m_hStickL, to_deltatime(0.2));
+m_vStickLMovement = lerp(m_vStickLMovement, m_vStickL, to_deltatime(0.2));
 </string>
           </argument>
         </arguments>
@@ -553,6 +557,47 @@ else
     y += m_vStickLMovement * m_maxSpeed// * m_moveMultiplier;
 }
 */
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Calculate laser sight position
+
+var laserx, lasery, length;
+
+m_lasersightX = x;
+m_lasersightY = y;
+
+for (i=0; i &lt; 512; i+=1)
+{
+    length = i;
+    laserx = m_oldPosX + lengthdir_x(length, m_aimDirection);
+    lasery = m_oldPosY + lengthdir_y(length, m_aimDirection);
+    
+    if (scr_gridPlaceMeeting(laserx, lasery))
+        break;
+};
+
+m_lasersightLength = lerp(m_lasersightLength, length, to_deltatime(0.4));
+
+m_lasersightX = m_oldPosX + lengthdir_x(m_lasersightLength, m_aimDirection);
+m_lasersightY = m_oldPosY + lengthdir_y(m_lasersightLength, m_aimDirection);
 </string>
           </argument>
         </arguments>
@@ -636,7 +681,7 @@ if (max(abs(m_hStickR), abs(m_vStickR) &gt;= 0.6)
     }
 }
 
-if (m_shootCooldown &gt; 0) { m_shootCooldown -= 1 * global.upgradeFireRate; }
+if (m_shootCooldown &gt; 0) { m_shootCooldown -= to_deltatime(1 * global.upgradeFireRate); }
 </string>
           </argument>
         </arguments>
@@ -723,7 +768,7 @@ if(instance_number(par_enemy) == 0 &amp;&amp; instance_number(obj_enemySpawner) 
     
     m_pointerActive = true;
     
-    m_pointerRotation = lerp_angle(m_pointerRotation, point_direction(x, y, target.x, target.y), 0.4);
+    m_pointerRotation = lerp_angle(m_pointerRotation, point_direction(x, y, target.x, target.y), to_deltatime(0.4));
     
     m_pointerX = x + lengthdir_x(64, m_pointerRotation);
     m_pointerY = y + lengthdir_y(64, m_pointerRotation);
@@ -733,7 +778,7 @@ else
     m_pointerActive = false;
 }
 
-m_pointerAlpha = lerp(m_pointerAlpha, m_pointerActive, 0.3);
+m_pointerAlpha = lerp(m_pointerAlpha, m_pointerActive, to_deltatime(0.3));
 </string>
           </argument>
         </arguments>
@@ -780,11 +825,11 @@ m_pointerAlpha = lerp(m_pointerAlpha, m_pointerActive, 0.3);
 
 if (max(abs(m_hStickR), abs(m_vStickR) &gt;= 0.6))
 {
-    m_fireDecrease = lerp(m_fireDecrease, 0.55, 0.1);
+    m_fireDecrease = lerp(m_fireDecrease, 0.55, to_deltatime(0.1));
 }
 else
 {
-    m_fireDecrease = lerp(m_fireDecrease, 1, 0.1);
+    m_fireDecrease = lerp(m_fireDecrease, 1, to_deltatime(0.1));
 }
 </string>
           </argument>
@@ -808,14 +853,14 @@ else
             <kind>1</kind>
             <string>/// Animate
 
-m_imageShootTimer++;
+m_imageShootTimer += to_deltatime(1);
 
-if (m_imageShootTimer == m_imageShootMax)
+if (m_imageShootTimer &lt;= m_imageShootMax)
 {
     m_weaponState = 0;
 }
 
-m_drawHealth = lerp(m_drawHealth ,global.playerHealth, 0.33);
+m_drawHealth = lerp(m_drawHealth ,global.playerHealth, to_deltatime(0.33));
 </string>
           </argument>
         </arguments>
@@ -839,7 +884,7 @@ m_drawHealth = lerp(m_drawHealth ,global.playerHealth, 0.33);
             <string>/// Controll abilities
 
 // Dash
-m_dashMultiplier = lerp(m_dashMultiplier, 1, 0.1);
+m_dashMultiplier = lerp(m_dashMultiplier, 1, to_deltatime(0.1));
 </string>
           </argument>
         </arguments>
@@ -863,7 +908,7 @@ m_dashMultiplier = lerp(m_dashMultiplier, 1, 0.1);
             <string>/// Control healthbar
 
 var alpha = 1;
-m_healthbarTimer++;
+m_healthbarTimer += to_deltatime(1);
 
 if(m_gettingDamage)
 {
@@ -876,7 +921,7 @@ if(m_healthbarTimer &gt; 300)
     alpha = 0;
 }
 
-m_healthbarAlpha = lerp(m_healthbarAlpha, alpha, 0.2);
+m_healthbarAlpha = lerp(m_healthbarAlpha, alpha, to_deltatime(0.2));
 </string>
           </argument>
         </arguments>
@@ -899,7 +944,7 @@ m_healthbarAlpha = lerp(m_healthbarAlpha, alpha, 0.2);
             <kind>1</kind>
             <string>/// Dei
 
-if (global.playerHealth &lt; 1)
+if (global.playerHealth &lt;= 0)
 {
     instance_destroy();
 }
@@ -950,7 +995,10 @@ if (global.playerHealth &lt; 1)
             <kind>1</kind>
             <string>/// Draw
 draw_set_color(c_white);
-draw_line_width(m_oldPosX - 1, m_oldPosY - 1, (m_oldPosX - 1) + lengthdir_x(500, m_aimDirection), (m_oldPosY - 1) + lengthdir_y(500, m_aimDirection), 2) 
+//draw_line_width(m_oldPosX - 1, m_oldPosY - 1, (m_oldPosX - 1) + lengthdir_x(500, m_aimDirection), (m_oldPosY - 1) + lengthdir_y(500, m_aimDirection), 2) 
+draw_line(m_oldPosX, m_oldPosY, m_lasersightX, m_lasersightY);
+draw_sprite_ext(spr_lasersightEnd, 0, m_lasersightX, m_lasersightY, 1, 1, m_aimDirection, draw_get_color(), 1);
+
 draw_trail_ext(20,c_white,-1,1,1); 
 
 

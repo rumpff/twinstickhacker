@@ -55,14 +55,9 @@ time = 0;
             <kind>1</kind>
             <string>image_angle = direction;
 image_alpha = ease_in_quint(time, 1, -1, 30);
-time++;
+time += to_deltatime();
 
 if (time == 30)
-{
-    instance_destroy();
-}
-
-if (scr_gridPlaceMeeting(x, y))
 {
     instance_destroy();
 }

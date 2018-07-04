@@ -1,6 +1,6 @@
 ///scr_move(hspd, vspd)
-var hspd = argument[0];
-var vspd = argument[1];
+var hspd = to_deltatime(argument[0]);
+var vspd = to_deltatime(argument[1]);
 
 //Horisontal Collisions
 if (scr_gridPlaceMeeting(x+hspd, y)) {

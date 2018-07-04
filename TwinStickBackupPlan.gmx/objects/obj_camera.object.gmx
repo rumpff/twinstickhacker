@@ -121,7 +121,7 @@ m_vStickR = gamepad_axis_value(0, gp_axisrv);
             <kind>1</kind>
             <string>/// Calculate zoom
 
-m_zoomMultiplier = lerp(m_zoomMultiplier, 1, m_lerpAmount / 2);
+m_zoomMultiplier = lerp(m_zoomMultiplier, 1, to_deltatime(m_lerpAmount / 2));
 </string>
           </argument>
         </arguments>
@@ -172,8 +172,8 @@ if (instance_exists(obj_player))
             <kind>1</kind>
             <string>/// Calculate offset for aim
 
-m_hAim = lerp(m_hAim, (m_hStickR * 192), 0.2);
-m_vAim = lerp(m_vAim, (m_vStickR * 192), 0.2);
+m_hAim = lerp(m_hAim, (m_hStickR * 192), to_deltatime(0.2));
+m_vAim = lerp(m_vAim, (m_vStickR * 192), to_deltatime(0.2));
 </string>
           </argument>
         </arguments>
@@ -196,8 +196,8 @@ m_vAim = lerp(m_vAim, (m_vStickR * 192), 0.2);
             <kind>1</kind>
             <string>/// Calculate current position
 
-m_xPos = lerp(m_xPos, m_xDest - (view_wview / 2) + m_hAim, m_lerpAmount)
-m_yPos = lerp(m_yPos, m_yDest - (view_hview / 2) + m_vAim, m_lerpAmount)
+m_xPos = lerp(m_xPos, m_xDest - (view_wview / 2) + m_hAim, to_deltatime(m_lerpAmount))
+m_yPos = lerp(m_yPos, m_yDest - (view_hview / 2) + m_vAim, to_deltatime(m_lerpAmount))
 </string>
           </argument>
         </arguments>

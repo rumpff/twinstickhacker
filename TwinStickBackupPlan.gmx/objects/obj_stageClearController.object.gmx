@@ -100,7 +100,7 @@ if (m_acitve)
         m_showText = true;
     }
     
-    m_timer++;
+    m_timer += to_deltatime(1);
 }
 </string>
           </argument>
@@ -165,7 +165,7 @@ if (m_showText)
             <string>/// Room Transition
 if (m_timer &gt; 180)
 {
-    m_sinScale++;
+    m_sinScale += to_deltatime();
     //m_viewScale = sin(m_sinScale) * 0.5 + 0.6; 
     if (m_viewScale &gt; 0.1)
     {
@@ -175,7 +175,7 @@ if (m_timer &gt; 180)
     
     if (m_sinScale &gt; 40)
     {
-        m_fadeAlpha += 0.03;
+        m_fadeAlpha += to_deltatime(0.03);
         
         if (!audio_is_playing(snd_roomTransition))
         {

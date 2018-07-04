@@ -28,7 +28,7 @@
             <string>/// Check for combo breaker
 if (!audio_is_playing(snd_scoreCounter) &amp;&amp; global.enemyKilled == true)
 {
-    m_comboTimer += (1 * global.upgradeComboTime);
+    m_comboTimer += to_deltatime(1 * global.upgradeComboTime);
 }
 else
 {
@@ -63,12 +63,12 @@ if (m_comboTimer &gt;= m_comboMaxTime &amp;&amp; (instance_number(par_enemy) &gt
 
 if (global.playerHealth &lt;= 0)
 {
-    m_deathTimer++;
+    m_deathTimer += to_deltatime(1);
     
     if (m_deathTimer &gt; 180)
     {
-        m_deathAlpha += 0.005;
-        m_deathVolume -= 0.005;
+        m_deathAlpha += to_deltatime(0.005);
+        m_deathVolume -= to_deltatime(0.005);
         
         if (m_deathAlpha == 1)
         {
