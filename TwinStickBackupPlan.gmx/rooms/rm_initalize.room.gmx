@@ -18,10 +18,10 @@ global.playerColor = c_black;
 global.playerScore = 0;
 global.playerHealth = 100;
 
-global.upgradeFireRate = 1;
-global.upgradeSpeed = 1;
-global.upgradeBulletDamage = 1;
-global.upgradeComboTime = 1;
+global.upgradeFireRate = 0;
+global.upgradeBulletDamage = 0;
+global.upgradeDrone = 0;
+global.upgradeHealth = 0;
 
 global.enemyKilled = false;
 
@@ -29,7 +29,8 @@ global.currentStage = 1;
 
 global.currentCombo = 0;
 
-global.bgmBPM = 200;
+global.bgmBPM = 212;
+global.bgm = noone;
 
 room_width = GAME_WIDTH;
 room_height = GAME_HEIGHT;
@@ -42,8 +43,8 @@ room_goto_next();</code>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
   <makerSettings>
     <isSet>-1</isSet>
-    <w>1008</w>
-    <h>608</h>
+    <w>992</w>
+    <h>616</h>
     <showGrid>-1</showGrid>
     <showObjects>-1</showObjects>
     <showTiles>-1</showTiles>

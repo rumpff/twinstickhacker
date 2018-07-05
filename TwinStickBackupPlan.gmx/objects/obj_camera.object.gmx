@@ -57,6 +57,9 @@ m_yDest = 0;
 m_xPos = obj_player.x;
 m_yPos = obj_player.y;
 
+m_knockX = 0;
+m_knockY = 0;
+
 m_rot = random_range(-7,7);
 
 m_sinRot = 0;
@@ -71,8 +74,14 @@ m_vZoom = 0;
 m_hStickR = 0;
 m_vStickR = 0;
 
+m_hStickL = 0;
+m_vStickL = 0;
+
 m_hAim = 0;
 m_vAim = 0;
+
+// Zoom depending on what the player is doing
+m_playerZoom = 0;
 </string>
           </argument>
         </arguments>
@@ -99,6 +108,9 @@ m_vAim = 0;
 
 m_hStickR = gamepad_axis_value(0, gp_axisrh);
 m_vStickR = gamepad_axis_value(0, gp_axisrv);
+
+m_hStickL = gamepad_axis_value(0, gp_axislh);
+m_vStickL = gamepad_axis_value(0, gp_axislv);
 </string>
           </argument>
         </arguments>
@@ -122,6 +134,12 @@ m_vStickR = gamepad_axis_value(0, gp_axisrv);
             <string>/// Calculate zoom
 
 m_zoomMultiplier = lerp(m_zoomMultiplier, 1, to_deltatime(m_lerpAmount / 2));
+
+
+var shooting = (max(abs(m_hStickR), abs(m_vStickR)) != 0);
+var moving = (max(abs(m_hStickL), abs(m_vStickL)) != 0);
+
+m_playerZoom = lerp(m_playerZoom, 1 - (0.4 * shooting) + (0.2 * moving) , to_deltatime(m_lerpAmount));
 </string>
           </argument>
         </arguments>
@@ -172,8 +190,8 @@ if (instance_exists(obj_player))
             <kind>1</kind>
             <string>/// Calculate offset for aim
 
-m_hAim = lerp(m_hAim, (m_hStickR * 192), to_deltatime(0.2));
-m_vAim = lerp(m_vAim, (m_vStickR * 192), to_deltatime(0.2));
+m_hAim = lerp(m_hAim, (m_hStickR * 192) + (m_hStickL * 128) , to_deltatime(0.2));
+m_vAim = lerp(m_vAim, (m_vStickR * 192) + (m_vStickL * 128), to_deltatime(0.2));
 </string>
           </argument>
         </arguments>
@@ -196,8 +214,14 @@ m_vAim = lerp(m_vAim, (m_vStickR * 192), to_deltatime(0.2));
             <kind>1</kind>
             <string>/// Calculate current position
 
-m_xPos = lerp(m_xPos, m_xDest - (view_wview / 2) + m_hAim, to_deltatime(m_lerpAmount))
-m_yPos = lerp(m_yPos, m_yDest - (view_hview / 2) + m_vAim, to_deltatime(m_lerpAmount))
+//m_xPos = lerp(m_xPos, m_xDest - (view_wview / 2) + m_hAim, to_deltatime(m_lerpAmount))
+//m_yPos = lerp(m_yPos, m_yDest - (view_hview / 2) + m_vAim, to_deltatime(m_lerpAmount))
+
+m_knockX = lerp(m_knockX, 0, to_deltatime(m_lerpAmount));
+m_knockY = lerp(m_knockY, 0, to_deltatime(m_lerpAmount));
+
+m_xPos = m_xDest - (view_wview / 2) + m_hAim + m_knockX;
+m_yPos = m_yDest - (view_hview / 2) + m_vAim + m_knockY;
 </string>
           </argument>
         </arguments>
@@ -220,8 +244,8 @@ m_yPos = lerp(m_yPos, m_yDest - (view_hview / 2) + m_vAim, to_deltatime(m_lerpAm
             <kind>1</kind>
             <string>/// Apply view stuff
 
-view_wview = GAME_WIDTH * m_zoomMultiplier * m_zoomTransition;
-view_hview = GAME_HEIGHT * m_zoomMultiplier * m_zoomTransition;
+view_wview = GAME_WIDTH * m_zoomMultiplier * m_zoomTransition * m_playerZoom;
+view_hview = GAME_HEIGHT * m_zoomMultiplier * m_zoomTransition * m_playerZoom;
 
 view_xview = m_xPos
 view_yview = m_yPos

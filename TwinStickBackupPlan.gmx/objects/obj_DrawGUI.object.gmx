@@ -196,7 +196,7 @@ if (floor(m_score) != floor(m_scoreOld))
           <argument>
             <kind>1</kind>
             <string>// DEBUG INFO
-draw_set_font(font0);
+draw_set_font(fnt_small);
 draw_set_halign(fa_left);
 draw_set_valign(fa_left);
 draw_set_color(c_red);
@@ -219,7 +219,7 @@ draw_set_color(m_scoreColor);
 //draw_text_transformed(GAME_WIDTH/2, GAME_HEIGHT/6, floor(m_score), m_scoreScale, m_scoreScale, m_scoreAngle);
 draw_text_outline_transformed(GAME_WIDTH/2, GAME_HEIGHT/6, floor(m_score), m_scoreScale * m_scoreScale2, m_scoreScale * m_scoreScale2, m_scoreAngle, 5, c_black, 0);
 draw_set_alpha(1);
-draw_set_font(font0);
+draw_set_font(fnt_small);
 
 
 //draw_sprite(spr_uiOverlay, 0, 0, 0);

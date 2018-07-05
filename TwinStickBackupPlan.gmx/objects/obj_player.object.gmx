@@ -626,6 +626,7 @@ if (max(abs(m_hStickR), abs(m_vStickR) &gt;= 0.6)
 {
     m_weaponState = 1;
     m_imageShootTimer = 0; 
+    
     switch(m_playerWeapon)
     {
         case weapon_1:       
@@ -675,13 +676,28 @@ if (max(abs(m_hStickR), abs(m_vStickR) &gt;= 0.6)
             scr_cameraKnockback(m_aimDirection, 35);
             break;
             
+        case weapon_5:
+            // destroy any previous laser
+            with(obj_laserBottom)
+            { instance_destroy(); }
+        
+            var bulletAngle = m_aimDirection;
+            bullet = instance_create(x, y, obj_laserBottom);
+            bullet.m_angle = bulletAngle;
+            bullet.image_angle = bulletAngle;
+            m_shootCooldown = 60; 
+            var snd = audio_play_sound(snd_shootLaser, 1, 0);
+            audio_sound_pitch(snd, random_range(0.7, 1.3));
+            scr_cameraKnockback(m_aimDirection, 50);
+            break;
+            
         default:
             m_shootCooldown = 5;
         
     }
 }
 
-if (m_shootCooldown &gt; 0) { m_shootCooldown -= to_deltatime(1 * global.upgradeFireRate); }
+if (m_shootCooldown &gt; 0) { m_shootCooldown -= to_deltatime(1 + (global.upgradeFireRate * 0.2)); }
 </string>
           </argument>
         </arguments>
@@ -853,9 +869,8 @@ else
             <kind>1</kind>
             <string>/// Animate
 
-m_imageShootTimer += to_deltatime(1);
-
-if (m_imageShootTimer &lt;= m_imageShootMax)
+m_imageShootTimer += to_deltatime();
+if (m_imageShootTimer &gt;= m_imageShootMax)
 {
     m_weaponState = 0;
 }
@@ -881,7 +896,7 @@ m_drawHealth = lerp(m_drawHealth ,global.playerHealth, to_deltatime(0.33));
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Controll abilities
+            <string>/// Control abilities
 
 // Dash
 m_dashMultiplier = lerp(m_dashMultiplier, 1, to_deltatime(0.1));

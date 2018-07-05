@@ -55,7 +55,7 @@ if(instance_exists(m_target))
 {
     if(distance_to_object(m_target) &lt; 192)
     {
-        var angle_prev = m_Angle; 
+        var angle_prev = m_angle; 
         var angle_next = point_direction(x,y,m_target.x,m_target.y);
         var angle_diff = angle_difference(angle_prev,angle_next);
         
