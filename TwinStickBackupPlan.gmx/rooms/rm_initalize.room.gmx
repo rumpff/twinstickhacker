@@ -31,6 +31,7 @@ global.currentCombo = 0;
 
 global.bgmBPM = 212;
 global.bgm = noone;
+global.bgmActive = false;
 
 room_width = GAME_WIDTH;
 room_height = GAME_HEIGHT;
@@ -43,8 +44,8 @@ room_goto_next();</code>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
   <makerSettings>
     <isSet>-1</isSet>
-    <w>992</w>
-    <h>616</h>
+    <w>1016</w>
+    <h>604</h>
     <showGrid>-1</showGrid>
     <showObjects>-1</showObjects>
     <showTiles>-1</showTiles>

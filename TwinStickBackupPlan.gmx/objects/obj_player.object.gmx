@@ -496,6 +496,10 @@ if (m_hStickR != 0 || m_vStickR != 0)
 // Calcutate angle
 if (m_hStickR != 0 || m_vStickR != 0) 
 { angle_next = point_direction(x, y, x + m_hStickR, y + m_vStickR); } // The angle with "made" with the stick
+// If the player isn't shooting but is moving
+else if(m_hStickL != 0 || m_vStickL != 0)
+{ angle_next = point_direction(x, y, x + m_hStickL, y + m_vStickL); } // The angle with "made" with the stick
+
 angle_prev = m_aimDirection; // the last angle of the image
 angle_diff = angle_difference(angle_prev,angle_next); // get the difference between the angle
 

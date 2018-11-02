@@ -61,6 +61,8 @@ if (!audio_is_playing(bgm_narwhalsIntro) &amp;&amp; !audio_is_playing(bgm_narwha
 {
     global.bgm = audio_play_sound(bgm_narwhalsLoop, 1 , true);
 }
+
+audio_sound_gain(global.bgm, global.bgmActive, 0);
 </string>
           </argument>
         </arguments>
