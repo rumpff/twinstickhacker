@@ -5,10 +5,10 @@
   <visible>-1</visible>
   <depth>-9</depth>
   <persistent>0</persistent>
-  <parentName>par_trippy</parentName>
+  <parentName>par_bullet</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
-    <event eventtype="3" enumb="0">
+    <event eventtype="0" enumb="0">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -25,65 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>image_angle = m_Angle;
-motion_set(m_Angle, 38);
-
-if (scr_gridPlaceMeeting(x, y)) 
-{ 
-    impact = instance_create(x, y, obj_bulletImpact);
-    impact.sprite_index = spr_bulletNormal_impact;
-    impact.image_angle = m_Angle;
-    instance_destroy(); 
-}
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="4" ename="par_enemy">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>other.hp -= 2 * global.upgradeBulletDamage;
-audio_play_sound(snd_enemyHit, 1, 0);
-instance_destroy();
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="8" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>draw_self();
-//draw_sprite_ext(spr_bulletNormalGlow, 0, x, y, 1, 1, image_angle, m_glowCollor, image_alpha);
+            <string>initalize_bullet(2, 38);
 </string>
           </argument>
         </arguments>

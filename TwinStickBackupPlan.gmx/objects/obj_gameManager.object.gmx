@@ -28,7 +28,7 @@
             <string>/// Check for combo breaker
 if (!audio_is_playing(snd_scoreCounter) &amp;&amp; global.enemyKilled == true)
 {
-    m_comboTimer += (1 * global.upgradeComboTime);
+    m_comboTimer += to_deltatime(1 * global.upgradeComboTime);
 }
 else
 {
@@ -63,12 +63,12 @@ if (m_comboTimer &gt;= m_comboMaxTime &amp;&amp; (instance_number(par_enemy) &gt
 
 if (global.playerHealth &lt;= 0)
 {
-    m_deathTimer++;
+    m_deathTimer += to_deltatime(1);
     
     if (m_deathTimer &gt; 180)
     {
-        m_deathAlpha += 0.005;
-        m_deathVolume -= 0.005;
+        m_deathAlpha += to_deltatime(0.005);
+        m_deathVolume -= to_deltatime(0.005);
         
         if (m_deathAlpha == 1)
         {
@@ -81,32 +81,6 @@ if (global.playerHealth &lt;= 0)
     audio_sound_gain(bgm_narwhalsIntro, m_deathVolume, 0);
     audio_sound_gain(bgm_narwhalsLoop, m_deathVolume, 0);
 }
-</string>
-          </argument>
-        </arguments>
-      </action>
-    </event>
-    <event eventtype="3" enumb="0">
-      <action>
-        <libid>1</libid>
-        <id>603</id>
-        <kind>7</kind>
-        <userelative>0</userelative>
-        <isquestion>0</isquestion>
-        <useapplyto>-1</useapplyto>
-        <exetype>2</exetype>
-        <functionname></functionname>
-        <codestring></codestring>
-        <whoName>self</whoName>
-        <relative>0</relative>
-        <isnot>0</isnot>
-        <arguments>
-          <argument>
-            <kind>1</kind>
-            <string>/// Update virtual sticks
-
-vstick_step(0);
-vstick_step(1);
 </string>
           </argument>
         </arguments>
@@ -138,9 +112,6 @@ m_deathAlpha = 0;
 m_deathVolume = 1;
 
 global.enemyKilled = false;
-
-initalize_virtual_sticks();
-
 </string>
           </argument>
         </arguments>

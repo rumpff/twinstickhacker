@@ -41,7 +41,7 @@ m_multiplier = 1;
         </arguments>
       </action>
     </event>
-    <event eventtype="3" enumb="0">
+    <event eventtype="3" enumb="2">
       <action>
         <libid>1</libid>
         <id>603</id>
@@ -158,17 +158,19 @@ surface_free(m_surfGreen);
             <string>/// Draw color surfaces
 if (surface_exists(m_surfRed))
 {
-    draw_surface_ext(m_surfRed, view_xview[0] + 3 * m_multiplier, view_yview[0], 1, 1, 0, c_red, 0.3);
+    //draw_surface_ext(m_surfRed, view_xview[0] + 3 * m_multiplier, view_yview[0], 1, 1, 0, c_red, 0.3);
+    draw_surface_ext(m_surfRed, view_xview[0] - (3 * m_multiplier), view_yview[0], 1, 1, 0, c_green, 0.6);
 }
 
 if (surface_exists(m_surfBlue))
 {
-    draw_surface_ext(m_surfBlue, view_xview[0] - 2 * m_multiplier, view_yview[0] - 3 * m_multiplier, 1, 1, 0, c_blue, 0.3);
+    //draw_surface_ext(m_surfBlue, view_xview[0] - 2 * m_multiplier, view_yview[0] - 3 * m_multiplier, 1, 1, 0, c_blue, 0.3);
+    draw_surface_ext(m_surfBlue, view_xview[0] + (3 * m_multiplier), view_yview[0], 1, 1, 0, c_purple, 0.6);
 }
 
 if (surface_exists(m_surfGreen))
 {
-    draw_surface_ext(m_surfGreen, view_xview[0] - 1 * m_multiplier, view_yview[0] + 3 * m_multiplier, 1, 1, 0, c_lime, 0.3);
+    //draw_surface_ext(m_surfGreen, view_xview[0] - 1 * m_multiplier, view_yview[0] + 3 * m_multiplier, 1, 1, 0, c_lime, 0.3);
 }
 if (surface_exists(m_surfNormal))
 {

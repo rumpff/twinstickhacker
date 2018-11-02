@@ -29,6 +29,9 @@
 hueNumb = 0;
 zoom = 20;
 zoomIntro = 20;
+
+xpos = GAME_WIDTH/2;
+ypos = GAME_HEIGHT/2;
 </string>
           </argument>
         </arguments>
@@ -91,9 +94,9 @@ for (i = 0; i &lt; 16; i++)
 {
     draw_set_color(make_colour_hsv(hueNumb + (i * 16) mod 255, 255, 255));
     offset = sin(sinNumb - (i * 0.1)) * 0.5 + 1;
-    draw_circle(GAME_WIDTH/2, GAME_HEIGHT/2, (i * 100 + (zoom * 5)+ 1) * zoomIntro, true);
-    draw_circle(GAME_WIDTH/2, GAME_HEIGHT/2, (i * 100 + (zoom * 5)) * zoomIntro, true);  
-    draw_circle(GAME_WIDTH/2, GAME_HEIGHT/2, (i * 100 + (zoom * 5) - 1) * zoomIntro, true);  
+    draw_circle(xpos, ypos, (i * 100 + (zoom * 5)+ 1) * zoomIntro, true);
+    draw_circle(xpos, ypos, (i * 100 + (zoom * 5)) * zoomIntro, true);  
+    draw_circle(xpos, ypos, (i * 100 + (zoom * 5) - 1) * zoomIntro, true);  
 }
 </string>
           </argument>

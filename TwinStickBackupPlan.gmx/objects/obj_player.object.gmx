@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>-11</depth>
   <persistent>0</persistent>
-  <parentName>par_trippy</parentName>
+  <parentName>&lt;undefined&gt;</parentName>
   <maskName>spr_player_hitbox</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -94,12 +94,20 @@ m_trailOffsetY = 0;
 
 m_dashMultiplier = 1;
 
+m_lasersightX = x;
+m_lasersightY = y;
+m_lasersightLength = 0;
 
 m_pointerActive = false;
 m_pointerX = 0;
 m_pointerY = 0;
 m_pointerRotation = 0;
 m_pointerAlpha = 0;
+
+m_drawHealth = 100;
+m_healthbarTimer = 300;
+m_healthbarAlpha = 1;
+m_gettingDamage = false;
 </string>
           </argument>
         </arguments>
@@ -433,15 +441,9 @@ m_oldPosY = y;
 m_hStickL = gamepad_axis_value(m_gpId, gp_axislh);
 m_vStickL = gamepad_axis_value(m_gpId, gp_axislv);
 
-//m_hStickL = vstick_get_xaxis(0);
-//m_vStickL = vstick_get_yaxis(0);
-
 // Right stick
 m_hStickR = gamepad_axis_value(m_gpId, gp_axisrh);
 m_vStickR = gamepad_axis_value(m_gpId, gp_axisrv);
-
-//m_hStickR = vstick_get_xaxis(1);
-//m_vStickR = vstick_get_yaxis(1);
 
 // Triggers
 m_triggerRight = gamepad_button_value(m_gpId, gp_shoulderrb)
@@ -499,11 +501,11 @@ angle_diff = angle_difference(angle_prev,angle_next); // get the difference betw
 
 angle_next = angle_prev-angle_diff; // convert the angle to a number outside of 0-360 if needed
 
-m_aimDirection = lerp(m_aimDirection, angle_next, 0.4);
+m_aimDirection = lerp(m_aimDirection, angle_next, to_deltatime(0.4));
 
 // Movement lerp
-m_hStickLMovement = lerp(m_hStickLMovement, m_hStickL, 0.2);
-m_vStickLMovement = lerp(m_vStickLMovement, m_vStickL, 0.2);
+m_hStickLMovement = lerp(m_hStickLMovement, m_hStickL, to_deltatime(0.2));
+m_vStickLMovement = lerp(m_vStickLMovement, m_vStickL, to_deltatime(0.2));
 </string>
           </argument>
         </arguments>
@@ -575,6 +577,47 @@ else
         <arguments>
           <argument>
             <kind>1</kind>
+            <string>/// Calculate laser sight position
+
+var laserx, lasery, length;
+
+m_lasersightX = x;
+m_lasersightY = y;
+
+for (i=0; i &lt; 512; i+=1)
+{
+    length = i;
+    laserx = m_oldPosX + lengthdir_x(length, m_aimDirection);
+    lasery = m_oldPosY + lengthdir_y(length, m_aimDirection);
+    
+    if (scr_gridPlaceMeeting(laserx, lasery))
+        break;
+};
+
+m_lasersightLength = lerp(m_lasersightLength, length, to_deltatime(0.4));
+
+m_lasersightX = m_oldPosX + lengthdir_x(m_lasersightLength, m_aimDirection);
+m_lasersightY = m_oldPosY + lengthdir_y(m_lasersightLength, m_aimDirection);
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
             <string>/// Shoot
 
 //if (m_triggerRight &gt; 0.4 &amp;&amp; m_shootCooldown &lt;= 0)
@@ -583,13 +626,14 @@ if (max(abs(m_hStickR), abs(m_vStickR) &gt;= 0.6)
 {
     m_weaponState = 1;
     m_imageShootTimer = 0; 
+    
     switch(m_playerWeapon)
     {
         case weapon_1:       
             var bulletAngle = m_aimDirection + random_range(-5, 5);        
             bullet = instance_create(x, y, obj_bulletNormal);
-            bullet.m_Angle = bulletAngle
-            bullet.image_angle = bulletAngle   
+            bullet.m_angle = bulletAngle;
+            bullet.image_angle = bulletAngle;
             bullet.m_glowCollor = m_glowCollor;     
             m_shootCooldown = 6;
             var snd = audio_play_sound(snd_shootNormal, 1, 0);
@@ -603,8 +647,8 @@ if (max(abs(m_hStickR), abs(m_vStickR) &gt;= 0.6)
             for (i=0; i&lt;5; i++)
             {
                 bullet = instance_create(x, y, obj_bulletNormal);
-                bullet.m_Angle = bulletAngle + (i * 15) - 30;
-                bullet.image_angle = bulletAngle     
+                bullet.m_angle = bulletAngle + (i * 15) - 30 +  + random_range(-5, 5);;
+                bullet.image_angle = bulletAngle;
             };
                          
             m_shootCooldown = 15;
@@ -615,8 +659,8 @@ if (max(abs(m_hStickR), abs(m_vStickR) &gt;= 0.6)
         case weapon_3:
             var bulletAngle = m_aimDirection + random_range(-1,1);
             bullet = instance_create(x, y, obj_bulletSmall);
-            bullet.m_Angle = bulletAngle;
-            bullet.image_angle = bulletAngle
+            bullet.m_angle = bulletAngle;
+            bullet.image_angle = bulletAngle;
             m_shootCooldown = 4; 
             audio_play_sound(snd_shootSmall, 1, 0);
             scr_cameraKnockback(m_aimDirection, 6);
@@ -625,11 +669,26 @@ if (max(abs(m_hStickR), abs(m_vStickR) &gt;= 0.6)
         case weapon_4:
             var bulletAngle = m_aimDirection;
             bullet = instance_create(x, y, obj_bulletShell);
-            bullet.m_Angle = bulletAngle;
-            bullet.image_angle = bulletAngle
+            bullet.m_angle = bulletAngle;
+            bullet.image_angle = bulletAngle;
             m_shootCooldown = 50; 
             audio_play_sound(snd_shootShell, 1, 0);
             scr_cameraKnockback(m_aimDirection, 35);
+            break;
+            
+        case weapon_5:
+            // destroy any previous laser
+            with(obj_laserBottom)
+            { instance_destroy(); }
+        
+            var bulletAngle = m_aimDirection;
+            bullet = instance_create(x, y, obj_laserBottom);
+            bullet.m_angle = bulletAngle;
+            bullet.image_angle = bulletAngle;
+            m_shootCooldown = 60; 
+            var snd = audio_play_sound(snd_shootLaser, 1, 0);
+            audio_sound_pitch(snd, random_range(0.7, 1.3));
+            scr_cameraKnockback(m_aimDirection, 50);
             break;
             
         default:
@@ -638,7 +697,7 @@ if (max(abs(m_hStickR), abs(m_vStickR) &gt;= 0.6)
     }
 }
 
-if (m_shootCooldown &gt; 0) { m_shootCooldown -= 1 * global.upgradeFireRate; }
+if (m_shootCooldown &gt; 0) { m_shootCooldown -= to_deltatime(1 + (global.upgradeFireRate * 0.2)); }
 </string>
           </argument>
         </arguments>
@@ -725,7 +784,7 @@ if(instance_number(par_enemy) == 0 &amp;&amp; instance_number(obj_enemySpawner) 
     
     m_pointerActive = true;
     
-    m_pointerRotation = lerp_angle(m_pointerRotation, point_direction(x, y, target.x, target.y), 0.4);
+    m_pointerRotation = lerp_angle(m_pointerRotation, point_direction(x, y, target.x, target.y), to_deltatime(0.4));
     
     m_pointerX = x + lengthdir_x(64, m_pointerRotation);
     m_pointerY = y + lengthdir_y(64, m_pointerRotation);
@@ -735,7 +794,7 @@ else
     m_pointerActive = false;
 }
 
-m_pointerAlpha = lerp(m_pointerAlpha, m_pointerActive, 0.3);
+m_pointerAlpha = lerp(m_pointerAlpha, m_pointerActive, to_deltatime(0.3));
 </string>
           </argument>
         </arguments>
@@ -780,13 +839,13 @@ m_pointerAlpha = lerp(m_pointerAlpha, m_pointerActive, 0.3);
             <kind>1</kind>
             <string>/// Slow the player down
 
-if (m_triggerRight &gt; 0.4)
+if (max(abs(m_hStickR), abs(m_vStickR) &gt;= 0.6))
 {
-    m_fireDecrease = lerp(m_fireDecrease, 0.55, 0.1);
+    m_fireDecrease = lerp(m_fireDecrease, 0.55, to_deltatime(0.1));
 }
 else
 {
-    m_fireDecrease = lerp(m_fireDecrease, 1, 0.1);
+    m_fireDecrease = lerp(m_fireDecrease, 1, to_deltatime(0.1));
 }
 </string>
           </argument>
@@ -810,12 +869,13 @@ else
             <kind>1</kind>
             <string>/// Animate
 
-m_imageShootTimer++;
-
-if (m_imageShootTimer == m_imageShootMax)
+m_imageShootTimer += to_deltatime();
+if (m_imageShootTimer &gt;= m_imageShootMax)
 {
     m_weaponState = 0;
 }
+
+m_drawHealth = lerp(m_drawHealth ,global.playerHealth, to_deltatime(0.33));
 </string>
           </argument>
         </arguments>
@@ -836,10 +896,47 @@ if (m_imageShootTimer == m_imageShootMax)
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Controll abilities
+            <string>/// Control abilities
 
 // Dash
-m_dashMultiplier = lerp(m_dashMultiplier, 1, 0.1);
+m_dashMultiplier = lerp(m_dashMultiplier, 1, to_deltatime(0.1));
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Control healthbar
+
+var alpha = 1;
+m_healthbarTimer += to_deltatime(1);
+
+if(m_gettingDamage)
+{
+    m_healthbarTimer = 0;
+    m_gettingDamage = false;
+}
+
+if(m_healthbarTimer &gt; 300)
+{
+    alpha = 0;
+}
+
+m_healthbarAlpha = lerp(m_healthbarAlpha, alpha, to_deltatime(0.2));
 </string>
           </argument>
         </arguments>
@@ -862,10 +959,33 @@ m_dashMultiplier = lerp(m_dashMultiplier, 1, 0.1);
             <kind>1</kind>
             <string>/// Dei
 
-if (global.playerHealth &lt; 1)
+if (global.playerHealth &lt;= 0)
 {
     instance_destroy();
 }
+</string>
+          </argument>
+        </arguments>
+      </action>
+    </event>
+    <event eventtype="6" enumb="53">
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>instance_create(mouse_x, mouse_y, obj_shockwave);
 </string>
           </argument>
         </arguments>
@@ -890,7 +1010,10 @@ if (global.playerHealth &lt; 1)
             <kind>1</kind>
             <string>/// Draw
 draw_set_color(c_white);
-draw_line_width(m_oldPosX - 1, m_oldPosY - 1, (m_oldPosX - 1) + lengthdir_x(500, m_aimDirection), (m_oldPosY - 1) + lengthdir_y(500, m_aimDirection), 2) 
+//draw_line_width(m_oldPosX - 1, m_oldPosY - 1, (m_oldPosX - 1) + lengthdir_x(500, m_aimDirection), (m_oldPosY - 1) + lengthdir_y(500, m_aimDirection), 2) 
+draw_line(m_oldPosX, m_oldPosY, m_lasersightX, m_lasersightY);
+draw_sprite_ext(spr_lasersightEnd, 0, m_lasersightX, m_lasersightY, 1, 1, m_aimDirection, draw_get_color(), 1);
+
 draw_trail_ext(20,c_white,-1,1,1); 
 
 
@@ -900,6 +1023,49 @@ draw_sprite_ext(m_weaponSprite[m_weaponState], m_imageShootTimer, x, y, image_xs
 draw_sprite_ext(m_headSprite, 0, m_oldPosX, m_oldPosY, image_xscale, image_yscale, m_aimDirection, image_blend, image_alpha);
 draw_sprite_ext(spr_pointer, 0, m_pointerX, m_pointerY, 1, 1, m_pointerRotation, image_blend, m_pointerAlpha);
 
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Draw healthbar
+
+var inner_radius = 64;
+var thickness = 4;
+var segments = 360;
+var jadd = 360/segments;
+
+draw_set_color(c_red);
+draw_set_alpha(m_healthbarAlpha);
+
+draw_primitive_begin(pr_trianglestrip);
+
+for (var j = 0; j &lt;= (m_drawHealth * 3.6); j+=jadd)
+{
+    draw_vertex(x + lengthdir_x(inner_radius, j + 90), 
+    y + lengthdir_y(inner_radius, j + 90));
+    
+    draw_vertex(x + lengthdir_x(inner_radius + thickness, j + 90), 
+    y + lengthdir_y(inner_radius+thickness, j + 90));
+}
+
+draw_primitive_end();
+draw_set_alpha(1);
 </string>
           </argument>
         </arguments>

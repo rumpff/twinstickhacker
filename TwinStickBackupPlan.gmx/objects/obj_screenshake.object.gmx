@@ -25,11 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>///DON'T YOU FUCKING TOUGH THIS OBJECT!
-// I TOLD YOU TO STAY AWAY!
-// WHY ARE YOU STILL READING THIS?!
-// YOU THINK THIS IS FUNNY, HUH?
-// WELL, I AM FUCKING SERIUOS, YOU PIECE OF SHIT
+            <string>/// To call screenshake use scr_screenshake() instead
 </string>
           </argument>
         </arguments>
@@ -57,8 +53,8 @@
     obj_camera.m_xPos += random_range(-m_amount, m_amount);
     obj_camera.m_yPos += random_range(-m_amount, m_amount);
     
-    m_duration--;
-    m_amount -= m_subtractor
+    m_duration -= to_deltatime(1);
+    m_amount -= to_deltatime(m_subtractor);
 }
 else
 {

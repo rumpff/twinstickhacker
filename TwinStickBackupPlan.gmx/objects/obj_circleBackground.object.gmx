@@ -28,6 +28,9 @@
             <string>sinNumb = 0;
 hueNumb = 0;
 zoomIn = 0.01;
+
+xpos = GAME_WIDTH/2;
+ypos = GAME_HEIGHT/2;
 </string>
           </argument>
         </arguments>
@@ -79,13 +82,15 @@ zoomIn = lerp(zoomIn, 1, 0.2);
             <string>/// Draw circles
 draw_set_color(c_black);
 
-for (i = 0; i &lt; 16; i++)
+var amount = 26
+
+for (i = 0; i &lt; amount; i++)
 {
-    draw_set_color(make_colour_hsv(hueNumb + (i * 16) mod 255, 255, 255));
+    draw_set_color(make_colour_hsv(hueNumb + (i * amount) mod 255, 255, 255));
     offset = sin(sinNumb - (i * 0.1)) * 0.5 + 1;
-    draw_circle(GAME_WIDTH/2, GAME_HEIGHT/2, (i * 100 * offset + 1 )* zoomIn, true);
-    draw_circle(GAME_WIDTH/2, GAME_HEIGHT/2, (i * 100 * offset ) * zoomIn, true);  
-    draw_circle(GAME_WIDTH/2, GAME_HEIGHT/2, (i * 100 * offset - 1 ) * zoomIn, true);  
+    draw_circle(xpos, ypos, (i * 100 * offset + 1 )* zoomIn, true);
+    draw_circle(xpos, ypos, (i * 100 * offset ) * zoomIn, true);  
+    draw_circle(xpos, ypos, (i * 100 * offset - 1 ) * zoomIn, true);  
 }
 </string>
           </argument>

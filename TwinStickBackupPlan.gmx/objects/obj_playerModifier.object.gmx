@@ -5,7 +5,7 @@
   <visible>-1</visible>
   <depth>0</depth>
   <persistent>0</persistent>
-  <parentName>par_trippy</parentName>
+  <parentName>&lt;undefined&gt;</parentName>
   <maskName>&lt;undefined&gt;</maskName>
   <events>
     <event eventtype="0" enumb="0">
@@ -266,9 +266,9 @@ if (global.playerHead &gt; head_max)
 
 if (global.playerWeapon &lt; 0)
 {
-    global.playerWeapon = 3;
+    global.playerWeapon = weapon_max;
 }
-if (global.playerWeapon &gt; 3)
+if (global.playerWeapon &gt; weapon_max)
 {
     global.playerWeapon = 0;
 }
@@ -320,7 +320,7 @@ characterAngle -= 1;
             <string>draw_set_halign(fa_center);
 draw_set_valign(fa_center);
 draw_set_color(c_white);
-draw_set_font(font0);
+draw_set_font(fnt_small);
 
 switch (m_currentSelected)
 {

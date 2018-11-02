@@ -107,7 +107,7 @@ sleep(20);
             <kind>1</kind>
             <string>///move towards the player
 scr_pathToPlayer(4);
-alarm[0] = 10;
+alarm[0] = to_deltatime(10);
 </string>
           </argument>
         </arguments>
@@ -212,7 +212,7 @@ if (instance_exists(obj_player))
         }
         else
         {
-            m_attackTimer--;
+            m_attackTimer -= to_deltatime(1);
         }
     }
     else

@@ -111,7 +111,7 @@ if selected == 0
     letters = 0;
 }
 
-if (key_A)
+if(key_A)
 {
     if selected == 1
     {
