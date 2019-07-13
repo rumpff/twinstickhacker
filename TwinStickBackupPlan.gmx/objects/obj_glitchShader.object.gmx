@@ -27,9 +27,10 @@
             <kind>1</kind>
             <string>/// initalize shader
 application_surface_draw_enable(false); //disabling automatic redrawing of the application surface
-display_set_gui_size(GAME_WIDTH, GAME_HEIGHT); //making sure the GUI layer stays always the same size
+display_set_gui_size(global.gameWidth, global.gameHeight); //making sure the GUI layer stays always the same size
 
 m_channelShift = 0;
+m_channelShiftDest = 0;
 m_lineShift = 0.001667;
 </string>
           </argument>
@@ -55,7 +56,7 @@ m_lineShift = 0.001667;
             <kind>1</kind>
             <string>/// Lerp values
 
-m_channelShift = lerp(m_channelShift, 0, 0.3);
+m_channelShift = lerp(m_channelShift, m_channelShiftDest, 0.3);
 m_lineShift = lerp(m_lineShift, 0.001667, 0.3);
 </string>
           </argument>
@@ -81,6 +82,7 @@ m_lineShift = lerp(m_lineShift, 0.001667, 0.3);
             <kind>1</kind>
             <string>/// Enable automatic redrawing of the application surface
 application_surface_draw_enable(true);
+m_channelShiftDest = 0;
 </string>
           </argument>
         </arguments>

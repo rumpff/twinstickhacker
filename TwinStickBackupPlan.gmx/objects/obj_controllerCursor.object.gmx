@@ -60,8 +60,8 @@ CursorX = gamepad_axis_value(CId, gp_axislh) * 1.7777777777777777777777777777777
 CursorY = gamepad_axis_value(CId, gp_axislv);
 
 // Putting the object on the right position
-x = lerp(x, (GAME_WIDTH / 2) + (CursorX * Multiplier), 0.4);
-y = lerp(y, (GAME_HEIGHT / 2) + (CursorY * Multiplier), 0.4);
+x = lerp(x, (global.gameWidth / 2) + (CursorX * Multiplier), 0.4);
+y = lerp(y, (global.gameHeight / 2) + (CursorY * Multiplier), 0.4);
 
 gamepad_button_check(CId, gp_face1)
 {
@@ -97,10 +97,10 @@ gamepad_button_check_released(CId, gp_face1)
 
 draw_set_color(c_black);
 
-draw_line_width(x, y, GAME_WIDTH / 2, GAME_HEIGHT / 2, 4);
+draw_line_width(x, y, global.gameWidth / 2, global.gameHeight / 2, 4);
 draw_circle(x, y, 4, false);
 
-draw_ellipse(GAME_WIDTH / 2 - 3, GAME_HEIGHT / 2 - 3,GAME_WIDTH / 2 + 3, GAME_HEIGHT / 2 + 3, false);
+draw_ellipse(global.gameWidth / 2 - 3, global.gameHeight / 2 - 3,global.gameWidth / 2 + 3, global.gameHeight / 2 + 3, false);
 
 draw_circle_colour(x, y, Csize, c_black, c_white, true);
 </string>

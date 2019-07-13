@@ -152,7 +152,7 @@ draw_set_halign(fa_center);
 draw_set_valign(fa_center);
 draw_set_alpha(m_alpha)
 
-draw_text_outline_transformed(x, y, string(m_comboCount), m_scale, m_scale, m_angle, 10, c_black, 0);
+draw_text_transformed(x, y, string(m_comboCount), m_scale, m_scale, m_angle);
 draw_set_alpha(1);
 </string>
           </argument>

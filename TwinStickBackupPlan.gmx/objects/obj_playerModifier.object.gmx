@@ -35,8 +35,8 @@ m_inputTimer = 0;
 
 m_currentSelected = 0;
 
-yPosHead = (GAME_HEIGHT / 2) + (GAME_WIDTH / 3.8);
-yPosWeapon = (GAME_HEIGHT / 2) + (GAME_WIDTH / 3.5);
+yPosHead = (global.gameHeight / 2) + (global.gameWidth / 3.8);
+yPosWeapon = (global.gameHeight / 2) + (global.gameWidth / 3.5);
 
 m_headSprite[0] = noone;
 m_weaponSprite[0] = noone;
@@ -325,18 +325,18 @@ draw_set_font(fnt_small);
 switch (m_currentSelected)
 {
     case 0: // Head
-        draw_text_transformed(GAME_WIDTH/2, yPosHead, "&lt; head &gt;", 1.1, 1.1, 0); 
-        draw_text_transformed(GAME_WIDTH/2, yPosWeapon, "weapon", 0.9, 0.9, 0);
+        draw_text_transformed(global.gameWidth/2, yPosHead, "[ pick your head ]", 1.1, 1.1, 0); 
+        draw_text_transformed(global.gameWidth/2, yPosWeapon, "weapon", 0.9, 0.9, 0);
         break;
     
     case 1: // Weapon
-        draw_text_transformed(GAME_WIDTH/2, yPosHead, "head", 0.9, 0.9, 0); 
-        draw_text_transformed(GAME_WIDTH/2, yPosWeapon, "&lt; weapon &gt;", 1.1, 1.1, 0);
+        draw_text_transformed(global.gameWidth/2, yPosHead, "head", 0.9, 0.9, 0); 
+        draw_text_transformed(global.gameWidth/2, yPosWeapon, "[ pick your weapon ]", 1.1, 1.1, 0);
         break;
 }
 
-draw_sprite_ext(m_headSprite[global.playerHead], 0, GAME_WIDTH/2, GAME_HEIGHT/2, 5, 5, characterAngle, image_blend, image_alpha);
-draw_sprite_ext(m_weaponSprite[global.playerWeapon], 0, GAME_WIDTH/2, GAME_HEIGHT/2, 5, 5, characterAngle, image_blend, image_alpha);
+draw_sprite_ext(m_headSprite[global.playerHead], 0, global.gameWidth/2, global.gameHeight/2, 5, 5, characterAngle, image_blend, image_alpha);
+draw_sprite_ext(m_weaponSprite[global.playerWeapon], 0, global.gameWidth/2, global.gameHeight/2, 5, 5, characterAngle, image_blend, image_alpha);
 </string>
           </argument>
         </arguments>

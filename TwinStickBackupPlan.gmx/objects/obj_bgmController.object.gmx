@@ -30,10 +30,10 @@
     instance_destroy();
 }
 
-global.bgm = audio_play_sound(bgm_narwhalsIntro, 1, 0);
+global.bgm = audio_play_sound(bgm_Intro, 1, 0);
 
-audio_sound_gain(bgm_narwhalsIntro, 1, 0);
-audio_sound_gain(bgm_narwhalsLoop, 1, 0);
+audio_sound_gain(bgm_Intro, 1, 0);
+audio_sound_gain(bgm_Loop, 1, 0);
 </string>
           </argument>
         </arguments>
@@ -57,9 +57,9 @@ audio_sound_gain(bgm_narwhalsLoop, 1, 0);
           <argument>
             <kind>1</kind>
             <string>/// Play background music
-if (!audio_is_playing(bgm_narwhalsIntro) &amp;&amp; !audio_is_playing(bgm_narwhalsLoop))
+if (!audio_is_playing(bgm_Intro) &amp;&amp; !audio_is_playing(bgm_Loop))
 {
-    global.bgm = audio_play_sound(bgm_narwhalsLoop, 1 , true);
+    global.bgm = audio_play_sound(bgm_Loop, 1 , true);
 }
 
 audio_sound_gain(global.bgm, global.bgmActive, 0);

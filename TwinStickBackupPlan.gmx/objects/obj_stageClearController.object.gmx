@@ -224,11 +224,11 @@ draw_set_halign(fa_center);
 draw_set_valign(fa_center);
 draw_set_font(fnt_cleared);
 
-draw_text_outline(GAME_WIDTH/2, GAME_HEIGHT/2, m_currentText, 12, c_black, 12);
+draw_text(global.gameWidth/2, global.gameHeight/2, m_currentText);
 
 draw_set_alpha(m_fadeAlpha);
 draw_set_color(c_white);
-draw_rectangle(0, 0, GAME_WIDTH, GAME_HEIGHT, false);
+draw_rectangle(0, 0, global.gameWidth, global.gameHeight, false);
 draw_set_alpha(1);
 </string>
           </argument>

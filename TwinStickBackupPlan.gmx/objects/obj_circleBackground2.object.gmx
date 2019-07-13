@@ -30,8 +30,8 @@ hueNumb = 0;
 zoom = 20;
 zoomIntro = 20;
 
-xpos = GAME_WIDTH/2;
-ypos = GAME_HEIGHT/2;
+xpos = global.gameWidth / 2;
+ypos = global.gameHeight / 2;
 </string>
           </argument>
         </arguments>

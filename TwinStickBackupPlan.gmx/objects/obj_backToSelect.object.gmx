@@ -39,7 +39,7 @@
         <arguments>
           <argument>
             <kind>6</kind>
-            <sound>bgm_narwhalsIntro</sound>
+            <sound>bgm_Intro</sound>
           </argument>
         </arguments>
       </action>
@@ -59,7 +59,7 @@
         <arguments>
           <argument>
             <kind>6</kind>
-            <sound>bgm_narwhalsLoop</sound>
+            <sound>bgm_Loop</sound>
           </argument>
         </arguments>
       </action>

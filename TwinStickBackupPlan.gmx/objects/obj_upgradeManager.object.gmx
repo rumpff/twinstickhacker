@@ -250,8 +250,8 @@ if(key_accept)
             <string>/// Positioning
 
 // Create origin positions
-var xOr = GAME_WIDTH / 3.5;
-var yOr = GAME_HEIGHT * 1.2;
+var xOr = global.gameWidth / 3.5;
+var yOr = global.gameHeight * 1.2;
 var distance = 384;
 
 for (i = 0; i &lt; 4; i++)
@@ -293,7 +293,7 @@ obj_circleBackground.ypos = yOr + lengthdir_y(384, 90);
             <kind>1</kind>
             <string>/// Draw title
 
-draw_set_color(c_white);
+draw_set_color(c_black);
 draw_set_halign(fa_center);
 draw_set_valign(fa_center);
 draw_set_font(fnt_combo);
@@ -305,7 +305,7 @@ var currentPos = time * (global.bgmBPM / 60);
 var multiplier = 0.5;
 var scale = abs(sin(degtorad(currentPos) * multiplier * 360)) * 0.5 + 0.5;
 
-draw_text_outline_transformed(GAME_WIDTH/3.5, GAME_HEIGHT/10, "Select Upgrade!!", scale, scale, angle, 10, c_black, 10);
+draw_text_transformed(global.gameWidth/3.5, global.gameHeight/10, "Select Upgrade!!", scale, scale, angle);
 </string>
           </argument>
         </arguments>
@@ -337,7 +337,7 @@ draw_set_valign(fa_center);
 draw_set_color(c_black);
 draw_set_alpha(m_descAlpha);
 
-draw_text_ext(GAME_WIDTH/2, GAME_HEIGHT/3 + m_descY, text, -1, GAME_WIDTH * .7);
+draw_text_ext(global.gameWidth/2, global.gameHeight/3 + m_descY, text, -1, global.gameWidth * .7);
 draw_set_alpha(1);
 </string>
           </argument>

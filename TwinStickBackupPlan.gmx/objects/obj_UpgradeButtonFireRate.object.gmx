@@ -25,7 +25,7 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = GAME_WIDTH / 2;
+            <string>x = global.gameWidth / 2;
 y = 265
 
 letters = 0;
@@ -160,10 +160,10 @@ draw_text_transformed(x, y, "Firerate", scale - 0.2, scale - 0.2, 0);
 
 if selected == 1
 {
-    draw_set_color(c_white);
+    draw_set_color(c_black);
     draw_set_halign(fa_center);
     draw_set_font(fnt_combo);
-    draw_text_outline(obj_TextLocation.x, obj_TextLocation.y, stringA, 5, c_black, 5);
+    draw_text(obj_TextLocation.x, obj_TextLocation.y, stringA);
 }
 </string>
           </argument>

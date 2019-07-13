@@ -28,8 +28,8 @@
             <string>/// Configure the view
 view_enabled[0] = true;
 view_visible[0] = true;
-view_wview = GAME_WIDTH;
-view_hview = GAME_HEIGHT;
+view_wview = global.gameWidth;
+view_hview = global.gameHeight;
 </string>
           </argument>
         </arguments>
@@ -244,8 +244,8 @@ m_yPos = m_yDest - (view_hview / 2) + m_vAim + m_knockY;
             <kind>1</kind>
             <string>/// Apply view stuff
 
-view_wview = GAME_WIDTH * m_zoomMultiplier * m_zoomTransition * m_playerZoom;
-view_hview = GAME_HEIGHT * m_zoomMultiplier * m_zoomTransition * m_playerZoom;
+view_wview = global.gameWidth * m_zoomMultiplier * m_zoomTransition * m_playerZoom;
+view_hview = global.gameHeight * m_zoomMultiplier * m_zoomTransition * m_playerZoom;
 
 view_xview = m_xPos
 view_yview = m_yPos

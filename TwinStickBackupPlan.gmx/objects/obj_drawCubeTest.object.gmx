@@ -77,9 +77,9 @@ ss = 0;
           <argument>
             <kind>1</kind>
             <string>draw_set_color(c_green);
-for (i = 0; i &lt; floor(GAME_WIDTH / r); i++)
+for (i = 0; i &lt; floor(global.gameWidth / r); i++)
 {
-    for (ii = 0; ii &lt; floor(GAME_HEIGHT / r) * 2; ii++)
+    for (ii = 0; ii &lt; floor(global.gameHeight / r) * 2; ii++)
     {        
         vw = point_distance(view_xview + (view_wview/2), y, room_width/2, y) * 0.2;
         vh = point_distance(x, view_yview + (view_hview/2), x, room_height/2) * 0.2;
@@ -87,7 +87,7 @@ for (i = 0; i &lt; floor(GAME_WIDTH / r); i++)
         w = view_xview + (i * r * 2) + vw;
         h = view_yview + (ii * r * 2) - vh;
         
-        ow = point_distance(view_xview + (view_wview/2), y, w, y) / GAME_WIDTH;
+        ow = point_distance(view_xview + (view_wview/2), y, w, y) / global.gameWidth;
         oh = point_distance(x, view_yview + (view_hview/2), x, h) * 0.2;
         
         s = sin(n + (ow * 2)) * 0.4 + 0.5;

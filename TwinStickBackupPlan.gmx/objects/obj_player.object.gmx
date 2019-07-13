@@ -69,7 +69,7 @@ m_buttonBPressed = 0;
 m_buttonXPressed = 0;
 m_buttonYPressed = 0;
 
-m_maxSpeed = 12;
+m_maxSpeed = 18;
 
 m_headSprite = noone;
 
@@ -410,7 +410,7 @@ trail_calculate_ext(20, m_trailPosX, m_trailPosY);
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>/// Set old pos
+            <string>/// Set olds
 m_oldPosX = x;
 m_oldPosY = y;
 </string>
@@ -486,30 +486,44 @@ m_buttonYPressed = gamepad_button_check_pressed(m_gpId, gp_face4);
             <string>/// Calculate directions and movement lerp
 
 // Directions
-if (m_hStickR != 0 || m_vStickR != 0)
-{
-    m_moveSpeed = point_distance(x, y, x + m_hStickL * m_maxSpeed, y + m_vStickL * m_maxSpeed);
-    m_moveDirection = point_direction(x, y, x + m_hStickL, y + m_vStickL);
-}
+m_moveSpeed = lerp(m_moveSpeed, point_distance(0, 0, m_hStickL, m_vStickL) * m_maxSpeed, to_deltatime(0.1));
 
+if (m_hStickL != 0 || m_vStickL != 0)
+{
+    var moveDirection = point_direction(0, 0, m_hStickL, m_vStickL);
+    
+    var angle_prev = m_moveDirection; // the last angle of the image
+    var angle_next = moveDirection // the target angle from the mouse
+    var angle_diff = angle_difference(angle_prev,angle_next); // get the difference between the angle
+    
+    angle_next = angle_prev-angle_diff; // convert the angle to a number outside of 0-360 if needed
+    
+    m_moveDirection = lerp(m_moveDirection, angle_next, to_deltatime(0.15));
+}
  
 // Calcutate angle
 if (m_hStickR != 0 || m_vStickR != 0) 
-{ angle_next = point_direction(x, y, x + m_hStickR, y + m_vStickR); } // The angle with "made" with the stick
+{ 
+    angle_next = point_direction(0, 0, m_hStickR, m_vStickR);
+
+    angle_prev = m_aimDirection; // the last angle of the image
+    angle_diff = angle_difference(angle_prev,angle_next); // get the difference between the angle
+    
+    angle_next = angle_prev-angle_diff; // convert the angle to a number outside of 0-360 if needed
+    
+    m_aimDirection = lerp(m_aimDirection, angle_next, to_deltatime(0.4));
+} 
 // If the player isn't shooting but is moving
 else if(m_hStickL != 0 || m_vStickL != 0)
-{ angle_next = point_direction(x, y, x + m_hStickL, y + m_vStickL); } // The angle with "made" with the stick
-
-angle_prev = m_aimDirection; // the last angle of the image
-angle_diff = angle_difference(angle_prev,angle_next); // get the difference between the angle
-
-angle_next = angle_prev-angle_diff; // convert the angle to a number outside of 0-360 if needed
-
-m_aimDirection = lerp(m_aimDirection, angle_next, to_deltatime(0.4));
+{ 
+    m_aimDirection = m_moveDirection 
+}
 
 // Movement lerp
 m_hStickLMovement = lerp(m_hStickLMovement, m_hStickL, to_deltatime(0.2));
 m_vStickLMovement = lerp(m_vStickLMovement, m_vStickL, to_deltatime(0.2));
+
+
 </string>
           </argument>
         </arguments>
@@ -532,7 +546,10 @@ m_vStickLMovement = lerp(m_vStickLMovement, m_vStickL, to_deltatime(0.2));
             <kind>1</kind>
             <string>/// Calculate next position and move
 
-scr_move((m_hStickLMovement * m_maxSpeed * m_fireDecrease * m_dashMultiplier * global.upgradeSpeed), (m_vStickLMovement * m_maxSpeed * m_fireDecrease * m_dashMultiplier * global.upgradeSpeed))
+xMove = m_moveSpeed * cos(degtorad(m_moveDirection));
+yMove = m_moveSpeed * sin(degtorad(m_moveDirection)) * -1;
+
+scr_move((xMove * m_fireDecrease * global.upgradeSpeed), (yMove * m_fireDecrease * global.upgradeSpeed))
 
 /*
 if (place_meeting(x + (m_hStickLMovement * m_maxSpeed), y + (m_vStickLMovement * m_maxSpeed), obj_collider))
@@ -845,7 +862,7 @@ m_pointerAlpha = lerp(m_pointerAlpha, m_pointerActive, to_deltatime(0.3));
 
 if (max(abs(m_hStickR), abs(m_vStickR) &gt;= 0.6))
 {
-    m_fireDecrease = lerp(m_fireDecrease, 0.55, to_deltatime(0.1));
+    m_fireDecrease = lerp(m_fireDecrease, 0.25, to_deltatime(0.1));
 }
 else
 {
@@ -963,6 +980,7 @@ m_healthbarAlpha = lerp(m_healthbarAlpha, alpha, to_deltatime(0.2));
             <kind>1</kind>
             <string>/// Dei
 
+
 if (global.playerHealth &lt;= 0)
 {
     instance_destroy();
@@ -1024,9 +1042,8 @@ draw_trail_ext(20,c_white,-1,1,1);
 draw_sprite_ext(m_weaponSprite[m_weaponState], m_imageShootTimer, x, y, image_xscale, image_yscale, m_aimDirection, image_blend, image_alpha);
 //draw_sprite_ext(m_glowSprite[m_weaponState], m_imageShootTimer, x, y, image_xscale, image_yscale, m_aimDirection, m_glowCollor, image_alpha);
 
-draw_sprite_ext(m_headSprite, 0, m_oldPosX, m_oldPosY, image_xscale, image_yscale, m_aimDirection, image_blend, image_alpha);
+draw_sprite_ext(m_headSprite, 0, m_oldPosX, m_oldPosY, image_xscale, image_yscale, m_moveDirection, image_blend, image_alpha);
 draw_sprite_ext(spr_pointer, 0, m_pointerX, m_pointerY, 1, 1, m_pointerRotation, image_blend, m_pointerAlpha);
-
 </string>
           </argument>
         </arguments>

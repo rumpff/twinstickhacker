@@ -45,6 +45,11 @@
     <sound>sound\snd_selectUpgrade</sound>
     <sound>sound\snd_shootSmall</sound>
     <sound>sound\snd_temp</sound>
+    <sounds name="bgm">
+      <sound>sound\bgm_Intermission</sound>
+      <sound>sound\bgm_Intro</sound>
+      <sound>sound\bgm_Loop</sound>
+    </sounds>
   </sounds>
   <sprites name="sprites">
     <sprites name="_Temp">
@@ -267,9 +272,7 @@
     </scripts>
     <scripts name="Utility">
       <script>scripts\lerp_angle.gml</script>
-      <script>scripts\draw_text_outline_transformed.gml</script>
       <script>scripts\draw_wave_off.gml</script>
-      <script>scripts\draw_text_outline.gml</script>
       <script>scripts\sleep.gml</script>
       <script>scripts\draw_rectangle_width.gml</script>
       <script>scripts\to_deltatime.gml</script>
@@ -350,6 +353,7 @@
     <object>objects\obj_glitchShader</object>
     <object>objects\obj_upgradeManager</object>
     <object>objects\obj_upgradeCard</object>
+    <object>objects\obj_setRoomSize</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_initalize</room>

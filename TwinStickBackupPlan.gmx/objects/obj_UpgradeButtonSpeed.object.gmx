@@ -25,8 +25,8 @@
         <arguments>
           <argument>
             <kind>1</kind>
-            <string>x = GAME_WIDTH / 2;
-y = GAME_HEIGHT / 2 + 270
+            <string>x = global.gameWidth / 2;
+y = global.gameHeight / 2 + 270
 
 letters = 0;
 string1 = "Increase speed#by 20%"
@@ -161,10 +161,10 @@ draw_text_transformed(x, y, "Speed" ,scale - 0.2, scale - 0.2, 180);
 
 if selected == 1
 {
-    draw_set_color(c_white);
+    draw_set_color(c_black);
     draw_set_halign(fa_center);
     draw_set_font(fnt_combo);
-    draw_text_outline(obj_TextLocation.x, obj_TextLocation.y, stringA, 5, c_black, 5);
+    draw_text(obj_TextLocation.x, obj_TextLocation.y, stringA);
 }
 </string>
           </argument>

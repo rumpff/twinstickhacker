@@ -27,10 +27,10 @@
             <kind>1</kind>
             <string>sinNumb = 0;
 hueNumb = 0;
-zoomIn = 0.01;
+zoomIn = 0.0001;
 
-xpos = GAME_WIDTH/2;
-ypos = GAME_HEIGHT/2;
+xpos = global.gameWidth / 2;
+ypos = global.gameHeight / 2;
 </string>
           </argument>
         </arguments>
@@ -54,9 +54,9 @@ ypos = GAME_HEIGHT/2;
           <argument>
             <kind>1</kind>
             <string>/// Update sin and hue
-sinNumb += 0.04;
+sinNumb += 0.08;
 hueNumb++;
-zoomIn = lerp(zoomIn, 1, 0.2);
+zoomIn = lerp(zoomIn, 1, 0.05);
 </string>
           </argument>
         </arguments>
@@ -82,15 +82,15 @@ zoomIn = lerp(zoomIn, 1, 0.2);
             <string>/// Draw circles
 draw_set_color(c_black);
 
-var amount = 26
+var amount = 36
 
-for (i = 0; i &lt; amount; i++)
+for (i = amount; i &gt;= 0; i--)
 {
-    draw_set_color(make_colour_hsv(hueNumb + (i * amount) mod 255, 255, 255));
+    draw_set_color(make_colour_hsv(hueNumb + (i * 10) mod 255, 60 * 2.55, 90 * 2.55));
     offset = sin(sinNumb - (i * 0.1)) * 0.5 + 1;
-    draw_circle(xpos, ypos, (i * 100 * offset + 1 )* zoomIn, true);
-    draw_circle(xpos, ypos, (i * 100 * offset ) * zoomIn, true);  
-    draw_circle(xpos, ypos, (i * 100 * offset - 1 ) * zoomIn, true);  
+    //draw_circle(xpos, ypos, (i * 100 * offset + 1 )* zoomIn, true);
+    draw_circle(xpos, ypos, (i * 100 * offset ) * zoomIn, false);  
+    //draw_circle(xpos, ypos, (i * 100 * offset - 1 ) * zoomIn, true);  
 }
 </string>
           </argument>
