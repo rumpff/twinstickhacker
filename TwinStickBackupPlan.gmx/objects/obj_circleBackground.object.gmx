@@ -84,14 +84,21 @@ draw_set_color(c_black);
 
 var amount = 36
 
+draw_set_circle_precision(64);
+
 for (i = amount; i &gt;= 0; i--)
 {
     draw_set_color(make_colour_hsv(hueNumb + (i * 10) mod 255, 60 * 2.55, 90 * 2.55));
+    if(i % 2 == 0)
+        draw_set_color(c_white);
+        
     offset = sin(sinNumb - (i * 0.1)) * 0.5 + 1;
     //draw_circle(xpos, ypos, (i * 100 * offset + 1 )* zoomIn, true);
     draw_circle(xpos, ypos, (i * 100 * offset ) * zoomIn, false);  
     //draw_circle(xpos, ypos, (i * 100 * offset - 1 ) * zoomIn, true);  
 }
+
+draw_set_circle_precision(24);
 </string>
           </argument>
         </arguments>

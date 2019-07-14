@@ -137,8 +137,11 @@ if (m_showText)
         {
             m_letterCount++;
             m_letterTimer = 3;
-            scr_screenshake(4, 6);
-            audio_play_sound(snd_enemyHit, 1, 0);
+            if(string_char_at(m_clearString, m_letterCount) != ' ')
+            { 
+                scr_screenshake(4, 6);
+                audio_play_sound(snd_enemyHit, 1, 0);
+            }
         } 
     }    
 }
