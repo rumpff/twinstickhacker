@@ -32,6 +32,7 @@
       <sound>sound\snd_shootQuintipple</sound>
       <sound>sound\snd_shootEnemy</sound>
       <sound>sound\snd_shootNormal</sound>
+      <sound>sound\snd_shootSmall</sound>
       <sound>sound\snd_shootShell</sound>
     </sounds>
     <sound>sound\snd_back</sound>
@@ -43,8 +44,6 @@
     <sound>sound\snd_scoreCounter</sound>
     <sound>sound\snd_select</sound>
     <sound>sound\snd_selectUpgrade</sound>
-    <sound>sound\snd_shootSmall</sound>
-    <sound>sound\snd_temp</sound>
     <sounds name="bgm">
       <sound>sound\bgm_Intermission</sound>
       <sound>sound\bgm_Intro</sound>
@@ -171,6 +170,8 @@
     <sprite>sprites\spr_masterSpark2</sprite>
     <sprite>sprites\spr_upgradeIcons</sprite>
     <sprite>sprites\spr_card</sprite>
+    <sprite>sprites\spr_groundTest</sprite>
+    <sprite>sprites\spr_wallTest</sprite>
   </sprites>
   <backgrounds name="background">
     <background>background\background2</background>
@@ -292,6 +293,10 @@
     <font>fonts\fnt_newScore</font>
   </fonts>
   <objects name="objects">
+    <objects name="Level Generation">
+      <object>objects\obj_LevelGenerator</object>
+      <object>objects\obj_LevelGenWalker</object>
+    </objects>
     <objects name="Player Related">
       <objects name="Bullets">
         <object>objects\obj_bulletNormal</object>
@@ -354,9 +359,12 @@
     <object>objects\obj_upgradeManager</object>
     <object>objects\obj_upgradeCard</object>
     <object>objects\obj_setRoomSize</object>
+    <object>objects\obj_groundTest</object>
+    <object>objects\obj_wallTest</object>
   </objects>
   <rooms name="rooms">
     <room>rooms\rm_initalize</room>
+    <room>rooms\room5</room>
     <room>rooms\rm_characterSelect</room>
     <room>rooms\rm_level</room>
     <room>rooms\rm_upgrade</room>

@@ -30,8 +30,8 @@ m_timer = 0;
 
 m_showText = false;
 m_transitionActivated = false;
+m_clearString = "error";
 
-m_clearString = "Stage " + string(global.currentStage) + " cleared!"
 m_letterCount = 0;
 m_letterTimer = 3;
 m_currentText = "";
@@ -40,6 +40,33 @@ m_viewScale = 1;
 m_sinScale = 0.3;
 
 m_fadeAlpha = 0;
+</string>
+          </argument>
+        </arguments>
+      </action>
+      <action>
+        <libid>1</libid>
+        <id>603</id>
+        <kind>7</kind>
+        <userelative>0</userelative>
+        <isquestion>0</isquestion>
+        <useapplyto>-1</useapplyto>
+        <exetype>2</exetype>
+        <functionname></functionname>
+        <codestring></codestring>
+        <whoName>self</whoName>
+        <relative>0</relative>
+        <isnot>0</isnot>
+        <arguments>
+          <argument>
+            <kind>1</kind>
+            <string>/// Generate clearing message
+m_clearString = choose(
+"Stage " + string(global.currentStage) + " cleared!",
+"Cleared stage " + string(global.currentStage) + "!",
+"done",
+"epic epic epic epic epic epic#epic epic epic epic epic epic#epic epic epic epic epic epic",
+);
 </string>
           </argument>
         </arguments>
@@ -137,8 +164,12 @@ if (m_showText)
         {
             m_letterCount++;
             m_letterTimer = 3;
-            if(string_char_at(m_clearString, m_letterCount) != ' ')
+            if(string_char_at(m_clearString, m_letterCount) == ' ')
             { 
+                audio_play_sound(snd_playerHit, 1, 0);
+            }
+            else
+            {
                 scr_screenshake(4, 6);
                 audio_play_sound(snd_enemyHit, 1, 0);
             }
