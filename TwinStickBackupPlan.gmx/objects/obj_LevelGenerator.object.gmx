@@ -101,7 +101,7 @@ for (_x = 0; _x &lt; m_GridWidth - 1; _x++)
 // Create first walker
 m_Walkers = ds_list_create();
 
-var w = instance_create(room_width/2, room_height/2, obj_LevelGenWalker);
+var w = instance_create(m_GridWidth / 2, m_GridHeight / 2, obj_LevelGenWalker);
 w.m_Dir = choose(0, 90, 180, 270);
 
 ds_list_add(m_Walkers, w);
@@ -134,7 +134,7 @@ for(_iterations = 0; _iterations &lt; 250; _iterations++)
     for(i = 0; i &lt; ds_list_size(m_Walkers) - 1; i++)
     {
         var w = ds_list_find_value(m_Walkers, i);
-        ds_grid_set(m_Grid, w.x / m_GridSize, w.y / m_GridSize, GridSpace.ground);
+        ds_grid_set(m_Grid, w.x, w.y, GridSpace.ground);
     }
 
     // Walker Chance - Destroy walkers
@@ -181,8 +181,8 @@ for(_iterations = 0; _iterations &lt; 250; _iterations++)
     {
         var w = ds_list_find_value(m_Walkers, i);
         
-        w.x += lengthdir_x(m_GridSize, w.m_Dir);
-        w.y += lengthdir_y(m_GridSize, w.m_Dir);
+        w.x += lengthdir_x(1, w.m_Dir);
+        w.y += lengthdir_y(1, w.m_Dir);
     }
     
     // Clamp walkers within grid
