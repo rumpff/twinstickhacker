@@ -35,7 +35,7 @@ global.upgradeComboTime = 1;</code>
     <showViews>0</showViews>
     <deleteUnderlyingObj>0</deleteUnderlyingObj>
     <deleteUnderlyingTiles>-1</deleteUnderlyingTiles>
-    <page>3</page>
+    <page>0</page>
     <xoffset>-233</xoffset>
     <yoffset>-94</yoffset>
   </makerSettings>

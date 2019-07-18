@@ -87,6 +87,8 @@ if(collision != noone)
     audio_play_sound(snd_enemyHit, 1, 0);
     m_bulletDamage -= dealtDamage;
     
+    with(collision) { event_user(1); }
+    
     // Check if the bullet needs to be destroyed
     if(m_bulletDamage &lt;= 0)
     {

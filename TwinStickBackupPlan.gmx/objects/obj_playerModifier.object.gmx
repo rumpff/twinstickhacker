@@ -35,8 +35,9 @@ m_inputTimer = 0;
 
 m_currentSelected = 0;
 
-yPosHead = (global.gameHeight / 2) + (global.gameWidth / 3.8);
-yPosWeapon = (global.gameHeight / 2) + (global.gameWidth / 3.5);
+yPosTitle = (global.gameHeight / 2) - (global.gameHeight / 3.65);
+yPosHead = (global.gameHeight / 2) + (global.gameHeight / 3.8);
+yPosWeapon = (global.gameHeight / 2) + (global.gameHeight / 3.5);
 
 m_headSprite[0] = noone;
 m_weaponSprite[0] = noone;
@@ -325,15 +326,25 @@ draw_set_font(fnt_small);
 switch (m_currentSelected)
 {
     case 0: // Head
-        draw_text_transformed(global.gameWidth/2, yPosHead, "[ pick your head ]", 1.1, 1.1, 0); 
-        draw_text_transformed(global.gameWidth/2, yPosWeapon, "weapon", 0.9, 0.9, 0);
+        draw_text_transformed(global.gameWidth/2, yPosHead, "[ pick your head ]", 1.2, 1.2, 0); 
+        draw_text_transformed(global.gameWidth/2, yPosWeapon, "weapon", 0.8, 0.8, 0);
         break;
     
     case 1: // Weapon
-        draw_text_transformed(global.gameWidth/2, yPosHead, "head", 0.9, 0.9, 0); 
-        draw_text_transformed(global.gameWidth/2, yPosWeapon, "[ pick your weapon ]", 1.1, 1.1, 0);
+        draw_text_transformed(global.gameWidth/2, yPosHead, "head", 0.8, 0.8, 0); 
+        draw_text_transformed(global.gameWidth/2, yPosWeapon, "[ pick your weapon ]", 1.2, 1.2, 0);
         break;
 }
+
+draw_set_font(fnt_scoreUI);
+draw_set_valign(fa_center);
+draw_text(global.gameWidth/2, yPosTitle, "TwinStickHacker#Prototype")
+
+draw_set_valign(fa_bottom);
+draw_set_font(fnt_small);
+draw_text(global.gameWidth/2, global.gameHeight - 32, "controller required, press esc to exit - use left stick to move, right stick to shoot
+                                                        #heads dont have any effect on gameplay
+                                                        #glitch shader by BlockAtt, font by NAL - broodroost3r 2018");
 
 draw_sprite_ext(m_headSprite[global.playerHead], 0, global.gameWidth/2, global.gameHeight/2, 5, 5, characterAngle, image_blend, image_alpha);
 draw_sprite_ext(m_weaponSprite[global.playerWeapon], 0, global.gameWidth/2, global.gameHeight/2, 5, 5, characterAngle, image_blend, image_alpha);

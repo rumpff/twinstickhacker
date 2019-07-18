@@ -2,7 +2,7 @@
 <room>
   <caption></caption>
   <width>1920</width>
-  <height>1200</height>
+  <height>1080</height>
   <vsnap>32</vsnap>
   <hsnap>32</hsnap>
   <isometric>0</isometric>
@@ -33,12 +33,13 @@ global.bgmBPM = 110;
 global.bgm = noone;
 global.bgmActive = true;
 
-global.gameWidth = 1280;
-global.gameHeight = 720;
+global.gameWidth = 1920;
+global.gameHeight = 1080;
 
 room_width = global.gameWidth;
 room_height = global.gameHeight;
 window_set_size(global.gameWidth, global.gameHeight);
+window_set_fullscreen(true);
 
 BktGlitch_init();
 randomize();
@@ -49,8 +50,8 @@ room_goto_next();</code>
   <clearDisplayBuffer>-1</clearDisplayBuffer>
   <makerSettings>
     <isSet>-1</isSet>
-    <w>1004</w>
-    <h>610</h>
+    <w>1000</w>
+    <h>612</h>
     <showGrid>-1</showGrid>
     <showObjects>-1</showObjects>
     <showTiles>-1</showTiles>
@@ -60,8 +61,8 @@ room_goto_next();</code>
     <deleteUnderlyingObj>0</deleteUnderlyingObj>
     <deleteUnderlyingTiles>-1</deleteUnderlyingTiles>
     <page>1</page>
-    <xoffset>-214</xoffset>
-    <yoffset>-170</yoffset>
+    <xoffset>-41</xoffset>
+    <yoffset>-95</yoffset>
   </makerSettings>
   <backgrounds>
     <background visible="-1" foreground="0" name="" x="0" y="0" htiled="0" vtiled="0" hspeed="0" vspeed="0" stretch="-1"/>

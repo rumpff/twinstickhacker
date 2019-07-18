@@ -40,6 +40,9 @@ m_ChanceWalkerChangeDir = 0.5;
 m_ChanceWalkerSpawn = 0.05;
 m_ChanceWalkerDestroy = 0.05;
 m_MaxWalkers = 10;
+
+room_width = m_GridWidth * m_GridSize;
+room_height = m_GridHeight * m_GridSize;
 </string>
           </argument>
         </arguments>
@@ -83,8 +86,6 @@ m_MaxWalkers = 10;
           <argument>
             <kind>1</kind>
             <string>/// Setup
-room_width = m_GridWidth * m_GridSize;
-room_height = m_GridHeight * m_GridSize;
 
 // Create the grid
 m_Grid = ds_grid_create(m_GridWidth, m_GridHeight);
@@ -126,9 +127,9 @@ ds_list_add(m_Walkers, w);
           <argument>
             <kind>1</kind>
             <string>/// Create floors
-_groundPercentage = random(0.1) + 0.15;
+var _groundPercentage = random(0.1) + 0.15;
 
-for(_iterations = 0; _iterations &lt; 250; _iterations++)
+for(_iterations = 0; _iterations &lt; 25; _iterations++)
 {
     // Create floors
     for(i = 0; i &lt; ds_list_size(m_Walkers) - 1; i++)
@@ -190,8 +191,8 @@ for(_iterations = 0; _iterations &lt; 250; _iterations++)
     {
         var w = ds_list_find_value(m_Walkers, i);
         
-        w.x = clamp(w.x, m_GridSize, room_width - m_GridSize);
-        w.y = clamp(w.y, m_GridSize, room_height - m_GridSize);
+        w.x = clamp(w.x, 1, m_GridSize - 1);
+        w.y = clamp(w.y, 1, m_GridSize - 1);
     }
 
     // Check for ground percentage and exit if enough

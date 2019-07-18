@@ -706,7 +706,7 @@ if (max(abs(m_hStickR), abs(m_vStickR) &gt;= 0.6)
             bullet = instance_create(x, y, obj_laserBottom);
             bullet.m_angle = bulletAngle;
             bullet.image_angle = bulletAngle;
-            m_shootCooldown = 60; 
+            m_shootCooldown = 180; 
             var snd = audio_play_sound(snd_shootLaser, 1, 0);
             audio_sound_pitch(snd, random_range(0.7, 1.3));
             scr_cameraKnockback(m_aimDirection, 50);
